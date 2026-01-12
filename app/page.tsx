@@ -125,6 +125,7 @@ export default function Home() {
         <ContactForm />
         <Growth />
       </main>
+      <Footer />
     </>
   );
 }
