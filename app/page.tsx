@@ -28,16 +28,9 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
-              className="text-[110px] leading-[110px] font-semibold text-white max-sm:text-[60px] max-sm:leading-[60px]"
+              className="text-[110px] leading-[110px] max-lg:text-[80px] max-lg:leading-[80px] font-semibold text-white max-sm:text-[50px] max-sm:leading-[50px]"
             >
-              We Deliver What
-            </motion.h1>
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
-              className="text-[110px] leading-[110px] font-semibold text-white max-sm:text-[60px] max-sm:leading-[60px]"
-            >
+              We Deliver What <br className="hidden md:block" />
               We{" "}
               <span className="relative text-red-500 inline-block">
                 Promise!

@@ -69,14 +69,17 @@ const ORBIT_DURATIONS = [30, 40, 50];
 
 export default function Community() {
     const [scale, setScale] = useState(1);
+    const [isMobile, setIsMobile] = useState(false);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth < 640) {
+            const width = window.innerWidth;
+            setIsMobile(width < 768);
+            if (width < 640) {
                 setScale(0.5);
-            } else if (window.innerWidth < 768) {
+            } else if (width < 768) {
                 setScale(0.6);
-            } else if (window.innerWidth < 1024) {
+            } else if (width < 1024) {
                 setScale(0.7);
             } else {
                 setScale(1);
@@ -107,6 +110,7 @@ export default function Community() {
                         duration={ORBIT_DURATIONS[index]}
                         items={orbitItems.filter(item => item.orbitIndex === index)}
                         direction={index % 2 === 0 ? 1 : -1}
+                        isMobile={isMobile}
                     />
                 ))}
             </div>
@@ -116,7 +120,7 @@ export default function Community() {
     );
 }
 
-function OrbitRing({ radius, duration, items, direction }: { radius: number, duration: number, items: any[], direction: number }) {
+function OrbitRing({ radius, duration, items, direction, isMobile }: { radius: number, duration: number, items: any[], direction: number, isMobile: boolean }) {
     return (
         <div
             className="absolute border border-red-600 rounded-full flex items-center justify-center"
@@ -134,6 +138,7 @@ function OrbitRing({ radius, duration, items, direction }: { radius: number, dur
                         radius={radius}
                         duration={duration}
                         direction={direction}
+                        isMobile={isMobile}
                     />
                 ))}
             </motion.div>
@@ -141,7 +146,7 @@ function OrbitRing({ radius, duration, items, direction }: { radius: number, dur
     );
 }
 
-function OrbitItem({ item, radius, duration, direction }: { item: any, radius: number, duration: number, direction: number }) {
+function OrbitItem({ item, radius, duration, direction, isMobile }: { item: any, radius: number, duration: number, direction: number, isMobile: boolean }) {
     return (
         <div
             className="absolute top-1/2 left-1/2 flex items-center justify-center"
@@ -156,10 +161,10 @@ function OrbitItem({ item, radius, duration, direction }: { item: any, radius: n
                 transition={{ duration: duration, repeat: Infinity, ease: "linear" }}
                 className="flex items-center justify-center"
             >
-                <div className={`flex items-center gap-3 bg-[#E50914] px-3 py-2 rounded-full shadow-[0_4px_20px_rgba(229,9,20,0.4)] whitespace-nowrap min-w-max border border-white/10 ${item.type === "avatar" || window.innerWidth < 768 ? "!p-0 !rounded-full !border-2 !border-white/40 !bg-gray-800 !pointer-events-auto" : ""}`}>
+                <div className={`flex items-center gap-3 bg-[#E50914] px-3 py-2 rounded-full shadow-[0_4px_20px_rgba(229,9,20,0.4)] whitespace-nowrap min-w-max border border-white/10 ${item.type === "avatar" || isMobile ? "!p-0 !rounded-full !border-2 !border-white/40 !bg-gray-800 !pointer-events-auto" : ""}`}>
                     <img src={item.image} className="w-10 h-10 rounded-full object-cover border-2 border-white/20" alt="avatar" />
                     {
-                        window.innerWidth > 768 &&
+                        !isMobile &&
                         item.text && (
                             <div className="flex flex-col text-left">
                                 <span className="text-white text-sm font-semibold leading-tight">{item.text}</span>

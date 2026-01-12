@@ -48,7 +48,7 @@ export default function Footer() {
                 <div className="flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-20">
                     <div className="w-full lg:w-[30%]">
                         <div className="flex items-center gap-2 mb-4">
-                            <Image src={footerlogo} alt="Footer Logo" />
+                            <Image src={footerlogo} alt="Techcole Read Logo" />
                         </div>
                         <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
                             We host the full capacity of potential for your start-up, business.
