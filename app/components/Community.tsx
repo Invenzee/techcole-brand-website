@@ -6,62 +6,51 @@ import Button from "./global/Button";
 const orbitItems = [
     {
         id: 1,
-        orbitIndex: 0,
-        angle: 190,
+        orbitIndex: 2,
+        angle: 195,
         type: "card",
         image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop",
         name: "Louis Patridge",
-        text: "That was amazing! Great job!"
+        text: "That was amazing!"
     },
     {
         id: 2,
-        orbitIndex: 0,
-        angle: 350,
+        orbitIndex: 2,
+        angle: 345,
         type: "card",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop",
-        name: "Byeon Wo Seok",
-        text: "Nice work, love it! 🔥"
-    },
-    {
-        id: 3,
-        orbitIndex: 0,
-        angle: 80,
-        type: "avatar",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop"
-    },
-
-    {
-        id: 4,
-        orbitIndex: 1,
-        angle: 150,
-        type: "card",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&auto=format&fit=crop",
         name: "Carlos Sainz",
         text: "Highly Recommended!"
     },
     {
-        id: 5,
+        id: 3,
         orbitIndex: 1,
-        angle: 20,
+        angle: 220,
         type: "avatar",
         image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=150&auto=format&fit=crop"
     },
-
     {
-        id: 6,
-        orbitIndex: 2,
-        angle: 280,
+        id: 4,
+        orbitIndex: 1,
+        angle: 320,
         type: "avatar",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&auto=format&fit=crop"
     },
     {
-        id: 7,
-        orbitIndex: 2,
-        angle: 50,
+        id: 5,
+        orbitIndex: 0,
+        angle: 245,
         type: "card",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=150&auto=format&fit=crop",
         name: "Gracie Abrams",
         text: "The results are outstanding!"
+    },
+    {
+        id: 6,
+        orbitIndex: 0,
+        angle: 295,
+        type: "avatar",
+        image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop"
     }
 ];
 
@@ -128,52 +117,84 @@ function OrbitRing({ radius, duration, items, direction, isMobile }: { radius: n
         >
             <motion.div
                 className="w-full h-full absolute inset-0 rounded-full"
-                animate={{ rotate: direction * 360 }}
-                transition={{ duration: duration, repeat: Infinity, ease: "linear" }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
             >
-                {items.map((item) => (
-                    <OrbitItem
-                        key={item.id}
-                        item={item}
-                        radius={radius}
-                        duration={duration}
-                        direction={direction}
-                        isMobile={isMobile}
-                    />
-                ))}
+                <motion.div
+                    className="w-full h-full absolute inset-0 rounded-full"
+                    animate={{ rotate: direction * 360 }}
+                    transition={{ duration: duration, repeat: Infinity, ease: "linear" }}
+                >
+                    {items.map((item, idx) => (
+                        <OrbitItem
+                            key={item.id}
+                            item={item}
+                            radius={radius}
+                            duration={duration}
+                            direction={direction}
+                            isMobile={isMobile}
+                            idx={idx}
+                        />
+                    ))}
+                </motion.div>
             </motion.div>
         </div>
     );
 }
 
-function OrbitItem({ item, radius, duration, direction, isMobile }: { item: any, radius: number, duration: number, direction: number, isMobile: boolean }) {
+function OrbitItem({ item, radius, duration, direction, isMobile, idx }: { item: any, radius: number, duration: number, direction: number, isMobile: boolean, idx: number }) {
+    const isLeft = item.angle < 270;
+    const startAngle = isLeft ? 180 : 360;
+
     return (
-        <div
+        <motion.div
             className="absolute top-1/2 left-1/2 flex items-center justify-center"
+            initial={{
+                rotate: startAngle,
+                opacity: 0,
+                scale: 0
+            }}
+            animate={{
+                rotate: item.angle,
+                opacity: 1,
+                scale: 1
+            }}
+            transition={{
+                duration: 1.5,
+                delay: idx * 0.2 + 0.5,
+                ease: "circOut"
+            }}
             style={{
                 width: 0,
                 height: 0,
-                transform: `rotate(${item.angle}deg) translate(${radius}px) rotate(-${item.angle}deg)`
             }}
         >
-            <motion.div
-                animate={{ rotate: direction * -360 }}
-                transition={{ duration: duration, repeat: Infinity, ease: "linear" }}
-                className="flex items-center justify-center"
+            <div
+                style={{
+                    transform: `translate(${radius}px) rotate(-${item.angle}deg)`
+                }}
             >
-                <div className={`flex items-center gap-3 bg-primary px-3 py-2 rounded-full shadow-[0_4px_20px_rgba(209,32,39,0.4)] whitespace-nowrap min-w-max border border-white/10 ${item.type === "avatar" || isMobile ? "!p-0 !rounded-full !border-2 !border-white/40 !bg-gray-800 !pointer-events-auto" : ""}`}>
-                    <img src={item.image} className="w-10 h-10 rounded-full object-cover border-2 border-white/20" alt="avatar" />
-                    {
-                        !isMobile &&
-                        item.text && (
-                            <div className="flex flex-col text-left">
-                                <span className="text-white text-sm font-semibold leading-tight">{item.text}</span>
-                                <span className="text-white/60 text-[10px] font-medium">{item.name}</span>
-                            </div>
-                        )
-                    }
-                </div>
-            </motion.div>
-        </div>
+                <motion.div
+                    animate={{ rotate: direction * -360 }}
+                    transition={{ duration: duration, repeat: Infinity, ease: "linear" }}
+                    className="flex items-center justify-center"
+                >
+                    <div className={`flex items-center gap-3 bg-primary px-3 py-2 rounded-full shadow-[0_4px_20px_rgba(209,32,39,0.4)] whitespace-nowrap min-w-max border border-white/10 ${item.type === "avatar" || isMobile ? "!p-0 !rounded-full !border-2 !border-white/40 !bg-gray-800 !pointer-events-auto" : ""}`}>
+                        <img src={item.image} className="w-10 h-10 rounded-full object-cover border-2 border-white/20" alt="avatar" />
+                        {
+                            !isMobile &&
+                            item.text && (
+                                <div className="flex flex-col text-left">
+                                    <span className="text-white text-sm font-semibold leading-tight">{item.text}</span>
+                                    <span className="text-white/60 text-[10px] font-medium">{item.name}</span>
+                                </div>
+                            )
+                        }
+                    </div>
+                </motion.div>
+            </div>
+        </motion.div>
     )
 }
+

@@ -1,7 +1,7 @@
 "use client";
 import { Instagram, Linkedin, Facebook, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import footerlogo from "@/public/read-logo.png"
+import footerlogo from "@/public/logo.svg"
 import reviewPlatformImage from "@/public/review-platforms.png"
 import Image from "next/image";
 
@@ -23,10 +23,10 @@ export default function Footer() {
                 <svg className="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style={{ stopColor: '#fee2e2', stopOpacity: 0.3 }} />
-                            <stop offset="30%" style={{ stopColor: '#fca5a5', stopOpacity: 0.5 }} />
-                            <stop offset="60%" style={{ stopColor: '#ef4444', stopOpacity: 0.7 }} />
-                            <stop offset="100%" style={{ stopColor: '#dc2626', stopOpacity: 0.6 }} />
+                            <stop offset="0%" style={{ stopColor: '#f05757ff', stopOpacity: 0.5 }} />
+                            <stop offset="30%" style={{ stopColor: '#e92222ff', stopOpacity: 0.5 }} />
+                            <stop offset="60%" style={{ stopColor: '#a01414ff', stopOpacity: 0.5 }} />
+                            <stop offset="100%" style={{ stopColor: '#f05757ff', stopOpacity: 0.5 }} />
                         </linearGradient>
                         <filter id="goo">
                             <feGaussianBlur in="SourceGraphic" stdDeviation="40" result="blur" />
