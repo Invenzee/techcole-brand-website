@@ -19,7 +19,7 @@ import Footer from "./components/Footer";
 export default function Home() {
   return (
     <>
-      <main className="w-full bg-white text-white selection:bg-red-500/30">
+      <main className="w-full bg-white text-white">
         <section className="relative h-full w-full overflow-hidden">
           <Header />
 
@@ -32,7 +32,7 @@ export default function Home() {
             >
               We Deliver What <br className="hidden md:block" />
               We{" "}
-              <span className="relative text-red-500 inline-block">
+              <span className="relative text-primary inline-block">
                 Promise!
                 <svg
                   viewBox="0 0 300 30"
@@ -68,8 +68,8 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 1.6, ease: "easeOut" }}
               className="flex items-center justify-center gap-4 mt-6"
             >
-              <Button text="Book a free consultation" />
-              <Button text="Get Started" />
+              <Button text="Book a free consultation" className="!bg-primary text-white" />
+              <Button text="Get Started" className="!bg-primary text-white" />
             </motion.div>
           </div>
 

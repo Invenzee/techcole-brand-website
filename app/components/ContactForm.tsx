@@ -38,7 +38,7 @@ export default function ContactForm() {
                     className="text-center mb-10 md:mb-12"
                 >
                     <h2 className="text-4xl md:text-6xl text-black font-semibold mb-4 leading-tight">
-                        Let's get <span className="text-red-500">started!</span>
+                        Let's get <span className="text-primary">started!</span>
                     </h2>
                     <p className="text-gray-700 text-lg md:text-xl px-4">
                         We've Been Awarded Plenty for the Milestones<br className="hidden md:block" />
@@ -68,7 +68,7 @@ export default function ContactForm() {
                                 onChange={handleChange}
                                 placeholder="First Name"
                                 required
-                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all text-black"
+                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-black"
                             />
                         </div>
                         <div>
@@ -82,7 +82,7 @@ export default function ContactForm() {
                                 onChange={handleChange}
                                 placeholder="Last Name"
                                 required
-                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all text-black"
+                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-black"
                             />
                         </div>
                     </div>
@@ -99,7 +99,7 @@ export default function ContactForm() {
                             onChange={handleChange}
                             placeholder="Example@gmail.com"
                             required
-                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all text-black"
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-black"
                         />
                     </div>
 
@@ -110,7 +110,7 @@ export default function ContactForm() {
                         </label>
                         <div className="flex gap-2">
                             <select
-                                className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all w-32 text-black"
+                                className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all w-32 text-black"
                             >
                                 <option value="+1">🇺🇸 +1</option>
                                 <option value="+44">🇬🇧 +44</option>
@@ -123,7 +123,7 @@ export default function ContactForm() {
                                 onChange={handleChange}
                                 placeholder="United States"
                                 required
-                                className="flex-1 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all text-black"
+                                className="flex-1 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-black"
                             />
                         </div>
                     </div>
@@ -138,7 +138,7 @@ export default function ContactForm() {
                             value={formData.budget}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all appearance-none cursor-pointer text-black"
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none cursor-pointer text-black"
                             style={{
                                 backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
                                 backgroundRepeat: 'no-repeat',
@@ -163,7 +163,7 @@ export default function ContactForm() {
                             value={formData.projectType}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all appearance-none cursor-pointer text-black"
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none cursor-pointer text-black"
                             style={{
                                 backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
                                 backgroundRepeat: 'no-repeat',
@@ -191,7 +191,7 @@ export default function ContactForm() {
                             placeholder="Tell us about your product, how you heard about us, where are you located or just say hi"
                             required
                             rows={5}
-                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all resize-none text-black"
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none text-black"
                         />
                     </div>
 
@@ -199,7 +199,7 @@ export default function ContactForm() {
                     <div className="pt-4">
                         <Button
                             text="Submit"
-                            className="!px-8 !bg-red-500 text-white !py-3"
+                            className="!px-8 !bg-primary text-white !py-3"
                             transitionClassName="!via-white/30"
                         />
                     </div>

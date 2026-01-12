@@ -5,18 +5,19 @@ import callToActionImg from '@/public/call-to-action-img.png'
 
 export default function CTA() {
     return (
-        <section className="w-full bg-[#E50914] py-10 relative overflow-hidden">
-            <div className="max-w-[1140px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0">
+        <section className="w-full bg-primary py-10 relative overflow-hidden">
+            <div className="max-w-[1140px] mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16">
 
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="flex-1 md:pr-10 text-center md:text-left"
+                    className="text-center md:text-left"
                 >
-                    <h2 className="text-3xl md:text-4xl font-normal text-white -tracking-[0.03em]">
-                        Book a Free <span className="font-semibold">Consultation</span>
+                    <h2 className="text-3xl md:text-5xl font-normal text-white -tracking-[0.03em]">
+                        Book a Free <br className="md:hidden" />
+                        <span className="font-semibold">Consultation</span>
                     </h2>
                 </motion.div>
 
@@ -36,9 +37,9 @@ export default function CTA() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.4 }}
-                        className="flex-1 flex flex-col md:flex-row items-center md:items-start md:pl-10 text-white"
+                        className="flex flex-col md:flex-row items-center text-white"
                     >
-                        <div className="hidden md:block w-[1px] h-16 bg-white/40 mr-8" />
+                        <div className="hidden md:block w-[1px] h-16 bg-white/40 mx-8" />
 
                         <div className="flex flex-col gap-1 text-center md:text-left">
                             <div className="text-2xl md:text-3xl font-medium tracking-tight">

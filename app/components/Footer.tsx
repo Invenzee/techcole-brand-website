@@ -7,11 +7,11 @@ import Image from "next/image";
 
 export default function Footer() {
     return (
-        <footer className="w-full text-white relative pt-12 pb-16 max-sm:pb-4">
+        <footer className="w-full text-white relative pt-12 pb-6 max-sm:pb-4">
             <div className="max-w-full z-20 relative bg-black px-16 mx-auto w-full flex items-center justify-between pb-12 border-b border-white/10 max-sm:flex-col gap-4 max-sm:items-start max-sm:px-4">
                 <div>
                     <h3 className="text-4xl md:text-7xl font-regular border-t border-b border-white pb-4 pt-1">
-                        What <span className="text-red-500">customers say</span>
+                        What <span className="text-primary">customers say</span>
                     </h3>
                 </div>
                 <div className="flex items-center gap-4">
@@ -93,7 +93,7 @@ export default function Footer() {
                             <button
                                 className="px-6 md:px-8 py-3 font-semibold text-white transition-all duration-300 hover:opacity-90 whitespace-nowrap rounded-full cursor-pointer text-sm"
                                 style={{
-                                    background: 'conic-gradient(from 180deg at 50% 50%, #140F2A 0%, rgba(255, 0, 4, 0.25) 50%, rgba(255, 0, 4, 0.25) 100%)'
+                                    background: 'conic-gradient(from 180deg at 50% 50%, #140F2A 0%, rgba(209, 32, 39, 0.25) 50%, rgba(209, 32, 39, 0.25) 100%)'
                                 }}
                             >
                                 Join Us

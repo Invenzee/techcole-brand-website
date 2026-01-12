@@ -59,7 +59,7 @@ export default function Testimonials() {
     }, []);
 
     return (
-        <section className="w-full bg-[#E50914] md:rounded-[30px] py-16 md:py-24 my-10 max-sm:mb-0 md:mx-6 text-white relative overflow-hidden">
+        <section className="w-full bg-primary md:rounded-[30px] py-16 md:py-24 my-10 max-sm:mb-0 md:mx-6 text-white relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
             <div className="max-w-[1140px] mx-auto px-6">
@@ -71,10 +71,10 @@ export default function Testimonials() {
                     <div className="flex-shrink-0 flex flex-col items-center lg:items-start gap-8 relative z-10 w-full md:w-auto">
                         {/* Arrows */}
                         <div className="flex gap-4">
-                            <button onClick={handlePrev} className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-red-600 transition-colors backdrop-blur-sm group cursor-pointer">
+                            <button onClick={handlePrev} className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-primary transition-colors backdrop-blur-sm group cursor-pointer">
                                 <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
                             </button>
-                            <button onClick={handleNext} className="w-12 h-12 rounded-full bg-white text-red-600 flex items-center justify-center shadow-lg hover:scale-105 transition-transform group cursor-pointer">
+                            <button onClick={handleNext} className="w-12 h-12 rounded-full bg-white text-primary flex items-center justify-center shadow-lg hover:scale-105 transition-transform group cursor-pointer">
                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </button>
                         </div>
@@ -112,7 +112,7 @@ export default function Testimonials() {
 
                     <div className="flex-1 w-full flex flex-col lg:justify-end h-full">
                         <div className="lg:hidden bg-white text-black p-6 rounded-2xl mb-8 shadow-lg w-full">
-                            <Quote size={20} className="text-red-500 mb-2 opacity-50" />
+                            <Quote size={20} className="text-primary mb-2 opacity-50" />
                             <p className="text-lg leading-relaxed font-medium">"{testimonials[activeIndex].quote}"</p>
                         </div>
 
@@ -126,7 +126,7 @@ export default function Testimonials() {
                                     transition={{ duration: 0.3 }}
                                     className="relative w-full min-h-[220px] bg-white rounded-3xl rounded-bl-none p-8 shadow-xl text-black"
                                 >
-                                    <Quote className="w-8 h-8 text-red-500 mb-4 opacity-50" />
+                                    <Quote className="w-8 h-8 text-primary mb-4 opacity-50" />
                                     <p className="text-2xl leading-relaxed font-medium text-gray-800">
                                         "{testimonials[activeIndex].quote}"
                                     </p>

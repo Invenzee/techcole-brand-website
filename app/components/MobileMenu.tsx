@@ -64,7 +64,7 @@ export default function MobileMenu() {
             {/* Toggle Button */}
             <button
                 onClick={() => setIsOpen(true)}
-                className="p-2 text-white hover:text-red-500 transition-colors cursor-pointer"
+                className="p-2 text-white hover:text-primary transition-colors cursor-pointer"
                 aria-label="Open Menu"
             >
                 <div className="flex flex-col gap-1.5 items-end">
@@ -130,7 +130,7 @@ export default function MobileMenu() {
                                     <Link
                                         href={item.href}
                                         onClick={() => setIsOpen(false)}
-                                        className="text-3xl font-light text-white hover:text-red-500 transition-colors inline-block group"
+                                        className="text-3xl font-light text-white hover:text-primary transition-colors inline-block group"
                                     >
                                         <span className="inline-block transition-transform group-hover:translate-x-4">
                                             {item.name}
@@ -150,7 +150,7 @@ export default function MobileMenu() {
                                     className="flex flex-col gap-4"
                                 >
                                     <span className="text-gray-500 uppercase tracking-widest text-xs font-semibold">Contact</span>
-                                    <a href="tel:+" className="text-white hover:text-red-500 transition-colors flex items-center gap-2">
+                                    <a href="tel:+" className="text-white hover:text-primary transition-colors flex items-center gap-2">
                                         <Phone size={16} />
                                         <span>Inquire Now</span>
                                     </a>
@@ -163,16 +163,16 @@ export default function MobileMenu() {
                                 >
                                     <span className="text-gray-500 uppercase tracking-widest text-xs font-semibold">Social</span>
                                     <div className="flex gap-4">
-                                        <Instagram size={20} className="text-white hover:text-red-500 cursor-pointer transition-colors" />
-                                        <Linkedin size={20} className="text-white hover:text-red-500 cursor-pointer transition-colors" />
-                                        <Facebook size={20} className="text-white hover:text-red-500 cursor-pointer transition-colors" />
+                                        <Instagram size={20} className="text-white hover:text-primary cursor-pointer transition-colors" />
+                                        <Linkedin size={20} className="text-white hover:text-primary cursor-pointer transition-colors" />
+                                        <Facebook size={20} className="text-white hover:text-primary cursor-pointer transition-colors" />
                                     </div>
                                 </motion.div>
                             </div>
                         </div>
 
                         {/* Background Animated Gradient (Subtle) */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-red-600/10 blur-[150px] rounded-full -z-10 pointer-events-none" />
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 blur-[150px] rounded-full -z-10 pointer-events-none" />
                     </motion.div>
                 )}
             </AnimatePresence>

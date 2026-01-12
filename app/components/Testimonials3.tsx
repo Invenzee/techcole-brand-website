@@ -71,19 +71,15 @@ export default function Testimonials3() {
         }
         return () => clearInterval(interval);
     }, [isPlaying]);
-
-    // Calculate highlighting parts of the quote
-    // We'll just hardcode the logic to split the quote for specific styling "Techcole" styling
     const activeTestimonial = testimonials[activeIndex];
 
-    // Helper to render quote with colored brand name
     const renderQuote = (text: string) => {
         const parts = text.split("Techcole");
         if (parts.length === 1) return text;
         return (
             <>
                 {parts[0]}
-                <span className="text-red-500 font-bold">Techcole</span>
+                <span className="text-primary font-bold">Techcole</span>
                 {parts[1]}
             </>
         );
@@ -130,7 +126,7 @@ export default function Testimonials3() {
                                 ease: "easeInOut",
                                 delay: i * 0.05
                             }}
-                            className={`w-1 rounded-full ${i % 2 === 0 ? 'bg-gray-400' : 'bg-red-400'}`}
+                            className={`w-1 rounded-full ${i % 2 === 0 ? 'bg-gray-400' : 'bg-primary'}`}
                             style={{ height: 10 }} // fallback
                         />
                     ))}
@@ -174,7 +170,7 @@ export default function Testimonials3() {
                                     onClick={() => setActiveIndex(index)}
                                     className={`
                                         absolute w-24 h-24 rounded-3xl overflow-hidden cursor-pointer shadow-lg border-4
-                                        ${isActive ? 'border-white shadow-2xl ring-2 ring-red-100' : 'border-transparent'}
+                                        ${isActive ? 'border-white shadow-2xl ring-2 ring-red-100/20' : 'border-transparent'}
                                     `}
                                 >
                                     <img src={t.image} alt={t.name} className="w-full h-full object-cover" />

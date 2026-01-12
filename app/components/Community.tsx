@@ -123,7 +123,7 @@ export default function Community() {
 function OrbitRing({ radius, duration, items, direction, isMobile }: { radius: number, duration: number, items: any[], direction: number, isMobile: boolean }) {
     return (
         <div
-            className="absolute border border-red-600 rounded-full flex items-center justify-center"
+            className="absolute border border-primary rounded-full flex items-center justify-center"
             style={{ width: radius * 2, height: radius * 2 }}
         >
             <motion.div
@@ -161,7 +161,7 @@ function OrbitItem({ item, radius, duration, direction, isMobile }: { item: any,
                 transition={{ duration: duration, repeat: Infinity, ease: "linear" }}
                 className="flex items-center justify-center"
             >
-                <div className={`flex items-center gap-3 bg-[#E50914] px-3 py-2 rounded-full shadow-[0_4px_20px_rgba(229,9,20,0.4)] whitespace-nowrap min-w-max border border-white/10 ${item.type === "avatar" || isMobile ? "!p-0 !rounded-full !border-2 !border-white/40 !bg-gray-800 !pointer-events-auto" : ""}`}>
+                <div className={`flex items-center gap-3 bg-primary px-3 py-2 rounded-full shadow-[0_4px_20px_rgba(209,32,39,0.4)] whitespace-nowrap min-w-max border border-white/10 ${item.type === "avatar" || isMobile ? "!p-0 !rounded-full !border-2 !border-white/40 !bg-gray-800 !pointer-events-auto" : ""}`}>
                     <img src={item.image} className="w-10 h-10 rounded-full object-cover border-2 border-white/20" alt="avatar" />
                     {
                         !isMobile &&

@@ -12,7 +12,7 @@ export default function Technologies() {
                 }}
             />
 
-            <div className="absolute inset-0 bg-[#E50914] opacity-90" />
+            <div className="absolute inset-0 bg-primary opacity-90" />
 
             <div className="relative z-10 max-w-[1140px] mx-auto px-6 flex flex-col items-center justify-center text-center">
                 <motion.h2
@@ -41,7 +41,7 @@ export default function Technologies() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                    <Button text="Get Started" className="!bg-red-500 text-white !py-2 !px-6" transitionClassName="!via-white/30" />
+                    <Button text="Get Started" className="!bg-primary text-white !py-2 !px-6" transitionClassName="!via-white/30" />
                 </motion.div>
             </div>
         </section>

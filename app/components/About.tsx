@@ -45,7 +45,7 @@ export default function About() {
                     transition={{ duration: 0.6 }}
                     className="flex justify-center mb-20 max-sm:mb-4 max-sm:justify-start"
                 >
-                    <h2 className="text-4xl md:text-6xl font-semibold tracking-tight">About <span className="text-red-500">Us</span></h2>
+                    <h2 className="text-4xl md:text-6xl font-semibold tracking-tight">About <span className="text-primary">Us</span></h2>
                 </motion.div>
 
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
@@ -59,13 +59,13 @@ export default function About() {
                         <span className="text-black font-medium mb-2 block text-sm md:text-base">Techcole is the largest and most experienced IT team</span>
                         <h3 className="text-4xl md:text-6xl font-semibold leading-[1.1] md:leading-[.9] mb-6 tracking-tight">
                             Passionate and <br />
-                            <span className="text-red-500">creative</span>
+                            <span className="text-primary">creative</span>
                         </h3>
                         <p className="text-black leading-relaxed mb-8 text-base md:text-lg">
                             Techcole believes in the power of collaboration and strives to create an environment of shared success. Our experienced team of professionals is dedicated to delving into the complexities of business challenges and finding creative solutions.
                         </p>
                         <div>
-                            <Button text="Learn More" className="!bg-red-500 text-white !px-12" transitionClassName="!via-white/30" />
+                            <Button text="Learn More" className="!bg-primary text-white !px-12" transitionClassName="!via-white/30" />
                         </div>
                     </motion.div>
 
@@ -88,10 +88,10 @@ export default function About() {
                                         ${index === 3 ? '' : ''}
                                     `}
                                 >
-                                    {stat.label && <span className="text-red-500 font-medium text-xs md:text-sm uppercase tracking-wider">{stat.label}</span>}
+                                    {stat.label && <span className="text-primary font-medium text-xs md:text-sm uppercase tracking-wider">{stat.label}</span>}
                                     <div className="flex items-end gap-3">
                                         <h4 className="text-4xl md:text-5xl font-semibold tracking-tighter">{stat.number}</h4>
-                                        <div className={`w-5 h-5 md:w-6 md:h-6 rounded-full border border-red-200 flex items-center justify-center mt-2 ${index === 0 ? 'bg-red-500' : ''}`}>
+                                        <div className={`w-5 h-5 md:w-6 md:h-6 rounded-full border border-red-200 flex items-center justify-center mt-2 ${index === 0 ? 'bg-primary' : ''}`}>
                                             <img src={index === 0 ? stat.icon.src : arrowUpRedImg.src} className="w-2.5 md:w-3" alt="arrow-up" />
                                         </div>
                                     </div>

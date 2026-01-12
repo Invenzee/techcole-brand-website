@@ -18,7 +18,7 @@ export default function Portfolio() {
             <div className="max-w-[1300px] mx-auto px-6 mb-12 md:mb-16 flex flex-col md:flex-row items-start md:items-end justify-between gap-6 md:gap-8">
                 <div>
                     <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-black">
-                        Portfolio <span className="text-red-500">Highlights</span>
+                        Portfolio <span className="text-primary">Highlights</span>
                     </h2>
                 </div>
                 <div className="max-w-md">
@@ -29,7 +29,7 @@ export default function Portfolio() {
             </div>
 
             <div className="flex flex-col gap-8">
-                <div className="w-full overflow-hidden origin-center -ml-4">
+                <div className="w-full self-end overflow-hidden origin-center -ml-4">
                     <motion.div
                         className="flex gap-6 w-max"
                         animate={{ x: "-50%" }}
@@ -56,7 +56,7 @@ export default function Portfolio() {
             </div>
 
             <div className="max-w-[1140px] mx-auto flex items-center justify-center mt-12 text-center">
-                <Button text="View All Projects" className="!bg-red-500 text-white !px-12" transitionClassName="!via-white/30" />
+                <Button text="View All Projects" className="!bg-primary text-white !px-12" transitionClassName="!via-white/30" />
             </div>
         </section>
     );
@@ -64,22 +64,13 @@ export default function Portfolio() {
 
 function PortfolioCard({ item }: { item: typeof portfolioItems[0] }) {
     return (
-        <div className="relative w-[300px] md:w-[450px] h-[350px] md:h-[400px] rounded-3xl overflow-hidden group cursor-pointer bg-gray-100 flex-shrink-0">
+        <div className="relative w-[300px] md:w-[450px] h-[350px] md:h-[500px] rounded-3xl overflow-hidden group cursor-pointer bg-gray-100 flex-shrink-0">
             <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
 
-            <div className="absolute top-6 right-6 px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-                <span className="text-white text-xs font-bold uppercase tracking-widest">{item.category}</span>
-            </div>
-
-            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center backdrop-blur-[2px]">
-                <div className="text-center">
-                    <p className="text-red-400 font-medium text-sm uppercase tracking-wider mb-2">{item.category}</p>
-                    <h3 className="text-3xl font-bold text-white mb-6">{item.title}</h3>
-                </div>
-
-                <Button text="View Project" className="!bg-red-500 !text-white !px-12" transitionClassName="!via-white/30" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end pb-6">
+                <p className="text-white text-xl hover:underline">Click to view</p>
             </div>
         </div>
     )

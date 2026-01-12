@@ -35,14 +35,14 @@ export default function NavMenu() {
                                 {item.name}
                             </span>
 
-                            <span className="h-[20px] flex items-center text-lg font-medium capitalize tracking-wide text-red-500">
-                                <span className="w-1 h-1 bg-red-500 rounded-full mr-1.5 animate-pulse" />
+                            <span className="h-[20px] flex items-center text-lg font-medium capitalize tracking-wide text-primary">
+                                <span className="w-1 h-1 bg-primary rounded-full mr-1.5 animate-pulse" />
                                 {item.name}
                             </span>
                         </div>
 
                         <span
-                            className={`absolute inset-0 bg-red-500/0 blur-[20px] transition-colors duration-300 pointer-events-none ${isActive ? "bg-red-500/10" : "group-hover:bg-red-500/10"
+                            className={`absolute inset-0 bg-primary/0 blur-[20px] transition-colors duration-300 pointer-events-none ${isActive ? "bg-primary/10" : "group-hover:bg-primary/10"
                                 }`}
                         />
                     </Link>

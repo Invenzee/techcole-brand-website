@@ -93,7 +93,7 @@ export default function Services() {
                         className="text-4xl md:text-6xl font-semibold leading-[1.1] md:leading-[.9]"
                     >
                         Discover our Expertise <br />
-                        as a <span className="text-red-500">Website Design</span> Agency
+                        as a <span className="text-primary">Website Design</span> Agency
                     </motion.h2>
                 </div>
 
@@ -134,14 +134,14 @@ export default function Services() {
                                 return (
                                     <div
                                         key={index}
-                                        className={`absolute left-0 top-0 flex flex-col justify-between p-8 rounded-xl border border-white/10 shadow-2xl transition-all duration-1000 group hover:brightness-110 ${isBack ? 'bg-[#DF0A0A]/20' : 'bg-[#DF0A0A]'}`}
+                                        className={`absolute left-0 top-0 flex flex-col justify-between p-8 rounded-xl border border-white/10 shadow-2xl transition-all duration-1000 group hover:brightness-110 ${isBack ? 'bg-primary/20' : 'bg-primary'}`}
                                         style={{
                                             width: `${panelSize}px`,
                                             height: '350px',
                                             transform: `rotateY(${rotation}deg) translateZ(${tz}px) translateY(${yOffset}px) rotateY(${faceCorrection}deg)`,
                                             left: `calc(50% - ${panelSize / 2}px)`,
                                             top: 'calc(50% - 200px)',
-                                            opacity: isBack ? 1 : opacity,
+                                            opacity: isBack ? 2 : opacity,
                                             filter: `brightness(${opacity})`,
                                             zIndex: Math.round(opacity * 100),
                                             willChange: 'transform'
@@ -157,7 +157,7 @@ export default function Services() {
                                                 </div>
 
                                                 <div className="relative z-10 flex items-end justify-between mt-auto">
-                                                    <Button text="Learn More" className="!bg-red-500 text-white !py-1.5" transitionClassName="!via-white/30" />
+                                                    <Button text="Learn More" className="!bg-primary text-white !py-1.5" transitionClassName="!via-white/30" />
                                                     <div className="">
                                                         {service.icon}
                                                     </div>
@@ -179,13 +179,13 @@ export default function Services() {
                 <div className="flex items-center justify-between w-full absolute top-2/3 left-0 px-4 md:px-10 -translate-y-1/2 pointer-events-none">
                     <button
                         onClick={() => rotate('prev')}
-                        className="w-14 h-14 rounded-full bg-white/5 border border-white/10 backdrop-blur-md flex items-center justify-center hover:bg-red-500 hover:border-red-500 transition-all duration-300 pointer-events-auto group cursor-pointer"
+                        className="w-14 h-14 rounded-full bg-white/5 border border-white/10 backdrop-blur-md flex items-center justify-center hover:bg-primary hover:border-primary transition-all duration-300 pointer-events-auto group cursor-pointer"
                     >
                         <ArrowLeft strokeWidth={1} className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
                     </button>
                     <button
                         onClick={() => rotate('next')}
-                        className="w-14 h-14 rounded-full bg-white/5 border border-white/10 backdrop-blur-md flex items-center justify-center hover:bg-red-500 hover:border-red-500 transition-all duration-300 pointer-events-auto group cursor-pointer"
+                        className="w-14 h-14 rounded-full bg-white/5 border border-white/10 backdrop-blur-md flex items-center justify-center hover:bg-primary hover:border-primary transition-all duration-300 pointer-events-auto group cursor-pointer"
                     >
                         <ArrowRight strokeWidth={1} className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
                     </button>
