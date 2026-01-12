@@ -35,13 +35,13 @@ export default function ContactForm() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-12"
+                    className="text-center mb-10 md:mb-12"
                 >
-                    <h2 className="text-5xl md:text-6xl text-black font-semibold mb-4">
+                    <h2 className="text-4xl md:text-6xl text-black font-semibold mb-4 leading-tight">
                         Let's get <span className="text-red-500">started!</span>
                     </h2>
-                    <p className="text-gray-700 text-xl">
-                        We've Been Awarded Plenty for the Milestones<br />
+                    <p className="text-gray-700 text-lg md:text-xl px-4">
+                        We've Been Awarded Plenty for the Milestones<br className="hidden md:block" />
                         We Have Achieved
                     </p>
                 </motion.div>
@@ -199,7 +199,7 @@ export default function ContactForm() {
                     <div className="pt-4">
                         <Button
                             text="Submit"
-                            className="w-full !bg-red-500 text-white !py-3"
+                            className="!px-8 !bg-red-500 text-white !py-3"
                             transitionClassName="!via-white/30"
                         />
                     </div>

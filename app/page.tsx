@@ -23,12 +23,12 @@ export default function Home() {
         <section className="relative h-full w-full overflow-hidden">
           <Header />
 
-          <div className="relative z-10 max-w-[1140px] mx-auto mt-60 mb-20 flex flex-col items-center">
+          <div className="relative z-10 max-w-[1140px] mx-auto mt-30 mb-20 flex flex-col items-center max-sm:p-6 text-center">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
-              className="text-[110px] leading-[110px] font-semibold text-white"
+              className="text-[110px] leading-[110px] font-semibold text-white max-sm:text-[60px] max-sm:leading-[60px]"
             >
               We Deliver What
             </motion.h1>
@@ -36,7 +36,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
-              className="text-[110px] leading-[110px] font-semibold text-white"
+              className="text-[110px] leading-[110px] font-semibold text-white max-sm:text-[60px] max-sm:leading-[60px]"
             >
               We{" "}
               <span className="relative text-red-500 inline-block">

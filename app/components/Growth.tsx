@@ -6,18 +6,18 @@ import growthImage from "@/public/growth.png";
 export default function Growth() {
     return (
         <section className="w-full bg-white pt-24 relative">
-            <div className="max-w-[1240px] mx-auto px-6">
-                <div className="flex items-end justify-between">
+            <div className="max-w-[1240px] mx-auto px-6 relative">
+                <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-12 lg:gap-20">
 
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="space-y-8 pb-20"
+                        className="space-y-6 md:space-y-8 pb-0 lg:pb-20 w-full lg:w-1/2 lg:text-left"
                     >
-                        <h3 className="text-4xl md:text-5xl font-light text-gray-400 leading-[.9]">
-                            Your Growth Is Our<br />
+                        <h3 className="text-3xl md:text-5xl font-light text-gray-400 leading-tight">
+                            Your Growth Is Our<br className="hidden md:block" />
                             Utmost Priority!
                         </h3>
 
@@ -29,13 +29,13 @@ export default function Growth() {
                             />
                         </div>
 
-                        <h2 className="text-5xl md:text-6xl font-semibold text-black leading-[.9">
-                            <span className="text-red-500">Let's Build</span> Something<br />
+                        <h2 className="text-4xl md:text-6xl font-semibold text-black leading-tight">
+                            <span className="text-red-500">Let's Build</span> Something <br className="hidden md:block" />
                             <span className="text-red-500">Great Together</span>
                         </h2>
 
-                        <p className="text-gray-600 text-lg leading-relaxed w-[550px]">
-                            <span className="font-semibold leading-[.9] text-red-500">TechCole</span> is here to help you reach your goal. Contact us today for a personalized consultation and let's discuss how we can elevate your brand and drive measurable success.
+                        <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+                            <span className="font-semibold text-red-500">TechCole</span> is here to help you reach your goal. Contact us today for a personalized consultation and let's discuss how we can elevate your brand and drive measurable success.
                         </p>
                     </motion.div>
 
@@ -44,10 +44,10 @@ export default function Growth() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="relative w-full"
+                        className="relative w-full lg:w-1/2"
                     >
-                        <div className="text-left ml-40 -mb-12">
-                            <p className="text-2xl md:text-4xl font-light text-gray-400 leading-[.9]">
+                        <div className="text-left mb-6 lg:ml-20 lg:-mb-12 relative z-10 px-4 max-sm:m-0 max-sm:p-0">
+                            <p className="text-3xl md:text-4xl font-light text-gray-400 leading-tight">
                                 Their <span className="text-red-500 font-semibold">Success<br />Stories Hear Them<br />Out!</span>
                             </p>
                         </div>
@@ -64,7 +64,7 @@ export default function Growth() {
                 </div>
 
                 {/* Red Vertical Divider */}
-                <div className="absolute left-1/2 top-[60%] -translate-x-1/2 -translate-y-1/2 w-[1px] h-[70%] bg-red-500" />
+                <div className="hidden lg:block absolute left-1/2 top-[60%] -translate-x-1/2 -translate-y-1/2 w-[1px] h-[70%] bg-red-500" />
             </div>
 
         </section>

@@ -3,6 +3,7 @@
 import { Phone } from "lucide-react";
 import Button from "./global/Button";
 import NavMenu from "./NavMenu";
+import MobileMenu from "./MobileMenu";
 import { motion } from "framer-motion";
 
 export default function Header() {
@@ -19,24 +20,30 @@ export default function Header() {
                 transition={{ delay: 0.5, duration: 0.5 }}
                 className="flex items-center gap-2"
             >
-                <img src="/logo.png" className="" />
+                <img src="/logo.png" className="h-8 md:h-10" />
             </motion.div>
 
             <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7, duration: 0.5 }}
+                className="hidden md:block"
             >
                 <NavMenu />
             </motion.div>
 
-            <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.9, duration: 0.5 }}
-            >
-                <Button icon={Phone} text="Lets Talk" />
-            </motion.div>
+            <div className="flex items-center gap-4">
+                <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.9, duration: 0.5 }}
+                    className="hidden md:block"
+                >
+                    <Button icon={Phone} text="Lets Talk" />
+                </motion.div>
+
+                <MobileMenu />
+            </div>
         </motion.nav>
     )
 }

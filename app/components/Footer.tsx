@@ -7,15 +7,15 @@ import Image from "next/image";
 
 export default function Footer() {
     return (
-        <footer className="w-full text-white relative pt-12 pb-16">
-            <div className="max-w-full z-20 relative bg-black px-16 mx-auto w-full flex items-center justify-between pb-12 border-b border-white/10">
+        <footer className="w-full text-white relative pt-12 pb-16 max-sm:pb-4">
+            <div className="max-w-full z-20 relative bg-black px-16 mx-auto w-full flex items-center justify-between pb-12 border-b border-white/10 max-sm:flex-col gap-4 max-sm:items-start max-sm:px-4">
                 <div>
                     <h3 className="text-4xl md:text-7xl font-regular border-t border-b border-white pb-4 pt-1">
                         What <span className="text-red-500">customers say</span>
                     </h3>
                 </div>
                 <div className="flex items-center gap-4">
-                    <Image src={reviewPlatformImage} className="w-3/4" alt="Review Platform" />
+                    <Image src={reviewPlatformImage} className="w-3/4 max-sm:2/4" alt="Review Platform" />
                 </div>
             </div>
 
@@ -44,52 +44,54 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className={`max-w-full relative z-20 px-24 mx-auto w-full pt-30 pb-30 bg-[url('@/public/footershape.png')] bg-cover bg-center`}>
-                <div className="flex items-start jusitfy-between gap-20">
-                    <div className="w-[30%]">
+            <div className={`max-w-full relative z-20 px-6 md:px-16 lg:px-24 mx-auto w-full pt-20 pb-30 bg-[url('@/public/footershape.png')] bg-cover bg-center max-sm:p-4 max-sm:pb-12`}>
+                <div className="flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-20">
+                    <div className="w-full lg:w-[30%]">
                         <div className="flex items-center gap-2 mb-4">
                             <Image src={footerlogo} alt="Footer Logo" />
                         </div>
-                        <p className="text-gray-400 text-sm leading-relaxed">
+                        <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
                             We host the full capacity of potential for your start-up, business.
                         </p>
                     </div>
 
-                    {/* Quick Links */}
-                    <div className="w-[15%]">
-                        <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-                        <ul className="space-y-2">
-                            <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link></li>
-                            <li><Link href="/services" className="text-gray-400 hover:text-white transition-colors">Our Services</Link></li>
-                            <li><Link href="/community" className="text-gray-400 hover:text-white transition-colors">Community</Link></li>
-                            <li><Link href="/testimonials" className="text-gray-400 hover:text-white transition-colors">testimonials</Link></li>
-                            <li><Link href="/faq" className="text-gray-400 hover:text-white transition-colors">FAQ</Link></li>
-                        </ul>
+                    <div className="flex flex-wrap sm:flex-nowrap gap-12 lg:gap-20 w-full lg:w-auto">
+                        {/* Quick Links */}
+                        <div className="min-w-[140px]">
+                            <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
+                            <ul className="space-y-3">
+                                <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors text-sm">About Us</Link></li>
+                                <li><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-sm">Our Services</Link></li>
+                                <li><Link href="/community" className="text-gray-400 hover:text-white transition-colors text-sm">Community</Link></li>
+                                <li><Link href="/testimonials" className="text-gray-400 hover:text-white transition-colors text-sm">Testimonials</Link></li>
+                                <li><Link href="/faq" className="text-gray-400 hover:text-white transition-colors text-sm">FAQ</Link></li>
+                            </ul>
+                        </div>
+
+                        {/* Company */}
+                        <div className="min-w-[140px]">
+                            <h4 className="text-lg font-semibold mb-6">Company</h4>
+                            <ul className="space-y-3">
+                                <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors text-sm">About Us</Link></li>
+                                <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">Contact Us</Link></li>
+                                <li><Link href="/career-tips" className="text-gray-400 hover:text-white transition-colors text-sm">Career Tips</Link></li>
+                                <li><Link href="/career" className="text-gray-400 hover:text-white transition-colors text-sm">Career</Link></li>
+                            </ul>
+                        </div>
                     </div>
 
-                    {/* Company */}
-                    <div className="w-[15%]">
-                        <h4 className="text-lg font-semibold mb-4">Company</h4>
-                        <ul className="space-y-2">
-                            <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link></li>
-                            <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors">Contact Us</Link></li>
-                            <li><Link href="/career-tips" className="text-gray-400 hover:text-white transition-colors">Career Tips</Link></li>
-                            <li><Link href="/career" className="text-gray-400 hover:text-white transition-colors">Career</Link></li>
-                        </ul>
-                    </div>
-
-                    <div className="w-[40%]">
-                        <h4 className="w-full flex-1 text-4xl font-medium mb-4 leading-[.9] bg-gradient-to-r from-white via-gray-400 to-gray-700 bg-clip-text text-transparent">
+                    <div className="w-full lg:w-[40%]">
+                        <h4 className="w-full text-3xl md:text-4xl font-medium mb-6 leading-[1.1] bg-gradient-to-r from-white via-gray-400 to-gray-700 bg-clip-text text-transparent">
                             Join the Techcole<br />Community
                         </h4>
-                        <div className="relative flex items-center border border-white/20 rounded-full overflow-hidden bg-black w-full">
+                        <div className="relative flex items-center border border-white/20 rounded-full overflow-hidden bg-black w-full max-w-md">
                             <input
                                 type="email"
                                 placeholder="Enter Your Gmail"
-                                className="flex-1 px-6 py-3 bg-transparent border-none focus:outline-none text-white placeholder:text-white/80"
+                                className="flex-1 px-4 md:px-6 py-3 bg-transparent border-none focus:outline-none text-white placeholder:text-white/60 text-sm"
                             />
                             <button
-                                className="px-8 py-3 font-semibold text-white transition-all duration-300 hover:opacity-90 whitespace-nowrap rounded-full cursor-pointer"
+                                className="px-6 md:px-8 py-3 font-semibold text-white transition-all duration-300 hover:opacity-90 whitespace-nowrap rounded-full cursor-pointer text-sm"
                                 style={{
                                     background: 'conic-gradient(from 180deg at 50% 50%, #140F2A 0%, rgba(255, 0, 4, 0.25) 50%, rgba(255, 0, 4, 0.25) 100%)'
                                 }}
@@ -99,7 +101,7 @@ export default function Footer() {
                         </div>
 
                         {/* Social Icons */}
-                        <div className="flex items-center gap-3 mt-4">
+                        <div className="flex items-center gap-4 mt-8">
                             <Link href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors">
                                 <Instagram className="w-5 h-5" />
                             </Link>
@@ -114,7 +116,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="z-20 relative text-center mt-8">
+            <div className="z-20 relative text-center mt-8 max-sm:mt-4">
                 Designed & Developed by  Techcole
             </div>
 

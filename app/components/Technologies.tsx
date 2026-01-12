@@ -20,7 +20,7 @@ export default function Technologies() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-5xl md:text-6xl font-semibold text-white mb-6 tracking-tight"
+                    className="text-4xl md:text-6xl font-semibold text-white mb-6 tracking-tight leading-tight"
                 >
                     Technologies We Work ON
                 </motion.h2>
@@ -30,7 +30,7 @@ export default function Technologies() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="text-white/90 text-md md:text-md max-w-[600px] mb-10 leading-relaxed"
+                    className="text-white/90 text-sm md:text-base max-w-[600px] mb-8 md:mb-10 leading-relaxed px-4"
                 >
                     We Are the Scalable Design Solutions That Will Give Your Business An Edge In This Ever-Changing Digital Landscape.
                 </motion.p>

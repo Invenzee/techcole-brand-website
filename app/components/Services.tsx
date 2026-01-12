@@ -39,10 +39,26 @@ const services = [
 
 export default function Services() {
     const [currDeg, setCurrDeg] = useState(0);
+    const [panelSize, setPanelSize] = useState(300);
 
-    const panelSize = 300;
+    React.useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 640) {
+                setPanelSize(260);
+            } else if (window.innerWidth < 768) {
+                setPanelSize(280);
+            } else {
+                setPanelSize(300);
+            }
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const numberOfPanels = services.length;
-    const tz = Math.round((panelSize / 2) / Math.tan((Math.PI * 2 / numberOfPanels) / 2)) + 100;
+    const tz = Math.round((panelSize / 2) / Math.tan((Math.PI * 2 / numberOfPanels) / 2)) + (panelSize < 300 ? 50 : 100);
     const rY = 360 / numberOfPanels;
 
     const rotate = (direction: 'next' | 'prev') => {
@@ -74,7 +90,7 @@ export default function Services() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-5xl md:text-6xl font-semibold leading-[.9]"
+                        className="text-4xl md:text-6xl font-semibold leading-[1.1] md:leading-[.9]"
                     >
                         Discover our Expertise <br />
                         as a <span className="text-red-500">Website Design</span> Agency

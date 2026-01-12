@@ -13,13 +13,13 @@ export default function Comparison() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="text-5xl md:text-6xl !font-medium leading-[1] tracking-tight text-white"
+                        className="text-4xl md:text-6xl !font-medium leading-[1] tracking-tight text-white"
                     >
                         Myths & Facts of <span className="text-red-500">Website <br className="hidden md:block" /> Development</span> Agencies Promise
                     </motion.h2>
                 </div>
 
-                <div className="flex flex-col md:flex-row items-stretch justify-center gap-0 w-full relative">
+                <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-0 w-full relative">
 
                     <div className="hidden md:block absolute left-1/2 top-4 bottom-4 w-[1px] bg-gradient-to-b from-transparent via-red-500 to-transparent -translate-x-1/2 z-20 opacity-50"></div>
 
@@ -28,13 +28,13 @@ export default function Comparison() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="w-full md:w-[450px] relative z-0 md:mr-10"
+                        className="w-full md:w-[450px] relative z-0 md:mr-10 flex"
                     >
-                        <div className="w-full h-full rounded-3xl overflow-hidden">
-                            <div className="bg-[#9CA3AF] p-4 text-center font-bold text-black text-2xl uppercase">
+                        <div className="w-full rounded-3xl overflow-hidden flex flex-col">
+                            <div className="bg-[#9CA3AF] p-4 text-center font-bold text-black text-xl md:text-2xl uppercase">
                                 What other promises to you
                             </div>
-                            <div className="bg-[#4B5563] p-10 h-full min-h-[300px] flex flex-col gap-6">
+                            <div className="bg-[#4B5563] p-6 md:p-10 flex-1 flex flex-col gap-6">
                                 <MythItem text="We can make your website bug-free in one go." />
                                 <MythItem text="Website gets indexed on its own." />
                                 <MythItem text="We get you insane traffic the moment your website is ready." />
@@ -47,13 +47,13 @@ export default function Comparison() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.4 }}
-                        className="w-full md:w-[450px] relative z-20 md:ml-10 mt-8 md:mt-0"
+                        className="w-full md:w-[450px] relative z-20 md:ml-10 flex"
                     >
-                        <div className="w-full h-full rounded-3xl overflow-hidden shadow-[0_0_50px_-12px_rgba(220,38,38,0.5)]">
-                            <div className="bg-white p-4 text-center uppercase font-bold text-black text-2xl">
+                        <div className="w-full rounded-3xl overflow-hidden shadow-[0_0_50px_-12px_rgba(220,38,38,0.5)] flex flex-col">
+                            <div className="bg-white p-4 text-center uppercase font-bold text-black text-xl md:text-2xl leading-tight">
                                 You <span className="text-red-600">have us</span>, Your Lucky Day
                             </div>
-                            <div className="bg-[#DC2626] p-10 h-full min-h-[300px] flex flex-col gap-6">
+                            <div className="bg-[#DC2626] p-6 md:p-10 flex-1 flex flex-col gap-6">
                                 <FactItem text="We ensure rigorous testing and provide continuous support aimed at minimizing bugs." />
                                 <FactItem text="We implement comprehensive SEO strategies to Ensure proper and faster indexing." />
                                 <FactItem text="We build scalable, organic growth networks to drive sustainable traffic." />
