@@ -1,9 +1,12 @@
 "use client";
-import { Instagram, Linkedin, Facebook, ArrowUpRight } from "lucide-react";
+import { Instagram, Linkedin, Facebook } from "lucide-react";
 import Link from "next/link";
 import footerlogo from "@/public/logo.svg"
 import reviewPlatformImage from "@/public/review-platforms.png"
 import Image from "next/image";
+import instagram from "@/public/instagram.svg"
+import linkedin from "@/public/linkedin.svg"
+import facebook from "@/public/facebook.svg"
 
 export default function Footer() {
     return (
@@ -93,7 +96,7 @@ export default function Footer() {
                             <button
                                 className="px-6 md:px-8 py-3 font-semibold text-white transition-all duration-300 hover:opacity-90 whitespace-nowrap rounded-full cursor-pointer text-sm"
                                 style={{
-                                    background: 'conic-gradient(from 180deg at 50% 50%, #140F2A 0%, rgba(209, 32, 39, 0.25) 50%, rgba(209, 32, 39, 0.25) 100%)'
+                                    background: 'conic-gradient(from 250deg at 50% 50%, #140F2A 0%, rgba(209, 32, 38, .50) 50%, rgba(209, 32, 38, 1) 100%)'
                                 }}
                             >
                                 Join Us
@@ -102,15 +105,9 @@ export default function Footer() {
 
                         {/* Social Icons */}
                         <div className="flex items-center gap-4 mt-8">
-                            <Link href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors">
-                                <Instagram className="w-5 h-5" />
-                            </Link>
-                            <Link href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors">
-                                <Linkedin className="w-5 h-5" />
-                            </Link>
-                            <Link href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors">
-                                <Facebook className="w-5 h-5" />
-                            </Link>
+                            <img src={instagram.src} className="cursor-pointer w-8 h-8" alt="Instagram" />
+                            <img src={linkedin.src} className="cursor-pointer w-8 h-8" alt="Linkedin" />
+                            <img src={facebook.src} className="cursor-pointer w-8 h-8" alt="Facebook" />
                         </div>
                     </div>
                 </div>

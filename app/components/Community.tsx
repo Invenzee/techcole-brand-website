@@ -88,7 +88,14 @@ export default function Community() {
                 <h2 className="text-4xl md:text-7xl font-medium text-white mb-6 md:mb-8 tracking-tight">
                     Join Our <br /> Community
                 </h2>
-                <Button className="px-10 md:px-12 py-3" text="Join Us" />
+                <button
+                    className="px-6 md:px-8 py-3 font-semibold text-white transition-all duration-300 hover:opacity-90 whitespace-nowrap rounded-full cursor-pointer text-sm"
+                    style={{
+                        background: 'conic-gradient(from 250deg at 50% 50%, #140F2A 0%, rgba(209, 32, 38, .50) 50%, rgba(209, 32, 38, 1) 100%)'
+                    }}
+                >
+                    Join Us
+                </button>
             </div>
 
             <div className="absolute top-[100%] inset-0 flex items-center justify-center pointer-events-none">
