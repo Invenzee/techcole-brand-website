@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Button from "./global/Button";
 
 const orbitItems = [
     {
@@ -27,15 +26,15 @@ const orbitItems = [
     {
         id: 3,
         orbitIndex: 1,
-        angle: 220,
+        angle: 180,
         type: "avatar",
-        direction: -1,
+        direction: 1,
         image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=150&auto=format&fit=crop"
     },
     {
         id: 4,
         orbitIndex: 1,
-        angle: 320,
+        angle: 360,
         type: "avatar",
         direction: -1,
         image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&auto=format&fit=crop"
@@ -43,7 +42,7 @@ const orbitItems = [
     {
         id: 5,
         orbitIndex: 0,
-        angle: 245,
+        angle: 180,
         type: "card",
         direction: 1,
         image: "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=150&auto=format&fit=crop",
@@ -53,9 +52,9 @@ const orbitItems = [
     {
         id: 6,
         orbitIndex: 0,
-        angle: 295,
+        angle: 360,
         type: "avatar",
-        direction: 1,
+        direction: -1,
         image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop"
     }
 ];
