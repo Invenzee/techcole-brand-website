@@ -20,7 +20,7 @@ export default function Header() {
                 transition={{ delay: 0.5, duration: 0.5 }}
                 className="flex items-center gap-2"
             >
-                <img src="/white-logo.svg" className="h-8 md:h-10 text-white" alt="Techcole Logo" />
+                <img src="/logo.svg" className="h-8 md:h-10 text-white" alt="Techcole Logo" />
             </motion.div>
 
             <motion.div

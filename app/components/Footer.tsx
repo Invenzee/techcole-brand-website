@@ -1,7 +1,7 @@
 "use client";
 import { Instagram, Linkedin, Facebook } from "lucide-react";
 import Link from "next/link";
-import footerlogo from "@/public/logo.svg"
+import footerlogo from "@/public/white-logo.svg"
 import reviewPlatformImage from "@/public/review-platforms.png"
 import Image from "next/image";
 import instagram from "@/public/instagram.svg"
@@ -139,7 +139,7 @@ export default function Footer() {
                         rgba(185, 28, 28, 0.6) 60%,
                         transparent 100%);
                     bottom: -200px;
-                    left: 20%;
+                    left: 15%;
                     animation: float1 8s ease-in-out infinite;
                 }
 
@@ -147,12 +147,12 @@ export default function Footer() {
                     width: 800px;
                     height: 600px;
                     background: radial-gradient(ellipse at center,
-                        rgba(252, 165, 165, 0.9) 0%,
+                        rgba(241, 3, 3, 0.9) 0%,
                         rgba(239, 68, 68, 0.7) 40%,
                         rgba(220, 38, 38, 0.5) 70%,
                         transparent 100%);
                     bottom: -250px;
-                    left: 50%;
+                    left: 20%;
                     transform: translateX(-50%);
                     animation: float2 10s ease-in-out infinite;
                 }
@@ -166,7 +166,7 @@ export default function Footer() {
                         rgba(127, 29, 29, 0.5) 65%,
                         transparent 100%);
                     bottom: -220px;
-                    right: 15%;
+                    right: 20%;
                     animation: float3 12s ease-in-out infinite;
                 }
 
@@ -174,11 +174,11 @@ export default function Footer() {
                     width: 700px;
                     height: 700px;
                     background: radial-gradient(circle at center,
-                        rgba(254, 202, 202, 0.8) 0%,
-                        rgba(252, 165, 165, 0.5) 50%,
+                        rgba(192, 93, 93, 0.8) 0%,
+                        rgba(255, 60, 60, 0.5) 50%,
                         transparent 100%);
                     bottom: -300px;
-                    left: 10%;
+                    left: 15%;
                     animation: float4 15s ease-in-out infinite reverse;
                 }
 

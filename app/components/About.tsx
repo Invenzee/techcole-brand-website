@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
 import Button from "./global/Button";
 import arrowUpImg from '@/public/arrow-up.png'
 import arrowUpRedImg from '@/public/arrow-up-red.png'
@@ -33,6 +34,32 @@ const stats = [
         text: "years of active, market-driven experience under our belt."
     }
 ];
+
+function Counter({ value }: { value: string }) {
+    const numericValue = parseInt(value.replace(/[^0-9]/g, ""));
+    const suffix = value.replace(/[0-9]/g, "");
+    const count = useMotionValue(0);
+    const rounded = useTransform(count, (latest) => Math.round(latest));
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+    useEffect(() => {
+        if (isInView) {
+            const controls = animate(count, numericValue, {
+                duration: 2,
+                ease: "easeOut",
+            });
+            return controls.stop;
+        }
+    }, [isInView, count, numericValue]);
+
+    return (
+        <span ref={ref} className="inline-flex items-baseline">
+            <motion.span>{rounded}</motion.span>
+            <span>{suffix}</span>
+        </span>
+    );
+}
 
 export default function About() {
     return (
@@ -90,7 +117,9 @@ export default function About() {
                                 >
                                     {stat.label && <span className="text-primary font-medium text-xs md:text-sm uppercase tracking-wider">{stat.label}</span>}
                                     <div className="flex items-end gap-3">
-                                        <h4 className="text-4xl md:text-5xl font-semibold tracking-tighter">{stat.number}</h4>
+                                        <h4 className="text-4xl md:text-5xl font-semibold tracking-tighter">
+                                            <Counter value={stat.number} />
+                                        </h4>
                                         <div className={`w-5 h-5 md:w-6 md:h-6 rounded-full border border-red-200 flex items-center justify-center mt-2 ${index === 0 ? 'bg-primary' : ''}`}>
                                             <img src={index === 0 ? stat.icon.src : arrowUpRedImg.src} className="w-2.5 md:w-3" alt="arrow-up" />
                                         </div>
@@ -107,3 +136,4 @@ export default function About() {
         </section>
     );
 }
+
