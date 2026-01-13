@@ -58,7 +58,7 @@ export default function Services() {
     }, []);
 
     const numberOfPanels = services.length;
-    const tz = Math.round((panelSize / 2) / Math.tan((Math.PI * 2 / numberOfPanels) / 2)) + (panelSize < 300 ? 50 : 100);
+    const tz = Math.round((panelSize / 2) / Math.tan((Math.PI * 2 / numberOfPanels) / 2)) + (panelSize < 300 ? 50 : 130);
     const rY = 360 / numberOfPanels;
 
     const rotate = (direction: 'next' | 'prev') => {
@@ -125,31 +125,29 @@ export default function Services() {
 
                                 const rad = (effectiveAngle * Math.PI) / 180;
                                 const cosVal = Math.cos(rad);
-                                const opacity = (cosVal + 1) / 2 * 0.7 + 0.3;
                                 const yOffset = Math.round(cosVal * 80);
 
-                                const faceCorrection = cosVal > 0 ? -effectiveAngle * .9 * cosVal : 0;
+                                const faceCorrection = cosVal > 0 ? -effectiveAngle * 1.3 * cosVal : 1;
                                 const isBack = cosVal < 0;
 
                                 return (
                                     <div
                                         key={index}
-                                        className={`absolute left-0 top-0 flex flex-col justify-between p-8 rounded-xl border border-white/10 shadow-2xl transition-all duration-1000 group hover:brightness-110 ${isBack ? 'bg-primary/20' : 'bg-primary'}`}
+                                        className={`absolute left-0 top-0 flex flex-col justify-between p-8 rounded-xl border border-white/10 shadow-2xl transition-all duration-1000 group ${isBack ? 'bg-primary/50' : 'bg-primary'}`}
                                         style={{
                                             width: `${panelSize}px`,
                                             height: '350px',
                                             transform: `rotateY(${rotation}deg) translateZ(${tz}px) translateY(${yOffset}px) rotateY(${faceCorrection}deg)`,
                                             left: `calc(50% - ${panelSize / 2}px)`,
                                             top: 'calc(50% - 200px)',
-                                            opacity: isBack ? 2 : opacity,
-                                            filter: `brightness(${opacity})`,
-                                            zIndex: Math.round(opacity * 100),
-                                            willChange: 'transform'
+                                            opacity: isBack ? 0.3 : 1,
+                                            willChange: 'transform',
+                                            transformStyle: 'preserve-3d'
                                         }}
                                     >
                                         {!isBack ? (
-                                            <>
-                                                <div className="relative z-10">
+                                            <div className="w-full h-full flex flex-col justify-between" style={{ transform: 'translateZ(20px)', transformStyle: 'preserve-3d' }}>
+                                                <div className="relative z-10 text-sharp">
                                                     <h3 className="text-2xl font-semibold mb-4 leading-tight">{service.title}</h3>
                                                     <p className="text-white/80 text-sm leading-relaxed mb-6">
                                                         {service.description}
@@ -164,10 +162,9 @@ export default function Services() {
                                                 </div>
 
                                                 <div className="absolute right-0 bottom-0 w-32 h-32 bg-white/5 rounded-tl-[100px] z-0 pointer-events-none" />
-                                            </>
+                                            </div>
                                         ) : (
-                                            /* Back Card Visual - Just a reflection/gradient shape */
-                                            <div className="w-full h-full bg-gradient-to-br from-white/10 to-transparent opacity-50" />
+                                            <div className="w-full h-full bg-gradient-to-br from-white/10 to-transparent rounded-xl" />
                                         )}
                                     </div>
                                 );
@@ -194,7 +191,7 @@ export default function Services() {
 
             <style jsx>{`
                 .perspective-container {
-                    perspective: 1200px; /* Controls the depth of the 3D space */
+                    perspective: 1100px; /* Controls the depth of the 3D space */
                     overflow: visible; /* Allowing items to "pop out" if needed, though usually hidden is safer for page flow */
                 }
                 .carousel-3d {
@@ -203,6 +200,12 @@ export default function Services() {
                     position: absolute;
                     transform-style: preserve-3d;
                     transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1); /* Smooth ease-out */
+                }
+                .text-sharp {
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                    text-rendering: optimizeLegibility;
+                    transform: translateZ(1px); /* Crucial lift to prevent blur */
                 }
             `}</style>
         </section>
