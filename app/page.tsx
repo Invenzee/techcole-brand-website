@@ -21,8 +21,6 @@ export default function Home() {
     <>
       <main className="w-full bg-white text-white">
         <section className="relative h-full w-full overflow-hidden">
-          <Header />
-
           <div className="relative z-10 max-w-[1140px] mx-auto mt-30 mb-20 flex flex-col items-center max-sm:p-6 text-center">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -118,7 +116,6 @@ export default function Home() {
         <ContactForm />
         <Growth />
       </main>
-      <Footer />
     </>
   );
 }
