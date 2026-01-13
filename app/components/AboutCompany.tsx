@@ -31,20 +31,38 @@ export default function AboutCompany() {
                         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                         className="lg:w-1/2 flex flex-col justify-center"
                     >
-                        <span className="text-gray-900 font-medium block text-base md:text-lg">
+                        <motion.span
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.3 }}
+                            className="text-gray-900 font-medium block text-base md:text-lg"
+                        >
                             Who We Are
-                        </span>
+                        </motion.span>
 
-                        <h2 className="text-5xl md:text-[64px] font-semibold leading-[.9] mb-2 tracking-tight">
+                        <motion.h2
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.7, delay: 0.4 }}
+                            className="text-5xl md:text-[64px] font-semibold leading-[.9] mb-2 tracking-tight"
+                        >
                             Passionate and <br />
                             <span className="text-primary">creative</span>
-                        </h2>
+                        </motion.h2>
 
-                        <div className="space-y-6">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.6 }}
+                            className="space-y-6"
+                        >
                             <p className="text-gray-700 leading-relaxed text-base md:text-lg max-w-xl">
                                 Techcole believes in the power of collaboration and strives to create an environment of shared success. Our experienced team of professionals is dedicated to delving into the complexities of business challenges and finding creative solutions.Techcole believes in the power of collaboration and strives to create an environment of shared success. Our experienced team of professionals is dedicated to delving into the complexities of business challenges and finding creative solutions.
                             </p>
-                        </div>
+                        </motion.div>
                     </motion.div>
 
                 </div>

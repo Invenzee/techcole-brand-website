@@ -53,19 +53,37 @@ export default function Team() {
 
                 <div className="relative z-10 max-w-[1240px] mx-auto px-6">
                     <div className="grid grid-cols-3 max-sm:grid-cols-1">
-                        <div className="flex flex-col gap-12 skew-y-1 skew-x-1 max-sm:mb-12">
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="flex flex-col gap-12 skew-y-1 skew-x-1 max-sm:mb-12"
+                        >
                             <TeamCard member={teamMembers[0]} />
                             <TeamCard member={teamMembers[3]} />
-                        </div>
+                        </motion.div>
 
-                        <div className="flex items-center justify-center max-sm:mb-12">
+                        <motion.div
+                            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
+                            className="flex items-center justify-center max-sm:mb-12"
+                        >
                             <TeamCard member={teamMembers[2]} />
-                        </div>
+                        </motion.div>
 
-                        <div className="flex flex-col gap-12 -skew-y-1 -skew-x-1">
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="flex flex-col gap-12 -skew-y-1 -skew-x-1"
+                        >
                             <TeamCard member={teamMembers[1]} />
                             <TeamCard member={teamMembers[4]} />
-                        </div>
+                        </motion.div>
 
                     </div>
                 </div>

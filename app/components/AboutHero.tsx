@@ -20,25 +20,37 @@ export default function AboutHero() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                     <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
                         className="bg-black/25 backdrop-blur-md border border-white/50 rounded-[40px] p-10 md:p-10 max-w-xl"
                     >
-                        <h1 className="text-5xl md:text-7xl font-regular text-white mb-8 tracking-tight">
+                        <motion.h1
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                            className="text-5xl md:text-7xl font-regular text-white mb-8 tracking-tight"
+                        >
                             About us
-                        </h1>
-                        <p className="text-sm md:text-base font-medium text-white/90 leading-relaxed uppercase tracking-wider">
+                        </motion.h1>
+                        <motion.p
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.6 }}
+                            className="text-sm md:text-base font-medium text-white/90 leading-relaxed uppercase tracking-wider"
+                        >
                             PROFESSIONAL AND CUSTOMER-ORIENTED APPROACH TO BUSINESS, STARTING FROM FIRST CONTACT UNTIL PROJECT COMPLETION
-                        </p>
+                        </motion.p>
                     </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
                         className="relative group"
                     >
                         <div className="rounded-[40px] overflow-hidden border border-white/50 shadow-2xl relative">
@@ -52,6 +64,10 @@ export default function AboutHero() {
                                 <motion.button
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.95 }}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: 0.8 }}
                                     className="relative w-32 h-32 md:w-40 md:h-40 rounded-full flex flex-col items-center justify-center text-white font-semibold transition-all duration-300 overflow-hidden cursor-pointer"
                                 >
                                     <div className="absolute inset-0 bg-primary/60 rounded-full shadow-[0_0_40px_rgba(230,46,49,0.5)]" />
