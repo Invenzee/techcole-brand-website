@@ -1,8 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import Header from "./components/Header";
 import Button from "./components/global/Button";
 import About from "./components/About";
 import Services from "./components/Services";
@@ -14,10 +12,12 @@ import Community from "./components/Community";
 import Technologies from "./components/Technologies";
 import ContactForm from "./components/ContactForm";
 import Growth from "./components/Growth";
+import Preloader from "./components/Preloader";
 
 export default function Home() {
   return (
     <>
+      {/* <Preloader /> */}
       <main className="w-full bg-white text-white">
         <section className="relative h-full w-full overflow-hidden">
           <div className="relative z-10 max-w-[1140px] mx-auto mt-30 mb-30 flex flex-col items-center max-sm:p-6 text-center">

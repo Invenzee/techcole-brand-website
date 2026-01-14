@@ -64,7 +64,15 @@ export default function Testimonials() {
 
             <div className="max-w-[1140px] mx-auto px-6">
 
-                <h2 className="text-3xl md:text-5xl font-semibold mb-12 md:mb-16 tracking-tight text-center md:text-left">What they say about us</h2>
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="text-3xl md:text-5xl font-semibold mb-12 md:mb-16 tracking-tight text-center md:text-left"
+                >
+                    What they say about us
+                </motion.h2>
 
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center lg:items-start">
 

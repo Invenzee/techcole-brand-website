@@ -35,18 +35,39 @@ export default function Team() {
     return (
         <section className="w-full bg-white pt-24 pb-0 overflow-hidden">
             <div className="max-w-[1140px] mx-auto px-6 text-center">
-                <span className="text-gray-400 font-medium text-xs uppercase tracking-widest mb-3 block">
+                <motion.span
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="text-gray-400 font-medium text-xs uppercase tracking-widest mb-3 block"
+                >
                     Meet Our Team
-                </span>
-                <h2 className="text-[32px] md:text-[44px] leading-[1.1] font-semibold text-gray-900 max-w-2xl mx-auto relative tracking-tight">
+                </motion.span>
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="text-[32px] md:text-[44px] leading-[1.1] font-semibold text-gray-900 max-w-2xl mx-auto relative tracking-tight"
+                >
                     Introducing the leaders at the heart of <span className="text-primary">Techcole's</span> award-winning success.
 
                     <div className="flex justify-center mt-4">
                         <svg width="280" height="24" viewBox="0 0 280 24" fill="none" className="max-sm:w-[200px]">
-                            <path d="M2 22C60 6 220 6 278 22" stroke="#E62E31" strokeWidth="8" strokeLinecap="round" />
+                            <motion.path
+                                initial={{ pathLength: 0 }}
+                                whileInView={{ pathLength: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 1, delay: 0.8, ease: "easeInOut" }}
+                                d="M2 22C60 6 220 6 278 22"
+                                stroke="#E62E31"
+                                strokeWidth="8"
+                                strokeLinecap="round"
+                            />
                         </svg>
                     </div>
-                </h2>
+                </motion.h2>
             </div>
 
             <div className="relative w-full h-full pt-80 pb-20 -mt-40 bg-[url('/about/team-bg.png')] bg-end bg-cover">

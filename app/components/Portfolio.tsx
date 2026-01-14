@@ -17,16 +17,27 @@ export default function Portfolio() {
     return (
         <section className="w-full bg-white py-24 overflow-hidden relative z-20">
             <div className="max-w-[1300px] mx-auto px-6 mb-12 md:mb-16 flex flex-col md:flex-row items-start md:items-end justify-between gap-6 md:gap-8">
-                <div>
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                >
                     <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-black">
                         Portfolio <span className="text-primary">Highlights</span>
                     </h2>
-                </div>
-                <div className="max-w-md">
+                </motion.div>
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="max-w-md"
+                >
                     <p className="text-gray-600 font-medium text-base md:text-lg leading-relaxed">
                         Over 100+ Clients Trust Us Because We Deliver What We Promise!
                     </p>
-                </div>
+                </motion.div>
             </div>
 
             <div className="flex flex-col gap-8">

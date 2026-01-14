@@ -1,6 +1,53 @@
 "use client";
 import { motion } from "framer-motion";
 
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.6,
+        },
+    },
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, x: -10 },
+    visible: {
+        opacity: 1,
+        x: 0,
+        transition: { duration: 0.5 }
+    },
+};
+
+const factItemVariants = {
+    hidden: { opacity: 0, x: 10 },
+    visible: {
+        opacity: 1,
+        x: 0,
+        transition: { duration: 0.5 }
+    },
+};
+
+function MythItem({ text }: { text: string }) {
+    return (
+        <motion.div variants={itemVariants} className="flex items-start">
+            <div className="w-1.5 h-1.5 rounded-full bg-white mt-[10px] absolute left-[-35px]" />
+            <p className="text-lg leading-relaxed text-white/80">{text}</p>
+        </motion.div>
+    )
+}
+
+function FactItem({ text }: { text: string }) {
+    return (
+        <motion.div variants={factItemVariants} className="flex items-start">
+            <div className="w-1.5 h-1.5 rounded-full bg-white mt-[10px] absolute left-[-35px] shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+            <p className="text-lg font-medium leading-relaxed text-white">{text}</p>
+        </motion.div>
+    )
+}
+
 export default function Comparison() {
     return (
         <section className="w-full bg-black py-24 relative overflow-hidden">
@@ -34,7 +81,13 @@ export default function Comparison() {
                             <div className="bg-[#9CA3AF] p-4 text-center font-bold text-black text-xl md:text-2xl uppercase rounded-2xl -mb-6 z-20">
                                 What other promises to you
                             </div>
-                            <div className="bg-[#4B5563] !pt-16 p-6 md:p-10 flex-1 flex flex-col">
+                            <motion.div
+                                variants={containerVariants}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                className="bg-[#4B5563] !pt-16 p-6 md:p-10 flex-1 flex flex-col"
+                            >
                                 <div className="relative pl-12">
                                     <div className="absolute left-1 top-[-12px] bottom-[-12px] w-6 border border-white/20 rounded-full z-0" />
 
@@ -44,7 +97,7 @@ export default function Comparison() {
                                         <MythItem text="We get you insane traffic the moment your website is ready." />
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
                     </motion.div>
 
@@ -59,7 +112,13 @@ export default function Comparison() {
                             <div className="bg-white p-4 text-center uppercase font-bold text-black text-xl md:text-2xl leading-tight rounded-2xl -mb-6 z-20">
                                 You <span className="text-primary">have us</span>, Your Lucky Day
                             </div>
-                            <div className="bg-primary !pt-16 p-6 md:p-10 flex-1 flex flex-col">
+                            <motion.div
+                                variants={containerVariants}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                className="bg-primary !pt-16 p-6 md:p-10 flex-1 flex flex-col"
+                            >
                                 <div className="relative pl-12">
                                     <div className="absolute left-1 top-[-12px] bottom-[-12px] w-6 border border-white/40 rounded-full z-0" />
 
@@ -69,7 +128,7 @@ export default function Comparison() {
                                         <FactItem text="We build scalable, organic growth networks to drive sustainable traffic." />
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
                     </motion.div>
 
@@ -77,23 +136,4 @@ export default function Comparison() {
             </div>
         </section>
     );
-}
-
-function MythItem({ text }: { text: string }) {
-    return (
-        <div className="flex items-start">
-            {/* Center dot: (pl-12 is 48px, bar is 32px wide at left-0, so center is 16px. 48-16 = 32px offset) */}
-            <div className="w-1.5 h-1.5 rounded-full bg-white mt-[10px] absolute left-[-35px]" />
-            <p className="text-lg leading-relaxed text-white/80">{text}</p>
-        </div>
-    )
-}
-
-function FactItem({ text }: { text: string }) {
-    return (
-        <div className="flex items-start">
-            <div className="w-1.5 h-1.5 rounded-full bg-white mt-[10px] absolute left-[-35px] shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
-            <p className="text-lg font-medium leading-relaxed text-white">{text}</p>
-        </div>
-    )
 }

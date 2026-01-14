@@ -7,6 +7,7 @@ import Image from "next/image";
 import instagram from "@/public/instagram.svg"
 import linkedin from "@/public/linkedin.svg"
 import facebook from "@/public/facebook.svg"
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import arrowUp from "@/public/arrow-up.svg"
 
@@ -17,14 +18,25 @@ export default function Footer() {
     return (
         <footer className="w-full text-white relative pt-12 pb-6 max-sm:pb-4">
             <div className="max-w-full z-20 relative bg-black px-16 mx-auto w-full flex items-center justify-between pb-12 border-b border-white/10 max-sm:flex-col gap-4 max-sm:items-start max-sm:px-4">
-                <div>
+                <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                >
                     <h3 className="text-4xl md:text-7xl font-regular border-t border-b border-white pb-4 pt-1">
                         What <span className="text-primary">customers say</span>
                     </h3>
-                </div>
-                <div className="flex items-center gap-4">
+                </motion.div>
+                <motion.div
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="flex items-center gap-4"
+                >
                     <Image src={reviewPlatformImage} className="w-3/4 max-sm:2/4" alt="Review Platform" />
-                </div>
+                </motion.div>
             </div>
 
             <div className="absolute bottom-0 left-0 right-0 h-[600px] pointer-events-none overflow-hidden z-10">
@@ -54,18 +66,30 @@ export default function Footer() {
 
             <div className={`max-w-full relative z-20 px-6 md:px-16 lg:px-24 mx-auto w-full pt-20 pb-30 bg-[url('@/public/footershape.png')] bg-cover bg-center max-sm:p-4 max-sm:pb-12`}>
                 <div className="flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-20">
-                    <div className="w-full lg:w-[30%]">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="w-full lg:w-[30%]"
+                    >
                         <div className="flex items-center gap-2 mb-4">
                             <Image src={footerlogo} className="cursor-pointer" alt="Techcole Read Logo" onClick={() => router.push("/")} />
                         </div>
                         <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
                             We host the full capacity of potential for your start-up, business.
                         </p>
-                    </div>
+                    </motion.div>
 
                     <div className="flex flex-wrap sm:flex-nowrap gap-12 lg:gap-20 w-full lg:w-auto">
                         {/* Quick Links */}
-                        <div className="min-w-[140px]">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="min-w-[140px]"
+                        >
                             <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
                             <ul className="space-y-3">
                                 <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors text-sm">About Us</Link></li>
@@ -74,10 +98,16 @@ export default function Footer() {
                                 <li><Link href="/testimonials" className="text-gray-400 hover:text-white transition-colors text-sm">Testimonials</Link></li>
                                 <li><Link href="/faq" className="text-gray-400 hover:text-white transition-colors text-sm">FAQ</Link></li>
                             </ul>
-                        </div>
+                        </motion.div>
 
                         {/* Company */}
-                        <div className="min-w-[140px]">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                            className="min-w-[140px]"
+                        >
                             <h4 className="text-lg font-semibold mb-6">Company</h4>
                             <ul className="space-y-3">
                                 <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors text-sm">About Us</Link></li>
@@ -85,10 +115,16 @@ export default function Footer() {
                                 <li><Link href="/career-tips" className="text-gray-400 hover:text-white transition-colors text-sm">Career Tips</Link></li>
                                 <li><Link href="/career" className="text-gray-400 hover:text-white transition-colors text-sm">Career</Link></li>
                             </ul>
-                        </div>
+                        </motion.div>
                     </div>
 
-                    <div className="w-full lg:w-[40%]">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        className="w-full lg:w-[40%]"
+                    >
                         <h4 className="w-full text-3xl md:text-4xl font-medium mb-6 leading-[1.1] bg-gradient-to-r from-white via-gray-400 to-gray-700 bg-clip-text text-transparent">
                             Join the Techcole<br />Community
                         </h4>
@@ -114,7 +150,7 @@ export default function Footer() {
                             <img src={linkedin.src} className="cursor-pointer w-8 h-8" alt="Linkedin" />
                             <img src={facebook.src} className="cursor-pointer w-8 h-8" alt="Facebook" />
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
 
