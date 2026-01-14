@@ -111,7 +111,7 @@ export default function BlogGrid() {
                 </div>
 
                 <div className="mt-28 flex justify-center">
-                    <Button text="Load More" className="!bg-primary text-white !p-3" transitionClassName="!via-white/30" icon={ArrowRight} />
+                    <Button link="" text="Load More" className="!bg-primary text-white !p-3" transitionClassName="!via-white/30" icon={ArrowRight} />
                 </div>
             </div>
         </section>
