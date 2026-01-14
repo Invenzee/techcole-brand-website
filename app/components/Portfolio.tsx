@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Button from "./global/Button";
+import { useRouter } from "next/navigation";
 
 const portfolioItems = [
     { id: 1, title: "Fintech Dashboard", category: "App Development", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" },
@@ -56,13 +57,14 @@ export default function Portfolio() {
             </div>
 
             <div className="max-w-[1140px] mx-auto flex items-center justify-center mt-12 text-center">
-                <Button text="View All Projects" className="!bg-primary text-white !px-12" transitionClassName="!via-white/30" />
+                <Button link="/portfolio" text="View All Projects" className="!bg-primary text-white !px-12" transitionClassName="!via-white/30" />
             </div>
         </section>
     );
 }
 
 function PortfolioCard({ item }: { item: typeof portfolioItems[0] }) {
+    const router = useRouter();
     return (
         <div className="relative w-[300px] md:w-[450px] h-[350px] md:h-[500px] rounded-3xl overflow-hidden group cursor-pointer bg-gray-100 flex-shrink-0">
             <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
@@ -70,7 +72,7 @@ function PortfolioCard({ item }: { item: typeof portfolioItems[0] }) {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end pb-6">
-                <p className="text-white text-xl hover:underline">Click to view</p>
+                <p className="text-white text-xl hover:underline" onClick={() => router.push("/portfolio")}>Click to view</p>
             </div>
         </div>
     )

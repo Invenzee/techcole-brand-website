@@ -41,7 +41,7 @@ export default function Technologies() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                    <Button text="Get Started" className="!bg-primary text-white !py-2 !px-6" transitionClassName="!via-white/30" />
+                    <Button link="/contact" text="Get Started" className="!bg-primary text-white !py-2 !px-6" transitionClassName="!via-white/30" />
                 </motion.div>
             </div>
         </section>

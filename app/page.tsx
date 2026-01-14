@@ -14,14 +14,13 @@ import Community from "./components/Community";
 import Technologies from "./components/Technologies";
 import ContactForm from "./components/ContactForm";
 import Growth from "./components/Growth";
-import Footer from "./components/Footer";
 
 export default function Home() {
   return (
     <>
       <main className="w-full bg-white text-white">
         <section className="relative h-full w-full overflow-hidden">
-          <div className="relative z-10 max-w-[1140px] mx-auto mt-30 mb-20 flex flex-col items-center max-sm:p-6 text-center">
+          <div className="relative z-10 max-w-[1140px] mx-auto mt-30 mb-30 flex flex-col items-center max-sm:p-6 text-center">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -66,8 +65,8 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 1.6, ease: "easeOut" }}
               className="flex items-center justify-center gap-4 mt-6"
             >
-              <Button text="Book a free consultation" className="!bg-primary text-white" />
-              <Button text="Get Started" className="!bg-primary text-white" />
+              <Button link="/contact" text="Book a free consultation" className="!bg-primary text-white" />
+              <Button link="/contact" text="Get Started" className="!bg-primary text-white" />
             </motion.div>
           </div>
 
@@ -86,7 +85,14 @@ export default function Home() {
             transition={{ delay: 1.5, duration: 1 }}
             className="absolute bottom-10 right-10 hidden md:block z-20"
           >
-            <Link href="#" className="relative flex items-center justify-center w-32 h-32 group">
+            <div onClick={() => {
+              window.scrollTo({
+                top: 700,
+                behavior: "smooth",
+              });
+            }}
+              className="relative flex items-center justify-center w-32 h-32 group cursor-pointer"
+            >
               <div className="absolute inset-0 border border-neutral-800 rounded-full bg-black/40 backdrop-blur-sm" />
               <div className="animate-[spin_10s_linear_infinite] w-full h-full">
                 <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -101,7 +107,7 @@ export default function Home() {
               <div className="absolute inset-0 flex items-center justify-center text-white text-xl font-light group-hover:translate-y-1 transition-transform">
                 ↓
               </div>
-            </Link>
+            </div>
           </motion.div>
         </section>
 

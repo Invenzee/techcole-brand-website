@@ -155,7 +155,7 @@ export default function Services() {
                                                 </div>
 
                                                 <div className="relative z-10 flex items-end justify-between mt-auto">
-                                                    <Button text="Learn More" className="!bg-primary text-white !py-1.5" transitionClassName="!via-white/30" />
+                                                    <Button link="/services" text="Learn More" className="!bg-primary text-white !py-1.5" transitionClassName="!via-white/30" />
                                                     <div className="">
                                                         {service.icon}
                                                     </div>

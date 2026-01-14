@@ -5,8 +5,12 @@ import Button from "./global/Button";
 import NavMenu from "./NavMenu";
 import MobileMenu from "./MobileMenu";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
+
+    const router = useRouter()
+
     return (
         <motion.nav
             initial={{ y: -100, opacity: 0 }}
@@ -20,7 +24,7 @@ export default function Header() {
                 transition={{ delay: 0.5, duration: 0.5 }}
                 className="flex items-center gap-2"
             >
-                <img src="/logo.svg" className="h-8 md:h-10 text-white" alt="Techcole Logo" />
+                <img src="/logo.svg" className="h-8 md:h-10 text-white cursor-pointer" alt="Techcole Logo" onClick={() => router.push("/")} />
             </motion.div>
 
             <motion.div
@@ -39,7 +43,7 @@ export default function Header() {
                     transition={{ delay: 0.9, duration: 0.5 }}
                     className="hidden md:block"
                 >
-                    <Button icon={Phone} text="Lets Talk" />
+                    <Button icon={Phone} text="Lets Talk" link="/contact" />
                 </motion.div>
 
                 <MobileMenu />

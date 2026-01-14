@@ -1,8 +1,14 @@
+"use client"
+
+import { useRouter } from "next/navigation";
 import React from "react";
 
-export default function Button({ icon: Icon, text, className, transitionClassName }: { icon?: React.ElementType, text: string, className?: string, transitionClassName?: string }) {
+export default function Button({ icon: Icon, text, link, className, transitionClassName }: { icon?: React.ElementType, text: string, link: string, className?: string, transitionClassName?: string }) {
+
+    const router = useRouter()
+
     return (
-        <button className={`relative group flex items-center gap-2 overflow-hidden rounded-xl border border-white/50 px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:border-primary hover:shadow-[0_0_25px_-5px_#D12027] active:scale-95 cursor-pointer ${className}`}>
+        <button onClick={() => router.push(`${link}`)} className={`relative group flex items-center gap-2 overflow-hidden rounded-xl border border-white/50 px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:border-primary hover:shadow-[0_0_25px_-5px_#D12027] active:scale-95 cursor-pointer ${className}`}>
             <div className={`absolute inset-0 -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-primary/30 to-transparent skew-x-12 ${transitionClassName}`} />
 
             {

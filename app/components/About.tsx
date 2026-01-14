@@ -92,7 +92,7 @@ export default function About() {
                             Techcole believes in the power of collaboration and strives to create an environment of shared success. Our experienced team of professionals is dedicated to delving into the complexities of business challenges and finding creative solutions.
                         </p>
                         <div>
-                            <Button text="Learn More" className="!bg-primary text-white !px-12" transitionClassName="!via-white/30" />
+                            <Button link="/about" text="Learn More" className="!bg-primary text-white !px-12" transitionClassName="!via-white/30" />
                         </div>
                     </motion.div>
 

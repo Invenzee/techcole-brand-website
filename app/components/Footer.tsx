@@ -1,5 +1,5 @@
 "use client";
-import { Instagram, Linkedin, Facebook } from "lucide-react";
+
 import Link from "next/link";
 import footerlogo from "@/public/white-logo.svg"
 import reviewPlatformImage from "@/public/review-platforms.png"
@@ -7,8 +7,13 @@ import Image from "next/image";
 import instagram from "@/public/instagram.svg"
 import linkedin from "@/public/linkedin.svg"
 import facebook from "@/public/facebook.svg"
+import { useRouter } from "next/navigation";
+import arrowUp from "@/public/arrow-up.svg"
 
 export default function Footer() {
+
+    const router = useRouter()
+
     return (
         <footer className="w-full text-white relative pt-12 pb-6 max-sm:pb-4">
             <div className="max-w-full z-20 relative bg-black px-16 mx-auto w-full flex items-center justify-between pb-12 border-b border-white/10 max-sm:flex-col gap-4 max-sm:items-start max-sm:px-4">
@@ -51,7 +56,7 @@ export default function Footer() {
                 <div className="flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-20">
                     <div className="w-full lg:w-[30%]">
                         <div className="flex items-center gap-2 mb-4">
-                            <Image src={footerlogo} alt="Techcole Read Logo" />
+                            <Image src={footerlogo} className="cursor-pointer" alt="Techcole Read Logo" onClick={() => router.push("/")} />
                         </div>
                         <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
                             We host the full capacity of potential for your start-up, business.
@@ -115,6 +120,15 @@ export default function Footer() {
 
             <div className="z-20 relative text-center mt-8 max-sm:mt-4">
                 Designed & Developed by  Techcole
+            </div>
+
+            <div className="absolute bottom-8 right-8">
+                <img
+                    src={arrowUp.src}
+                    className="z-30 relative w-20 cursor-pointer transition-all duration-300 hover:rotate-[-40deg]"
+                    alt=""
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                />
             </div>
 
             <style jsx>{`

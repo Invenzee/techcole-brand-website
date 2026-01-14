@@ -23,6 +23,7 @@ export default function Growth() {
 
                         <div>
                             <Button
+                                link="/contact"
                                 text="Book a Free Discovery Session"
                                 className="!bg-primary text-white !py-2.5 !px-6"
                                 transitionClassName="!via-white/30"

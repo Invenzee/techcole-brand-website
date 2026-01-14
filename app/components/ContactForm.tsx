@@ -198,6 +198,7 @@ export default function ContactForm() {
                     {/* Submit Button */}
                     <div className="pt-4">
                         <Button
+                            link=""
                             text="Submit"
                             className="!px-8 !bg-primary text-white !py-3"
                             transitionClassName="!via-white/30"

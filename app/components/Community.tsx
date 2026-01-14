@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const orbitItems = [
     {
@@ -64,6 +65,7 @@ const ORBIT_DURATIONS = [30, 40, 50];
 export default function Community() {
     const [scale, setScale] = useState(1);
     const [isMobile, setIsMobile] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         const handleResize = () => {
@@ -98,6 +100,7 @@ export default function Community() {
                     style={{
                         background: 'conic-gradient(from 250deg at 50% 50%, #140F2A 0%, rgba(209, 32, 38, .50) 50%, rgba(209, 32, 38, 1) 100%)'
                     }}
+                    onClick={() => router.push("/contact")}
                 >
                     Join Us
                 </button>

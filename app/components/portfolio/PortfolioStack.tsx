@@ -7,6 +7,7 @@ import ProjectCursor, { triggerProjectCursor } from "./ProjectCursor";
 import { portfolioData, categories, Project } from "./portfolioData";
 import { AnimatePresence, motion } from "framer-motion";
 import Button from "../global/Button";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -70,33 +71,99 @@ export default function PortfolioStack() {
         }
     };
 
+    const pathRef = useRef<SVGPathElement>(null);
+
+    useEffect(() => {
+        if (pathRef.current) {
+            const length = pathRef.current.getTotalLength();
+            gsap.set(pathRef.current, {
+                strokeDasharray: length,
+                strokeDashoffset: length,
+            });
+            gsap.to(pathRef.current, {
+                strokeDashoffset: 0,
+                duration: 2,
+                ease: "power2.inOut",
+                delay: 0.5,
+            });
+        }
+    }, []);
+
     return (
         <section ref={containerRef} className="bg-[#050505] pt-50 pb-40 min-h-screen">
             <ProjectCursor />
 
             <div className="max-w-[1240px] mx-auto px-6 mb-12">
-                <div className="flex items-end justify-between max-sm:flex-col max-sm:items-start max-sm:gap-4 mb-12">
-                    <div>
-                        <h2 className="text-white text-4xl md:text-5xl font-medium uppercase tracking-tight">Our Expertise</h2>
-                    </div>
-                    <div className="flex flex-wrap gap-4 justify-end max-w-2xl max-sm:justify-start max-sm:gap-2 max-sm:max-w-full overflow-x-auto no-scrollbar whitespace-nowrap">
-                        {categories.map((cat, index) => (
-                            <motion.button
-                                key={cat}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className={`px-6 py-2.5 rounded-full border text-sm font-medium transition-all duration-300 cursor-pointer ${selectedCategory === cat
-                                    ? "bg-primary/10 border-primary text-white"
-                                    : "border-white/20 text-white/70 hover:border-white/50 hover:text-white"
-                                    }`}
-                                onClick={() => setSelectedCategory(cat)}
+                <div className="absolute inset-0 z-0 [mask-image:linear-gradient(to_bottom,black_50%,transparent)]">
+                    <Image
+                        src="/about/hero-bg.png"
+                        alt="Hero Background"
+                        fill
+                        className="object-cover object-center"
+                        priority
+                    />
+                </div>
+
+                <div className="relative z-10 mx-auto w-full">
+                    <div className="flex flex-col lg:flex-row items-start justify-between gap-16 max-sm:gap-4">
+
+                        <div className="relative p-10 md:p-14 max-w-2xl">
+                            <svg
+                                className="absolute inset-0 w-full h-full pointer-events-none"
+                                viewBox="0 0 600 300"
+                                preserveAspectRatio="none"
                             >
-                                {cat}
-                            </motion.button>
-                        ))}
+                                <path
+                                    ref={pathRef}
+                                    d="M 590,10 H 50 C 30,10 10,30 10,50 V 250 C 10,270 30,290 50,290 H 400"
+                                    fill="none"
+                                    stroke="white"
+                                    strokeWidth="1"
+                                    strokeOpacity="0.5"
+                                    strokeLinecap="round"
+                                />
+                            </svg>
+
+                            <div className="relative z-10">
+                                <motion.h1
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.8 }}
+                                    className="text-5xl md:text-7xl font-medium text-white mb-8 tracking-tight"
+                                >
+                                    Our <span className="text-primary">Portfolio</span>
+                                </motion.h1>
+                                <motion.p
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.8, delay: 0.3 }}
+                                    className="text-sm md:text-base leading-[.9] font-medium text-white/80 leading-relaxed uppercase tracking-widest max-w-md"
+                                >
+                                    Our extensive portfolio showcases our commitment to delivering innovative and high-quality solutions for our clients.
+                                </motion.p>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-wrap lg:justify-start gap-3 max-w-sm mt-4">
+                            {categories.map((cat, index) => (
+                                <motion.button
+                                    key={cat}
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className={`px-6 py-2.5 rounded-full border text-md font-medium transition-all duration-300 cursor-pointer ${selectedCategory === cat
+                                        ? "bg-primary/10 border-primary text-white"
+                                        : "border-white/20 text-white/70 hover:border-white/50 hover:text-white"
+                                        }`}
+                                    onClick={() => setSelectedCategory(cat)}
+                                >
+                                    {cat}
+                                </motion.button>
+                            ))}
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -250,7 +317,7 @@ export default function PortfolioStack() {
                                                     ))}
                                                 </ul>
                                             </div>
-                                            <Button text="Discuss Project" className="!px-12 !py-3" />
+                                            <Button link="#" text="Discuss Project" className="!px-12 !py-3" />
                                         </div>
                                     </div>
                                 </section>
@@ -259,13 +326,6 @@ export default function PortfolioStack() {
                     </motion.div>
                 )}
             </AnimatePresence>
-
-            {/* Bottom Techcole Text */}
-            <div className="h-[30vh] flex flex-col items-center justify-center text-center px-6 mt-20">
-                <h4 className="text-white/5 text-8xl md:text-[180px] font-black uppercase tracking-tighter leading-none select-none">
-                    Techcole
-                </h4>
-            </div>
         </section>
     );
 }
