@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-export default function AboutHero() {
+export default function Hero({ title, description, image, className }: { title: string; description: string; image: string; className: string }) {
     return (
-        <section className="relative pt-40 w-full min-h-[95vh] flex items-center justify-center overflow-hidden bg-black py-20">
+        <section className="relative pt-40 w-full min-h-[100vh] flex items-center justify-center overflow-hidden bg-black py-20">
             <div className="absolute inset-0 z-0">
                 <Image
                     src="/about/hero-bg.png"
@@ -33,7 +33,7 @@ export default function AboutHero() {
                             transition={{ duration: 0.6, delay: 0.4 }}
                             className="text-5xl md:text-7xl font-regular text-white mb-8 tracking-tight"
                         >
-                            About us
+                            {title}
                         </motion.h1>
                         <motion.p
                             initial={{ opacity: 0 }}
@@ -42,7 +42,7 @@ export default function AboutHero() {
                             transition={{ duration: 0.6, delay: 0.6 }}
                             className="text-sm md:text-base font-medium text-white/90 leading-relaxed uppercase tracking-wider"
                         >
-                            PROFESSIONAL AND CUSTOMER-ORIENTED APPROACH TO BUSINESS, STARTING FROM FIRST CONTACT UNTIL PROJECT COMPLETION
+                            {description}
                         </motion.p>
                     </motion.div>
 
@@ -55,9 +55,9 @@ export default function AboutHero() {
                     >
                         <div className="rounded-[40px] overflow-hidden border border-white/50 shadow-2xl relative">
                             <img
-                                src="/about/hero-top-bg.png"
+                                src={image}
                                 alt="Our Team"
-                                className="w-full h-[265px] object-cover aspect-[4/3] lg:aspect-[3/2.2]"
+                                className={`w-full ${className} object-cover aspect-[4/3] lg:aspect-[3/2.2]`}
                             />
 
                             <div className="absolute inset-0 flex items-center justify-center">
