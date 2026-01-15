@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { X, Menu, Phone, Instagram, Linkedin, Facebook, ChevronDown, ChevronRight } from "lucide-react";
+import { X, Phone, Instagram, Linkedin, Facebook, ChevronDown } from "lucide-react";
 
 const navItems = [
     { name: "Home", href: "/" },
@@ -39,31 +39,6 @@ const menuVariants = {
             ease: [0.76, 0, 0.24, 1] as any,
         },
     },
-};
-
-const linkVariants = {
-    initial: {
-        x: 80,
-        opacity: 0,
-    },
-    enter: (i: number) => ({
-        x: 0,
-        opacity: 1,
-        transition: {
-            duration: 0.8,
-            ease: [0.76, 0, 0.24, 1] as any,
-            delay: 0.1 + i * 0.1,
-        },
-    }),
-    exit: (i: number) => ({
-        x: 80,
-        opacity: 0,
-        transition: {
-            duration: 0.8,
-            ease: [0.76, 0, 0.24, 1] as any,
-            delay: i * 0.1,
-        },
-    }),
 };
 
 export default function MobileMenu() {
