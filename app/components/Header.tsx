@@ -16,7 +16,7 @@ export default function Header() {
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full mx-auto fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-6 md:px-12 bg-black"
+            className="w-full mx-auto fixed top-0 left-0 right-0 z-100 flex items-center justify-between px-6 py-6 md:px-12 bg-black"
         >
             <motion.div
                 initial={{ opacity: 0, x: -20 }}

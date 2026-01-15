@@ -3,15 +3,25 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { X, Menu, Phone, Instagram, Linkedin, Facebook } from "lucide-react";
+import { X, Menu, Phone, Instagram, Linkedin, Facebook, ChevronDown, ChevronRight } from "lucide-react";
 
 const navItems = [
     { name: "Home", href: "/" },
-    { name: "About", href: "#" },
+    { name: "About", href: "/about" },
     { name: "Services", href: "#" },
     { name: "Projects", href: "#" },
     { name: "Portfolio", href: "#" },
     { name: "Contact", href: "#" },
+];
+
+const servicesList = [
+    { name: "Branding", href: "/services/branding" },
+    { name: "Logo Design", href: "/services/logo-design" },
+    { name: "Website Development", href: "/services/website-development" },
+    { name: "App Development", href: "/services/app-development" },
+    { name: "Content Writing", href: "/services/content-writing" },
+    { name: "Social Media Marketing", href: "/services/social-media-marketing" },
+    { name: "SEO", href: "/services/seo" }
 ];
 
 const menuVariants = {
@@ -58,6 +68,7 @@ const linkVariants = {
 
 export default function MobileMenu() {
     const [isOpen, setIsOpen] = useState(false);
+    const [showServices, setShowServices] = useState(false);
 
     return (
         <div className="md:hidden">
@@ -96,48 +107,109 @@ export default function MobileMenu() {
                         {/* Navigation Links */}
                         <nav className="flex flex-col gap-4 mt-8">
                             <span className="text-gray-500 uppercase tracking-widest text-xs font-semibold mb-4">Navigation</span>
-                            {navItems.map((item, i) => (
-                                <motion.div
-                                    key={item.name}
-                                    custom={i}
-                                    variants={{
-                                        initial: { x: 80, opacity: 0, rotateZ: 5 },
-                                        enter: (i: number) => ({
-                                            x: 0,
-                                            opacity: 1,
-                                            rotateZ: 0,
-                                            transition: {
-                                                duration: 0.8,
-                                                ease: [0.76, 0, 0.24, 1] as any,
-                                                delay: 0.1 + i * 0.1,
-                                            },
-                                        }),
-                                        exit: (i: number) => ({
-                                            x: 80,
-                                            opacity: 0,
-                                            rotateZ: 5,
-                                            transition: {
-                                                duration: 0.8,
-                                                ease: [0.76, 0, 0.24, 1] as any,
-                                                delay: i * 0.1,
-                                            },
-                                        }),
-                                    }}
-                                    initial="initial"
-                                    animate="enter"
-                                    exit="exit"
-                                >
-                                    <Link
-                                        href={item.href}
-                                        onClick={() => setIsOpen(false)}
-                                        className="text-3xl font-light text-white hover:text-primary transition-colors inline-block group"
+                            {navItems.map((item, i) => {
+                                const isServices = item.name === "Services";
+
+                                if (isServices) {
+                                    return (
+                                        <div key={item.name} className="flex flex-col">
+                                            <button
+                                                onClick={() => setShowServices(!showServices)}
+                                                className="text-3xl font-light text-white hover:text-primary transition-colors group flex items-center justify-between w-full py-2"
+                                            >
+                                                <span className="">
+                                                    {item.name}
+                                                </span>
+                                                <ChevronDown
+                                                    className={`w-6 h-6 transition-transform duration-300 ${showServices ? "rotate-180" : ""}`}
+                                                />
+                                            </button>
+
+                                            <AnimatePresence>
+                                                {showServices && (
+                                                    <motion.div
+                                                        initial={{ height: 0, opacity: 0 }}
+                                                        animate={{ height: "auto", opacity: 1 }}
+                                                        exit={{ height: 0, opacity: 0 }}
+                                                        transition={{ duration: 0.3, ease: [0.76, 0, 0.24, 1] }}
+                                                        className="overflow-hidden ml-6 mt-2"
+                                                    >
+                                                        <div className="flex flex-col gap-3 py-3 border-l border-white/10 pl-4">
+                                                            {servicesList.map((service, index) => (
+                                                                <motion.div
+                                                                    key={service.name}
+                                                                    initial={{ x: -20, opacity: 0 }}
+                                                                    animate={{ x: 0, opacity: 1 }}
+                                                                    transition={{ delay: index * 0.05 }}
+                                                                >
+                                                                    <Link
+                                                                        href={service.href}
+                                                                        onClick={() => {
+                                                                            setIsOpen(false);
+                                                                            setShowServices(false);
+                                                                        }}
+                                                                        className="text-xl font-light text-gray-400 hover:text-primary transition-colors inline-block group"
+                                                                    >
+                                                                        <div className="flex items-center gap-3">
+                                                                            <span className="w-2 h-2 rounded-full bg-primary/50 group-hover:bg-primary transition-colors duration-300" />
+                                                                            <span className="inline-block transition-transform group-hover:translate-x-2">
+                                                                                {service.name}
+                                                                            </span>
+                                                                        </div>
+                                                                    </Link>
+                                                                </motion.div>
+                                                            ))}
+                                                        </div>
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
+                                        </div>
+                                    );
+                                }
+
+                                return (
+                                    <motion.div
+                                        key={item.name}
+                                        custom={i}
+                                        variants={{
+                                            initial: { x: 80, opacity: 0, rotateZ: 5 },
+                                            enter: (i: number) => ({
+                                                x: 0,
+                                                opacity: 1,
+                                                rotateZ: 0,
+                                                transition: {
+                                                    duration: 0.8,
+                                                    ease: [0.76, 0, 0.24, 1] as any,
+                                                    delay: 0.1 + i * 0.1,
+                                                },
+                                            }),
+                                            exit: (i: number) => ({
+                                                x: 80,
+                                                opacity: 0,
+                                                rotateZ: 5,
+                                                transition: {
+                                                    duration: 0.8,
+                                                    ease: [0.76, 0, 0.24, 1] as any,
+                                                    delay: i * 0.1,
+                                                },
+                                            }),
+                                        }}
+                                        initial="initial"
+                                        animate="enter"
+                                        exit="exit"
                                     >
-                                        <span className="inline-block transition-transform group-hover:translate-x-4">
-                                            {item.name}
-                                        </span>
-                                    </Link>
-                                </motion.div>
-                            ))}
+                                        <Link
+                                            href={item.href}
+                                            onClick={() => setIsOpen(false)}
+                                            className="text-3xl font-light text-white hover:text-primary transition-colors inline-block group"
+                                        >
+                                            <span className="inline-block transition-transform group-hover:translate-x-4">
+                                                {item.name}
+                                            </span>
+                                        </Link>
+                                    </motion.div>
+                                );
+                            })}
                         </nav>
 
                         {/* Footer within menu */}

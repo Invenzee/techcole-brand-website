@@ -35,6 +35,10 @@ export default function Technologies() {
                     We Are the Scalable Design Solutions That Will Give Your Business An Edge In This Ever-Changing Digital Landscape.
                 </motion.p>
 
+                <div>
+
+                </div>
+
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
