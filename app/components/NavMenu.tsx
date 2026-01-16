@@ -27,6 +27,7 @@ export default function NavMenu() {
     const [active, setActive] = useState("Home");
     const [showServices, setShowServices] = useState(false);
     const servicesRef = useRef<HTMLDivElement>(null);
+    const timeoutRef = useRef<any>(null);
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -51,8 +52,13 @@ export default function NavMenu() {
                             key={item.name}
                             ref={servicesRef}
                             className="relative"
-                            onMouseEnter={() => setShowServices(true)}
-                            onMouseLeave={() => setTimeout(() => setShowServices(false), 200)}
+                            onMouseEnter={() => {
+                                if (timeoutRef.current) clearTimeout(timeoutRef.current);
+                                setShowServices(true);
+                            }}
+                            onMouseLeave={() => {
+                                timeoutRef.current = setTimeout(() => setShowServices(false), 200);
+                            }}
                         >
                             <button
                                 onClick={() => {
@@ -87,8 +93,13 @@ export default function NavMenu() {
                             {showServices && (
                                 <div
                                     className="absolute top-full left-0 mt-4 w-56 bg-black backdrop-blur-lg rounded-lg shadow-2xl border border-gray-800 z-50 animate-fadeIn"
-                                    onMouseEnter={() => setShowServices(true)}
-                                    onMouseLeave={() => setShowServices(false)}
+                                    onMouseEnter={() => {
+                                        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+                                        setShowServices(true);
+                                    }}
+                                    onMouseLeave={() => {
+                                        timeoutRef.current = setTimeout(() => setShowServices(false), 200);
+                                    }}
                                 >
                                     <div className="p-2">
                                         {servicesList.map((service, index) => (

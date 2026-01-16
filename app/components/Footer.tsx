@@ -8,12 +8,30 @@ import instagram from "@/public/instagram.svg"
 import linkedin from "@/public/linkedin.svg"
 import facebook from "@/public/facebook.svg"
 import { motion } from "framer-motion";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import arrowUp from "@/public/arrow-up.svg"
 
 export default function Footer() {
 
-    const router = useRouter()
+    const router = useRouter();
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: ""
+    });
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = (e: FormEvent) => {
+        e.preventDefault();
+        const subject = encodeURIComponent("Contact from Footer");
+        const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}`);
+        // Simulate email sending or open mail client
+        window.location.href = `mailto:support@techcole.com?subject=${subject}&body=${body}`;
+    };
 
     return (
         <footer className="w-full text-white relative pt-12 pb-6 max-sm:pb-4">
@@ -92,11 +110,11 @@ export default function Footer() {
                         >
                             <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
                             <ul className="space-y-3">
+                                <li><Link href="/" className="text-gray-400 hover:text-white transition-colors text-sm">Home</Link></li>
                                 <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors text-sm">About Us</Link></li>
-                                <li><Link href="/services" className="text-gray-400 hover:text-white transition-colors text-sm">Our Services</Link></li>
-                                <li><Link href="/community" className="text-gray-400 hover:text-white transition-colors text-sm">Community</Link></li>
-                                <li><Link href="/testimonials" className="text-gray-400 hover:text-white transition-colors text-sm">Testimonials</Link></li>
-                                <li><Link href="/faq" className="text-gray-400 hover:text-white transition-colors text-sm">FAQ</Link></li>
+                                <li><Link href="/portfolio" className="text-gray-400 hover:text-white transition-colors text-sm">Portfolio</Link></li>
+                                <li><Link href="/blog" className="text-gray-400 hover:text-white transition-colors text-sm">Blog</Link></li>
+                                <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">Contact Us</Link></li>
                             </ul>
                         </motion.div>
 
@@ -108,12 +126,15 @@ export default function Footer() {
                             transition={{ duration: 0.6, delay: 0.3 }}
                             className="min-w-[140px]"
                         >
-                            <h4 className="text-lg font-semibold mb-6">Company</h4>
+                            <h4 className="text-lg font-semibold mb-6">Services</h4>
                             <ul className="space-y-3">
-                                <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors text-sm">About Us</Link></li>
-                                <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">Contact Us</Link></li>
-                                <li><Link href="/career-tips" className="text-gray-400 hover:text-white transition-colors text-sm">Career Tips</Link></li>
-                                <li><Link href="/career" className="text-gray-400 hover:text-white transition-colors text-sm">Career</Link></li>
+                                <li><Link href="/services/branding" className="text-gray-400 hover:text-white transition-colors text-sm">Branding</Link></li>
+                                <li><Link href="/services/logo-design" className="text-gray-400 hover:text-white transition-colors text-sm">Logo Design</Link></li>
+                                <li><Link href="/services/website-development" className="text-gray-400 hover:text-white transition-colors text-sm">Website Development</Link></li>
+                                <li><Link href="/services/app-development" className="text-gray-400 hover:text-white transition-colors text-sm">App Development</Link></li>
+                                <li><Link href="/services/content-writing" className="text-gray-400 hover:text-white transition-colors text-sm">Content Writing</Link></li>
+                                <li><Link href="/services/social-media-marketing" className="text-gray-400 hover:text-white transition-colors text-sm">Social Media Marketing</Link></li>
+                                <li><Link href="/services/seo" className="text-gray-400 hover:text-white transition-colors text-sm">SEO</Link></li>
                             </ul>
                         </motion.div>
                     </div>
@@ -126,23 +147,52 @@ export default function Footer() {
                         className="w-full lg:w-[40%]"
                     >
                         <h4 className="w-full text-3xl md:text-4xl font-medium mb-6 leading-[1.1] bg-gradient-to-r from-white via-gray-400 to-gray-700 bg-clip-text text-transparent">
-                            Join the Techcole<br />Community
+                            Get in Touch
                         </h4>
-                        <div className="relative flex items-center border border-white/20 rounded-full overflow-hidden bg-black w-full max-w-md">
-                            <input
-                                type="email"
-                                placeholder="Enter Your Gmail"
-                                className="flex-1 px-4 md:px-6 py-3 bg-transparent border-none focus:outline-none text-white placeholder:text-white/60 text-sm"
-                            />
+                        <form onSubmit={handleSubmit} className="w-full max-w-md flex flex-col gap-4">
+                            <div className="relative flex items-center border border-white/20 rounded-lg overflow-hidden bg-black">
+                                <input
+                                    type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    placeholder="Your Name"
+                                    required
+                                    className="flex-1 px-4 py-3 bg-transparent border-none focus:outline-none text-white placeholder:text-white/60 text-sm"
+                                />
+                            </div>
+                            <div className="relative flex items-center border border-white/20 rounded-lg overflow-hidden bg-black">
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    placeholder="Your Email"
+                                    required
+                                    className="flex-1 px-4 py-3 bg-transparent border-none focus:outline-none text-white placeholder:text-white/60 text-sm"
+                                />
+                            </div>
+                            <div className="relative flex items-center border border-white/20 rounded-lg overflow-hidden bg-black">
+                                <input
+                                    type="tel"
+                                    name="phone"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                    placeholder="Phone Number"
+                                    required
+                                    className="flex-1 px-4 py-3 bg-transparent border-none focus:outline-none text-white placeholder:text-white/60 text-sm"
+                                />
+                            </div>
                             <button
-                                className="px-6 md:px-8 py-3 font-semibold text-white transition-all duration-300 hover:opacity-90 whitespace-nowrap rounded-full cursor-pointer text-sm"
+                                type="submit"
+                                className="w-full px-8 py-3 font-semibold text-white transition-all duration-300 hover:opacity-90 rounded-lg cursor-pointer text-sm"
                                 style={{
                                     background: 'conic-gradient(from 250deg at 50% 50%, #140F2A 0%, rgba(209, 32, 38, .50) 50%, rgba(209, 32, 38, 1) 100%)'
                                 }}
                             >
-                                Join Us
+                                Submit
                             </button>
-                        </div>
+                        </form>
 
                         {/* Social Icons */}
                         <div className="flex items-center gap-4 mt-8">
@@ -155,7 +205,11 @@ export default function Footer() {
             </div>
 
             <div className="z-20 relative text-center mt-8 max-sm:mt-4">
-                Designed & Developed by  Techcole
+                <div className="flex items-center justify-center gap-4 mb-4">
+                    <Link href="/privacy-policy" className="text-gray-200 hover:text-white transition-colors text-md">Privacy Policy</Link>
+                    <Link href="/terms-of-service" className="text-gray-200 hover:text-white transition-colors text-md">Terms of Service</Link>
+                </div>
+                2025 © Techcole. All rights reserved.
             </div>
 
             <div className="absolute bottom-8 right-8">

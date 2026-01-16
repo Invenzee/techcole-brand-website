@@ -43,11 +43,11 @@ export default function DarkCTA() {
 
                         <div className="flex flex-col gap-1 text-center md:text-left">
                             <div className="text-2xl md:text-3xl font-medium tracking-tight">
-                                021 111 222 33
+                                760 280 5517
                             </div>
                             <div className="flex items-center justify-center md:justify-start gap-2 text-white/90 text-sm md:text-lg group cursor-pointer">
                                 <Mail className="w-4 h-4 md:w-5 md:h-5" />
-                                <span className="underline decoration-white/50 underline-offset-4 group-hover:decoration-white transition-all">techcole@gmail.com</span>
+                                <span className="underline decoration-white/50 underline-offset-4 group-hover:decoration-white transition-all">info@techcole.com</span>
                             </div>
                         </div>
                     </motion.div>
