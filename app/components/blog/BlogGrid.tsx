@@ -33,7 +33,7 @@ const blogPosts: BlogPost[] = [
         categoryColor: 'red',
         hasGlow: true,
         variant: 'large',
-        containerClass: "col-span-12 md:col-span-8 md:row-span-2 mt-24"
+        containerClass: "col-span-12 md:col-span-8 md:row-span-2 md:mt-24"
     },
     {
         id: 2,
@@ -69,7 +69,7 @@ const blogPosts: BlogPost[] = [
         image: "/blog/post-3.png",
         categoryColor: 'gray',
         variant: 'small',
-        containerClass: "col-span-12 md:col-span-4 -mt-24"
+        containerClass: "col-span-12 md:col-span-4 md:-mt-24"
     },
     {
         id: 6,
@@ -100,9 +100,9 @@ const blogPosts: BlogPost[] = [
 
 export default function BlogGrid() {
     return (
-        <section className="bg-white py-24 px-6 relative z-10 overflow-hidden">
+        <section className="bg-white py-16 md:py-24 px-4 md:px-6 relative z-10 overflow-hidden">
             <div className="max-w-[1240px] mx-auto">
-                <div className="grid grid-cols-12 gap-x-12 gap-y-16 grid-flow-row-dense">
+                <div className="grid grid-cols-12 gap-x-6 md:gap-x-12 gap-y-12 md:gap-y-16 grid-flow-row-dense">
                     {blogPosts.map((post) => (
                         <div key={post.id} className={post.containerClass}>
                             <BlogCard post={post} variant={post.variant} />
@@ -110,7 +110,7 @@ export default function BlogGrid() {
                     ))}
                 </div>
 
-                <div className="mt-28 flex justify-center">
+                <div className="mt-16 md:mt-28 flex justify-center">
                     <Button link="" text="Load More" className="!bg-primary text-white !p-3" transitionClassName="!via-white/30" icon={ArrowRight} />
                 </div>
             </div>
@@ -151,11 +151,11 @@ function BlogCard({ post, variant }: { post: BlogPost; variant: 'large' | 'small
         <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8 }}
             className="group cursor-pointer flex flex-col w-full"
         >
-            <div className={`relative w-full overflow-hidden rounded-[40px] mb-6 ${variant === 'large' ? 'aspect-[1.3/1]' : 'aspect-[1.5/1]'}`}>
+            <div className={`relative w-full overflow-hidden rounded-[24px] md:rounded-[40px] mb-4 md:mb-6 ${variant === 'large' ? 'aspect-[1.3/1]' : 'aspect-[1.5/1]'}`}>
                 <Image
                     src={post.image}
                     alt={post.title}
@@ -165,7 +165,7 @@ function BlogCard({ post, variant }: { post: BlogPost; variant: 'large' | 'small
                 <div className={`absolute inset-0 transition-opacity duration-700 ${post.hasGlow ? 'bg-primary/5 opacity-40 mix-blend-overlay' : 'bg-black/10 opacity-60 group-hover:opacity-0'}`} />
             </div>
 
-            <div className="relative p-6">
+            <div className="relative p-4 md:p-6">
                 <svg
                     className="absolute inset-0 w-full h-full pointer-events-none"
                     viewBox="0 0 600 300"
@@ -183,26 +183,28 @@ function BlogCard({ post, variant }: { post: BlogPost; variant: 'large' | 'small
                 </svg>
 
                 <div className="relative z-10 flex flex-col">
-                    <div className="flex items-center gap-4 mb-3">
-                        <span className={`px-5 py-2 rounded-full text-md font-medium uppercase tracking-tighter transition-all duration-300 group-hover:shadow-[0_4px_15px_rgba(209,32,39,0.3)] ${post.categoryColor === 'red' ? 'bg-primary text-black' : 'bg-neutral-800/10 text-neutral-600'
+                    <div className="flex items-center gap-3 md:gap-4 mb-3">
+                        <span className={`px-4 py-1.5 md:px-5 md:py-2 rounded-full text-xs md:text-md font-medium uppercase tracking-tighter transition-all duration-300 group-hover:shadow-[0_4px_15px_rgba(209,32,39,0.3)] ${post.categoryColor === 'red' ? 'bg-primary text-black' : 'bg-neutral-800/10 text-neutral-600'
                             }`}>
                             {post.category}
                         </span>
-                        <span className="text-md font-medium text-black uppercase">
+                        <span className="text-sm md:text-md font-medium text-black uppercase">
                             {post.date}
                         </span>
                     </div>
 
-                    <h3 className={`font-medium text-black leading-[.9] mb-3 transition-colors duration-300 group-hover:text-primary ${variant === 'large' ? 'text-3xl lg:text-[42px]' : 'text-2xl lg:text-[28px]'
+                    <h3 className={`font-medium text-black leading-[1.1] md:leading-[.9] mb-3 transition-colors duration-300 group-hover:text-primary break-words ${variant === 'large'
+                        ? 'text-xl sm:text-2xl md:text-3xl lg:text-[42px]'
+                        : 'text-lg sm:text-xl md:text-2xl lg:text-[28px]'
                         }`}>
                         {post.title}
                     </h3>
 
                     <div className="mt-auto flex items-center gap-2">
-                        <span className="text-md font-medium text-black">By</span>
-                        <span className="text-md font-medium text-black">{post.author.replace('By ', '')}</span>
+                        <span className="text-sm md:text-md font-medium text-black">By</span>
+                        <span className="text-sm md:text-md font-medium text-black">{post.author.replace('By ', '')}</span>
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mx-2" />
-                        <span className="text-md font-medium text-black">{post.readTime}</span>
+                        <span className="text-sm md:text-md font-medium text-black">{post.readTime}</span>
                     </div>
                 </div>
             </div>

@@ -9,9 +9,9 @@ const navItems = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Services", href: "#" },
-    { name: "Projects", href: "#" },
-    { name: "Portfolio", href: "#" },
-    { name: "Contact", href: "#" },
+    { name: "Portfolio", href: "/portfolio" },
+    { name: "Blog", href: "/blog" },
+    { name: "Contact", href: "/contact" },
 ];
 
 const servicesList = [
