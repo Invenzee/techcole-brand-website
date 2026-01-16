@@ -169,6 +169,7 @@ export default function Footer() {
             <div className="z-20 relative text-center mt-8 max-sm:mt-4">
                 <div className="flex items-center justify-center gap-4 mb-4">
                     <Link href="/privacy-policy" className="text-gray-200 hover:text-white transition-colors text-md">Privacy Policy</Link>
+                    <span className="w-[1px] h-4 bg-white"></span>
                     <Link href="/terms-of-service" className="text-gray-200 hover:text-white transition-colors text-md">Terms of Service</Link>
                 </div>
                 2025 © Techcole. All rights reserved.
