@@ -175,10 +175,10 @@ export default function Footer() {
                 2025 © Techcole. All rights reserved.
             </div>
 
-            <div className="absolute bottom-8 right-8">
+            <div className="absolute bottom-8 right-8 max-sm:bottom-32 max-sm:right-4">
                 <img
                     src={arrowUp.src}
-                    className="z-30 relative w-20 cursor-pointer transition-all duration-300 hover:rotate-[-40deg]"
+                    className="z-30 relative w-20 max-sm:w-12 cursor-pointer transition-all duration-300 hover:rotate-[-40deg]"
                     alt=""
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 />

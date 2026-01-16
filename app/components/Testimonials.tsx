@@ -153,7 +153,7 @@ export default function Testimonials() {
                                         key={t.id}
                                         onClick={() => setActiveIndex(idx)}
                                         className={`
-                                            relative w-16 h-16 md:w-24 md:h-24 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300
+                                            relative w-12 h-12 md:w-24 md:h-24 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300
                                             ${idx === activeIndex
                                                 ? 'ring-4 ring-white scale-110 z-10 grayscale-0'
                                                 : 'grayscale opacity-70 hover:opacity-100 hover:grayscale-0'}
