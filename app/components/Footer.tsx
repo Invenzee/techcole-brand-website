@@ -149,50 +149,12 @@ export default function Footer() {
                         <h4 className="w-full text-3xl md:text-4xl font-medium mb-6 leading-[1.1] bg-gradient-to-r from-white via-gray-400 to-gray-700 bg-clip-text text-transparent">
                             Get in Touch
                         </h4>
-                        <form onSubmit={handleSubmit} className="w-full max-w-md flex flex-col gap-4">
-                            <div className="relative flex items-center border border-white/20 rounded-lg overflow-hidden bg-black">
-                                <input
-                                    type="text"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    placeholder="Your Name"
-                                    required
-                                    className="flex-1 px-4 py-3 bg-transparent border-none focus:outline-none text-white placeholder:text-white/60 text-sm"
-                                />
-                            </div>
-                            <div className="relative flex items-center border border-white/20 rounded-lg overflow-hidden bg-black">
-                                <input
-                                    type="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    placeholder="Your Email"
-                                    required
-                                    className="flex-1 px-4 py-3 bg-transparent border-none focus:outline-none text-white placeholder:text-white/60 text-sm"
-                                />
-                            </div>
-                            <div className="relative flex items-center border border-white/20 rounded-lg overflow-hidden bg-black">
-                                <input
-                                    type="tel"
-                                    name="phone"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    placeholder="Phone Number"
-                                    required
-                                    className="flex-1 px-4 py-3 bg-transparent border-none focus:outline-none text-white placeholder:text-white/60 text-sm"
-                                />
-                            </div>
-                            <button
-                                type="submit"
-                                className="w-full px-8 py-3 font-semibold text-white transition-all duration-300 hover:opacity-90 rounded-lg cursor-pointer text-sm"
-                                style={{
-                                    background: 'conic-gradient(from 250deg at 50% 50%, #140F2A 0%, rgba(209, 32, 38, .50) 50%, rgba(209, 32, 38, 1) 100%)'
-                                }}
-                            >
-                                Submit
-                            </button>
-                        </form>
+
+                        <div className="flex flex-col gap-2">
+                            <Link href="mailto:info@techcole.com" className="text-gray-200 hover:text-white transition-colors text-md">info@techcole.com</Link>
+                            <Link href="tel:+17602805517" className="text-gray-200 hover:text-white transition-colors text-md">760 280 5517</Link>
+                            <Link href="https://maps.app.goo.gl/vYWRzCoSVCiWmmCa8" className="text-gray-200 hover:text-white transition-colors text-md">12508 Center St Suite # 21 South Gate, CA 90280</Link>
+                        </div>
 
                         {/* Social Icons */}
                         <div className="flex items-center gap-4 mt-8">

@@ -2,6 +2,7 @@
 import { Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 import callToActionImg from '@/public/call-to-action-img.png'
+import Link from 'next/link';
 
 export default function DarkCTA() {
     return (
@@ -42,12 +43,10 @@ export default function DarkCTA() {
                         <div className="hidden md:block w-[1px] h-16 bg-white/40 mx-8" />
 
                         <div className="flex flex-col gap-1 text-center md:text-left">
-                            <div className="text-2xl md:text-3xl font-medium tracking-tight">
-                                760 280 5517
-                            </div>
+                            <Link href="tel:+17602805517" className="text-2xl md:text-3xl font-medium tracking-tight">760 280 5517</Link>
                             <div className="flex items-center justify-center md:justify-start gap-2 text-white/90 text-sm md:text-lg group cursor-pointer">
                                 <Mail className="w-4 h-4 md:w-5 md:h-5" />
-                                <span className="underline decoration-white/50 underline-offset-4 group-hover:decoration-white transition-all">info@techcole.com</span>
+                                <Link href="mailto:info@techcole.com" className="text-gray-200 hover:text-white transition-colors text-md">info@techcole.com</Link>
                             </div>
                         </div>
                     </motion.div>
