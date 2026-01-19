@@ -62,7 +62,7 @@ export default function PortfolioStack() {
     }, [selectedCategory]);
 
     const handleProjectClick = (project: Project) => {
-        if (project.category === "website development" || project.category === "app development") {
+        if (project.category === "Website Development" || project.category === "App Development") {
             if (project.externalLink) {
                 window.open(project.externalLink, "_blank");
             }
