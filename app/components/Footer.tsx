@@ -34,8 +34,8 @@ export default function Footer() {
     };
 
     return (
-        <footer className="w-full text-white relative pt-12 pb-6 max-sm:pb-4">
-            <div className="max-w-full z-20 relative bg-black px-16 mx-auto w-full flex items-center justify-between pb-12 border-b border-white/10 max-sm:flex-col gap-4 max-sm:items-start max-sm:px-4">
+        <footer className="w-full text-white relative pb-6 max-sm:pb-4">
+            {/* <div className="max-w-full z-20 relative bg-black px-16 mx-auto w-full flex items-center justify-between pb-12 border-b border-white/10 max-sm:flex-col gap-4 max-sm:items-start max-sm:px-4">
                 <motion.div
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -55,7 +55,7 @@ export default function Footer() {
                 >
                     <Image src={reviewPlatformImage} className="w-3/4 max-sm:2/4" alt="Review Platform" />
                 </motion.div>
-            </div>
+            </div> */}
 
             <div className="absolute bottom-0 left-0 right-0 h-[600px] pointer-events-none overflow-hidden z-10">
                 <svg className="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -115,6 +115,8 @@ export default function Footer() {
                                 <li><Link href="/portfolio" className="text-gray-400 hover:text-white transition-colors text-sm">Portfolio</Link></li>
                                 <li><Link href="/blog" className="text-gray-400 hover:text-white transition-colors text-sm">Blog</Link></li>
                                 <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">Contact Us</Link></li>
+                                <li><Link href="/privacy-policy" className="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</Link></li>
+                                <li><Link href="/terms-of-service" className="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</Link></li>
                             </ul>
                         </motion.div>
 
@@ -167,11 +169,6 @@ export default function Footer() {
             </div>
 
             <div className="z-20 relative text-center mt-8 max-sm:mt-4">
-                <div className="flex items-center justify-center gap-4 mb-4">
-                    <Link href="/privacy-policy" className="text-gray-200 hover:text-white transition-colors text-md">Privacy Policy</Link>
-                    <span className="w-[1px] h-4 bg-white"></span>
-                    <Link href="/terms-of-service" className="text-gray-200 hover:text-white transition-colors text-md">Terms of Service</Link>
-                </div>
                 2025 © Techcole. All rights reserved.
             </div>
 
