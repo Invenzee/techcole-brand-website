@@ -1,29 +1,22 @@
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, X } from 'lucide-react';
+import { Search, X, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react';
+import Lightbox from "yet-another-react-lightbox";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/styles.css";
+
+
 
 interface PortfolioItem {
     id: number;
     image: string;
 }
 
-const portfolioItems: PortfolioItem[] = [
-    { id: 1, image: '/services/p-1.png' },
-    { id: 2, image: '/services/p-2.png' },
-    { id: 3, image: '/services/p-3.png' },
-    { id: 4, image: '/services/p-4.png' },
-    { id: 5, image: '/services/p-5.png' },
-    { id: 6, image: '/services/p-6.png' },
-    { id: 7, image: '/services/p-4.png' },
-    { id: 8, image: '/services/p-5.png' },
-    { id: 9, image: '/services/p-7.png' },
-];
-
-export default function ServicePortfolio() {
+export default function ServicePortfolio({ portfolioItems }: { portfolioItems: PortfolioItem[] }) {
     const pathRef = useRef<SVGPathElement>(null);
     const [hoveredId, setHoveredId] = useState<number | null>(null);
-    const [selectedImage, setSelectedImage] = useState<PortfolioItem | null>(null);
+    const [index, setIndex] = useState(-1);
     const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -94,7 +87,7 @@ export default function ServicePortfolio() {
                     </div>
                 </div>
 
-                <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {portfolioItems.map((item) => (
                         <motion.div
                             key={item.id}
@@ -107,7 +100,7 @@ export default function ServicePortfolio() {
                             <img
                                 src={item.image}
                                 alt={`Portfolio item ${item.id}`}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover object-top transition-[object-position] duration-[4s] ease-in-out group-hover:object-bottom"
                             />
 
                             <AnimatePresence>
@@ -118,7 +111,7 @@ export default function ServicePortfolio() {
                                         exit={{ opacity: 0 }}
                                         transition={{ duration: 0.3 }}
                                         className="absolute inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center"
-                                        onClick={() => setSelectedImage(item)}
+                                        onClick={() => setIndex(portfolioItems.indexOf(item))}
                                     >
                                         <motion.div
                                             initial={{ scale: 0, rotate: -180 }}
@@ -136,42 +129,19 @@ export default function ServicePortfolio() {
                     ))}
                 </div>
 
-                <AnimatePresence>
-                    {selectedImage && (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90"
-                            onClick={() => setSelectedImage(null)}
-                        >
-                            <motion.button
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.8 }}
-                                className="absolute top-6 right-6 bg-white/10 hover:bg-white/20 backdrop-blur-md p-3 rounded-full transition-colors z-10"
-                                onClick={() => setSelectedImage(null)}
-                            >
-                                <X className="w-8 h-8 text-white" strokeWidth={2.5} />
-                            </motion.button>
-
-                            <motion.div
-                                initial={{ scale: 0.8, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                exit={{ scale: 0.8, opacity: 0 }}
-                                transition={{ duration: 0.4, ease: 'easeOut' }}
-                                className="max-w-[80vw] w-full max-h-[100vh] relative"
-                                onClick={(e) => e.stopPropagation()}
-                            >
-                                <img
-                                    src={selectedImage.image}
-                                    alt={`Portfolio item ${selectedImage.id}`}
-                                    className="w-full h-[90vh] object-cover rounded-2xl shadow-2xl"
-                                />
-                            </motion.div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                <Lightbox
+                    open={index >= 0}
+                    index={index}
+                    close={() => setIndex(-1)}
+                    slides={portfolioItems.map(item => ({ src: item.image }))}
+                    plugins={[Zoom]}
+                    animation={{ fade: 100 }}
+                    styles={{ container: { backgroundColor: "rgba(0, 0, 0, .9)" } }}
+                    zoom={{
+                        maxZoomPixelRatio: 3,
+                        scrollToZoom: true
+                    }}
+                />
 
             </div>
         </section>
