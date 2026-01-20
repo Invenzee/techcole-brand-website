@@ -6,13 +6,18 @@ import PricingSection from "@/app/components/services/PricingSection";
 import ServicePortfolio from "@/app/components/services/ServicePortfolio";
 
 const portfolioItems = [
-    { id: 1, image: '/services/p-1.png' },
-    { id: 2, image: '/services/p-2.png' },
-    { id: 3, image: '/services/p-3.png' },
-    { id: 4, image: '/services/p-4.png' },
-    { id: 5, image: '/services/p-5.png' },
-    { id: 6, image: '/services/p-6.png' },
-    { id: 7, image: '/services/p-7.png' },
+    { id: 1, image: '/portfolio/logo-design/logo-1.jpg' },
+    { id: 2, image: '/portfolio/logo-design/logo-2.jpg' },
+    { id: 3, image: '/portfolio/logo-design/logo-3.jpg' },
+    { id: 4, image: '/portfolio/logo-design/logo-4.jpg' },
+    { id: 5, image: '/portfolio/logo-design/logo-5.jpg' },
+    { id: 6, image: '/portfolio/logo-design/logo-6.jpg' },
+    { id: 7, image: '/portfolio/logo-design/logo-7.jpg' },
+    { id: 8, image: '/portfolio/logo-design/logo-8.jpg' },
+    { id: 9, image: '/portfolio/logo-design/logo-9.jpg' },
+    { id: 10, image: '/portfolio/logo-design/logo-10.jpg' },
+    { id: 11, image: '/portfolio/logo-design/logo-11.jpg' },
+    { id: 12, image: '/portfolio/logo-design/logo-12.jpg' },
 ];
 
 export default function page() {
