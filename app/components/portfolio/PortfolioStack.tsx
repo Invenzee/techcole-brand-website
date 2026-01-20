@@ -183,7 +183,7 @@ export default function PortfolioStack() {
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105"
+                                    className={`w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105 ${project.category === "Website Development" ? "object-top" : "object-center"}`}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                             </div>

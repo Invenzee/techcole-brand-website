@@ -112,9 +112,9 @@ export default function ContactForm() {
                             <select
                                 className="px-4 py-3 bg-transparent bg-transparent border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all w-32 text-black"
                             >
-                                <option value="+1">:us: +1</option>
-                                <option value="+44">:gb: +44</option>
-                                <option value="+92">:flag-pk: +92</option>
+                                <option value="+1">US: +1</option>
+                                <option value="+44">GB: +44</option>
+                                <option value="+92">PK: +92</option>
                             </select>
                             <input
                                 type="tel"

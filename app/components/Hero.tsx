@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Hero({ title, description, image, className }: { title: string; description: string; image: string; className: string }) {
+    const router = useRouter();
     return (
         <section className="relative pt-40 w-full min-h-[100vh] flex items-center justify-center overflow-hidden bg-black py-20">
             <div className="absolute inset-0 z-0">
@@ -69,6 +71,7 @@ export default function Hero({ title, description, image, className }: { title: 
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.5, delay: 0.8 }}
                                     className="relative w-32 h-32 md:w-40 md:h-40 rounded-full flex flex-col items-center justify-center text-white font-semibold transition-all duration-300 overflow-hidden cursor-pointer"
+                                    onClick={() => router.push('/contact')}
                                 >
                                     <div className="absolute inset-0 bg-primary/60 rounded-full shadow-[0_0_40px_rgba(230,46,49,0.5)]" />
                                     <div className="relative z-10 flex flex-col items-center">
