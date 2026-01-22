@@ -45,29 +45,23 @@ export default function WebDevProcess() {
     const cy = 400; // Center Y
 
     // Spiral parameters (Archimedean: r = a + b * theta)
-    // We want it strictly circular, so we simply map polar coordinates.
-    // Start from Center (r=0) to Max Radius.
     const numTurns = -1.7;
     const maxRadius = 300;
     const pointsCount = 200;
+    const animDuration = 4; // Total time for path draw
 
     // Generate Path Points
     const { pathData, points, arrowPoints, iconsOnPath } = useMemo(() => {
         let d = "";
         const pts = [] as any;
-        const iconPlacements = [];
 
-        // We want the spiral to start at Center and go OUT.
-        // Let's generate a smooth spiral path first.
+        // Generate smooth spiral path first.
         for (let i = 0; i <= pointsCount; i++) {
             const progress = i / pointsCount;
             const theta = progress * numTurns * 2.8 * Math.PI; // 0 to 3.4*PI
             const r = (theta / (numTurns * 2.8 * Math.PI)) * maxRadius;
-
-            // Rotation offset to align spiral strictly like the image
-            const offsetAngle = Math.PI; // Rotate spiral
+            const offsetAngle = Math.PI;
             const finalAngle = theta + offsetAngle;
-
             const x = cx + r * Math.cos(finalAngle);
             const y = cy + r * Math.sin(finalAngle);
 
@@ -76,7 +70,9 @@ export default function WebDevProcess() {
             else d += ` L ${x} ${y}`;
         }
 
-
+        // --- ICON CONFIGURATION (Adjust positions here) ---
+        // arrowBack: relative index for arrow before icon (e.g. -7)
+        // arrowFront: relative index for arrow after icon (e.g. 1)
         const iconConfig = [
             { id: 0, index: 0, xOffset: 60, yOffset: -10, icon: HomeSvg, arrowBack: 0, arrowFront: 0 },
             { id: 1, index: 35, xOffset: 205, yOffset: -60, icon: StarSvg, arrowBack: -6, arrowFront: 4 },
@@ -87,10 +83,14 @@ export default function WebDevProcess() {
         ];
 
         const finalIcons = iconConfig.map((config) => {
-            // Get base position from path
+            // Get base position from path for calculating animation delay
+            // The path animation is linear over 'pointsCount'
+            // Delay = (index / totalPoints) * duration
             const p = pts[Math.min(config.index, pts.length - 1)];
 
-            // Apply manual offsets
+            // Calculate delay based on index on the path
+            const delay = (config.index / pointsCount) * animDuration;
+
             return {
                 x: p.x + config.xOffset,
                 y: p.y + config.yOffset,
@@ -98,7 +98,8 @@ export default function WebDevProcess() {
                 icon: config.icon,
                 id: config.id,
                 arrowBack: config.arrowBack,
-                arrowFront: config.arrowFront
+                arrowFront: config.arrowFront,
+                delay: delay // Store calculated delay
             };
         });
 
@@ -129,9 +130,12 @@ export default function WebDevProcess() {
                     const p1 = pts[idx];
                     const p2 = pts[idx + 1];
 
+                    // Calculate delay for arrow based on its position on path
+                    const arrowDelay = (idx / pointsCount) * animDuration;
+
                     if (p1 && p2) {
                         const angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * (180 / Math.PI);
-                        arrows.push({ x: p1.x, y: p1.y, rotation: angle });
+                        arrows.push({ x: p1.x, y: p1.y, rotation: angle, delay: arrowDelay });
                     }
                 }
             });
@@ -152,23 +156,23 @@ export default function WebDevProcess() {
 
                 <div className="relative w-full text-center mx-auto -mt-20" style={{ height }}>
                     <div className="absolute left-[0%] top-[20%] text-right hidden lg:block">
-                        <LabelCard step={steps[0]} align="right" />
+                        <LabelCard step={steps[0]} align="right" delay={(0 / 200) * 4} />
                     </div>
                     <div className="absolute left-[-2%] top-[45%] text-right hidden lg:block">
-                        <LabelCard step={steps[1]} align="right" />
+                        <LabelCard step={steps[1]} align="right" delay={(35 / 200) * 4} />
                     </div>
                     <div className="absolute left-[0%] top-[70%] text-right hidden lg:block">
-                        <LabelCard step={steps[2]} align="right" />
+                        <LabelCard step={steps[2]} align="right" delay={(80 / 200) * 4} />
                     </div>
 
                     <div className="absolute right-[0%] top-[20%] text-left hidden lg:block">
-                        <LabelCard step={steps[3]} align="left" />
+                        <LabelCard step={steps[3]} align="left" delay={(125 / 200) * 4} />
                     </div>
                     <div className="absolute right-[-2%] top-[45%] text-left hidden lg:block">
-                        <LabelCard step={steps[4]} align="left" />
+                        <LabelCard step={steps[4]} align="left" delay={(165 / 200) * 4} />
                     </div>
                     <div className="absolute right-[0%] top-[70%] text-left hidden lg:block">
-                        <LabelCard step={steps[5]} align="left" />
+                        <LabelCard step={steps[5]} align="left" delay={(198 / 200) * 4} />
                     </div>
 
                     {/* Center SVG */}
@@ -189,24 +193,30 @@ export default function WebDevProcess() {
                                 </mask>
                             </defs>
 
-                            {/* Dashed Path with Mask Reveal */}
-                            <path
+                            {/* Infinite Marquee Dashed Path */}
+                            <motion.path
                                 d={pathData}
                                 fill="none"
                                 stroke="#000000c4"
                                 strokeWidth="2"
                                 strokeDasharray="10 10"
                                 mask="url(#spiral-mask)"
+                                animate={{ strokeDashoffset: -20 }} // Move by full dash pattern length (10+10)
+                                transition={{
+                                    repeat: Infinity,
+                                    duration: 1.5, // Speed of marquee
+                                    ease: "linear",
+                                }}
                             />
 
-                            {/* Arrows */}
+                            {/* Arrows - Appear with Path */}
                             {arrowPoints.map((arrow: any, i: number) => (
                                 <motion.g
                                     key={`arrow-${i}`}
-                                    initial={{ opacity: 0 }}
-                                    whileInView={{ opacity: 1 }}
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: 0.5 + i * 0.1, duration: 0.3 }} // Faster stagger
+                                    transition={{ delay: arrow.delay, duration: 0.3 }} // Synced with path
                                 >
                                     <polygon
                                         points="0,0 -8,-5 -8,5"
@@ -217,7 +227,7 @@ export default function WebDevProcess() {
                             ))}
                         </svg>
 
-                        {/* Icons */}
+                        {/* Icons - Appear with Path */}
                         {iconsOnPath.map((item, i) => (
                             <motion.div
                                 key={`icon-${i}`}
@@ -232,7 +242,7 @@ export default function WebDevProcess() {
                                 initial={{ scale: 0 }}
                                 whileInView={{ scale: 1 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: i * 0.6, type: "spring", stiffness: 200 }}
+                                transition={{ delay: item.delay, type: "spring", stiffness: 200 }}
                             >
                                 <img src={item.icon.src} className="w-8 h-8" alt="" />
                             </motion.div>
@@ -254,13 +264,13 @@ export default function WebDevProcess() {
     );
 }
 
-function LabelCard({ step, align }: { step: Step, align: 'left' | 'right' }) {
+function LabelCard({ step, align, delay = 0 }: { step: Step, align: 'left' | 'right', delay?: number }) {
     return (
         <motion.div
             initial={{ opacity: 0, x: align === 'left' ? 20 : -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: step.id * 1 }}
+            transition={{ duration: 0.5, delay: delay }}
             className={`flex flex-col ${align === 'right' ? 'items-end' : 'items-start'}`}
         >
             <div className={`bg-[#E61F26] text-white py-3 px-4 rounded-[30px] font-medium text-md shadow-lg mb-3 max-w-[320px] w-full text-center rounded-full`}>
