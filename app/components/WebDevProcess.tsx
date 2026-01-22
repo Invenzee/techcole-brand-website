@@ -38,6 +38,15 @@ const steps: Step[] = [
 ];
 
 export default function WebDevProcess() {
+    const [isDesktop, setIsDesktop] = React.useState(true);
+
+    React.useEffect(() => {
+        const handleResize = () => setIsDesktop(window.innerWidth > 768);
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     // --- Geometric Configuration ---
     const width = 950;
     const height = 800;
@@ -46,7 +55,7 @@ export default function WebDevProcess() {
 
     // Spiral parameters (Archimedean: r = a + b * theta)
     const numTurns = -1.7;
-    const maxRadius = window.innerWidth > 768 ? 300 : 180;
+    const maxRadius = isDesktop ? 300 : 180;
     const pointsCount = 200;
     const animDuration = 4; // Total time for path draw
 
@@ -74,7 +83,7 @@ export default function WebDevProcess() {
         // arrowBack: relative index for arrow before icon (e.g. -7)
         // arrowFront: relative index for arrow after icon (e.g. 1)
         const iconConfig = [
-            { id: 0, index: 0, xOffset: window.innerWidth > 768 ? 60 : -200, yOffset: -10, icon: HomeSvg, arrowBack: 0, arrowFront: 0 },
+            { id: 0, index: 0, xOffset: isDesktop ? 60 : -200, yOffset: -10, icon: HomeSvg, arrowBack: 0, arrowFront: 0 },
             { id: 1, index: 35, xOffset: 205, yOffset: -60, icon: StarSvg, arrowBack: -6, arrowFront: 4 },
             { id: 2, index: 80, xOffset: 130, yOffset: -210, icon: GrowthSvg, arrowBack: 0, arrowFront: 9 },
             { id: 3, index: 125, xOffset: -375, yOffset: -50, icon: EmailSvg, arrowBack: 0, arrowFront: 7 },
