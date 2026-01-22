@@ -19,8 +19,8 @@ export default function Home() {
     <>
       <Preloader />
       <main className="w-full bg-white text-white">
-        <section className="relative h-full w-full overflow-hidden">
-          <div className="relative z-10 max-w-[1140px] mx-auto mt-30 mb-30 flex flex-col items-center max-sm:p-6 text-center">
+        <section className="relative min-h-[100vh] h-full w-full overflow-hidden">
+          <div className="relative z-10 max-w-[1140px] mx-auto mt-30 mb-30 flex flex-col items-center justify-center max-sm:p-6 text-center">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
