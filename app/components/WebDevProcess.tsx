@@ -46,7 +46,7 @@ export default function WebDevProcess() {
 
     // Spiral parameters (Archimedean: r = a + b * theta)
     const numTurns = -1.7;
-    const maxRadius = 300;
+    const maxRadius = window.innerWidth > 768 ? 300 : 180;
     const pointsCount = 200;
     const animDuration = 4; // Total time for path draw
 
@@ -74,7 +74,7 @@ export default function WebDevProcess() {
         // arrowBack: relative index for arrow before icon (e.g. -7)
         // arrowFront: relative index for arrow after icon (e.g. 1)
         const iconConfig = [
-            { id: 0, index: 0, xOffset: 60, yOffset: -10, icon: HomeSvg, arrowBack: 0, arrowFront: 0 },
+            { id: 0, index: 0, xOffset: window.innerWidth > 768 ? 60 : -200, yOffset: -10, icon: HomeSvg, arrowBack: 0, arrowFront: 0 },
             { id: 1, index: 35, xOffset: 205, yOffset: -60, icon: StarSvg, arrowBack: -6, arrowFront: 4 },
             { id: 2, index: 80, xOffset: 130, yOffset: -210, icon: GrowthSvg, arrowBack: 0, arrowFront: 9 },
             { id: 3, index: 125, xOffset: -375, yOffset: -50, icon: EmailSvg, arrowBack: 0, arrowFront: 7 },
@@ -146,7 +146,7 @@ export default function WebDevProcess() {
 
     return (
         <section className="w-full bg-white py-24 overflow-hidden relative">
-            <div className="max-w-[1140px] mx-auto relative">
+            <div className="max-w-[1140px] mx-auto relative max-sm:h-[2000px]">
                 <div className="text-center">
                     <h2 className="text-4xl md:text-[64px] font-medium text-black leading-[60px]">
                         Our Web <span className="text-[#E61F26]">Development</span>
@@ -250,11 +250,11 @@ export default function WebDevProcess() {
                     </div>
 
                     {/* Mobile Labels (Stacked) */}
-                    <div className="lg:hidden relative z-30 pt-[800px] px-4 pb-10 space-y-8">
+                    <div className="lg:hidden grid grid-cols-2 gap-4 relative z-30 pt-[800px] px-4 pb-10 space-y-8">
                         {steps.map(step => (
-                            <div key={step.id} className="bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100">
-                                <h3 className="text-[#E61F26] font-bold text-lg mb-2">{step.title}</h3>
-                                <p className="text-gray-600">{step.description}</p>
+                            <div key={step.id} className="">
+                                <h3 className="bg-[#E61F26] text-white py-3 px-4 rounded-[30px] font-medium text-md shadow-lg mb-3 max-w-[320px] w-full text-center rounded-full">{step.title}</h3>
+                                <p className="text-gray-600 px-6">{step.description}</p>
                             </div>
                         ))}
                     </div>
