@@ -201,10 +201,10 @@ export default function WebDevProcess() {
                                 strokeWidth="2"
                                 strokeDasharray="10 10"
                                 mask="url(#spiral-mask)"
-                                animate={{ strokeDashoffset: -20 }} // Move by full dash pattern length (10+10)
+                                animate={{ strokeDashoffset: [0, -20] }}
                                 transition={{
                                     repeat: Infinity,
-                                    duration: 1.5, // Speed of marquee
+                                    duration: 0.5,
                                     ease: "linear",
                                 }}
                             />
