@@ -2,11 +2,11 @@
 
 import { motion } from "framer-motion";
 
-export default function LeftImageRightContentComponent({ subtitle, title, description, image }: { subtitle: string; title: string; description: string; image: string }) {
+export default function LeftImageRightContentComponent({ subtitle, title, description, image, className }: { subtitle: string; title: string; description: string; image: string; className?: string }) {
     return (
         <section className="w-full bg-white py-24 text-black overflow-hidden">
             <div className="max-w-[1140px] mx-auto px-6 md:px-0">
-                <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                <div className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 ${className}`}>
 
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
