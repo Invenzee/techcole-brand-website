@@ -252,8 +252,8 @@ export default function WebDevProcess({ steps, title }: { steps: Step[]; title: 
                     <div className="lg:hidden grid grid-cols-1 relative z-30 pt-[800px] px-4 pb-10 space-y-4">
                         {steps.map(step => (
                             <div key={step.id} className="">
-                                <h3 className="bg-[#E61F26] text-white py-3 px-4 rounded-[30px] font-medium text-md shadow-lg mb-3 max-w-[320px] w-full text-center rounded-full">{step.title}</h3>
-                                <p className="text-gray-600 px-6">{step.description}</p>
+                                <h3 className="bg-[#E61F26] text-white py-3 px-4 rounded-[30px] font-medium text-md shadow-lg mb-3 w-full text-center rounded-full">{step.title}</h3>
+                                <p className="text-gray-600 px-12">{step.description}</p>
                             </div>
                         ))}
                     </div>
