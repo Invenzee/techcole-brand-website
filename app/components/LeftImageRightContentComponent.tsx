@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function LeftImageRightContentComponent({ subtitle, title, description, image, className }: { subtitle: string; title: string; description: string; image: string; className?: string }) {
     return (
-        <section className="w-full bg-white py-24 text-black overflow-hidden">
+        <section className="w-full bg-white py-24 max-sm:py-8 text-black overflow-hidden">
             <div className="max-w-[1140px] mx-auto px-6 md:px-0">
                 <div className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 ${className}`}>
 
@@ -19,7 +19,7 @@ export default function LeftImageRightContentComponent({ subtitle, title, descri
                             <img
                                 src={image}
                                 alt="Who We Are"
-                                className="w-full h-auto object-cover min-h-[420px]"
+                                className="w-full h-auto object-cover min-h-[420px] max-sm:min-h-[240px]"
                             />
                         </div>
                     </motion.div>
@@ -46,7 +46,7 @@ export default function LeftImageRightContentComponent({ subtitle, title, descri
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.7, delay: 0.4 }}
-                            className="text-5xl md:text-[64px] font-semibold leading-[.9] mb-2 tracking-tight"
+                            className="text-4xl md:text-[64px] font-semibold leading-[.9] mb-2 tracking-tight"
                         >
                             {title}
                         </motion.h2>

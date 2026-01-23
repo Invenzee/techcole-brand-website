@@ -3,66 +3,7 @@
 import React, { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
-const cards = [
-    {
-        id: 1,
-        number: "01",
-        title: "Experienced Web Developers",
-        image: "/services/p-1.png",
-        column: 1,
-        className: "h-[240px]",
-    },
-    {
-        id: 4,
-        number: "05",
-        title: "SEO-Optimized Development",
-        image: "/services/p-4.png",
-        column: 1,
-        className: "h-[350px]",
-    },
-    {
-        id: 2,
-        number: "02",
-        title: "Mobile-First & Responsive Design",
-        image: "/services/p-2.png",
-        column: 2,
-        className: "h-[350px] mt-20",
-    },
-    {
-        id: 5,
-        number: "03",
-        title: "Ongoing Support",
-        image: "/services/p-5.png",
-        column: 3,
-        className: "h-[240px] mt-8",
-    },
-    {
-        id: 3,
-        number: "04",
-        title: "Fast Loading & Secure Websites",
-        image: "/services/p-3.png",
-        column: 4,
-        className: "h-[240px]",
-    },
-    {
-        id: 7,
-        number: "06",
-        title: "Branding",
-        image: "/services/p-6.png",
-        column: 3,
-        className: "h-[240px]",
-    },
-    {
-        id: 6,
-        number: "07",
-        title: "Agile & Transparent Workflow",
-        image: "/services/p-7.png",
-        column: 4,
-        className: "h-[350px]",
-    },
-];
-
-const Card = ({ card }: { card: typeof cards[0] }) => {
+const Card = ({ card }: { card: any }) => {
     const ref = useRef<HTMLDivElement>(null);
 
     // Mouse position values
@@ -161,7 +102,7 @@ const Card = ({ card }: { card: typeof cards[0] }) => {
     );
 };
 
-export default function WhyChooseUs() {
+export default function WhyChooseUs({ title, cards }: { title: string, cards: any[] }) {
     // Group cards by column
     // We assume 4 columns for large screens based on design
     const columns = {
@@ -177,7 +118,7 @@ export default function WhyChooseUs() {
                 <div className="text-center mb-12">
                     <h2 className="text-4xl md:text-[64px] font-medium text-black leading-[60px]">
                         Why Choose Us for <br />
-                        <span className="text-[#E61F26]">Web Development?</span>
+                        <span className="text-[#E61F26]">{title}</span>
                     </h2>
                 </div>
 

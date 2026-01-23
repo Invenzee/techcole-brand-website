@@ -27,17 +27,7 @@ interface Step {
     description: string;
 }
 
-// --- Data ---
-const steps: Step[] = [
-    { id: 1, title: "Requirement Analysis & Planning", description: "We provide everything you need in one convenient place." },
-    { id: 2, title: "UI/UX Design & Wireframing", description: "We provide everything you need in one convenient place." },
-    { id: 3, title: "Web Development", description: "We provide everything you need in one convenient place." },
-    { id: 4, title: "Testing & Quality Assurance", description: "We provide everything you need in one convenient place." },
-    { id: 5, title: "Deployment & Launch", description: "We provide everything you need in one convenient place." },
-    { id: 6, title: "Maintenance & Optimization", description: "We provide everything you need in one convenient place." },
-];
-
-export default function WebDevProcess() {
+export default function WebDevProcess({ steps, title }: { steps: Step[]; title: string }) {
     const [isDesktop, setIsDesktop] = React.useState(true);
 
     React.useEffect(() => {
@@ -55,7 +45,7 @@ export default function WebDevProcess() {
 
     // Spiral parameters (Archimedean: r = a + b * theta)
     const numTurns = -1.7;
-    const maxRadius = isDesktop ? 300 : 180;
+    const maxRadius = isDesktop ? 300 : 220;
     const pointsCount = 200;
     const animDuration = 4; // Total time for path draw
 
@@ -83,12 +73,12 @@ export default function WebDevProcess() {
         // arrowBack: relative index for arrow before icon (e.g. -7)
         // arrowFront: relative index for arrow after icon (e.g. 1)
         const iconConfig = [
-            { id: 0, index: 0, xOffset: isDesktop ? 60 : -200, yOffset: -10, icon: HomeSvg, arrowBack: 0, arrowFront: 0 },
-            { id: 1, index: 35, xOffset: 205, yOffset: -60, icon: StarSvg, arrowBack: -6, arrowFront: 4 },
-            { id: 2, index: 80, xOffset: 130, yOffset: -210, icon: GrowthSvg, arrowBack: 0, arrowFront: 9 },
-            { id: 3, index: 125, xOffset: -375, yOffset: -50, icon: EmailSvg, arrowBack: 0, arrowFront: 7 },
-            { id: 4, index: 165, xOffset: 200, yOffset: 280, icon: SettingSvg, arrowBack: -5, arrowFront: 1 },
-            { id: 5, index: 198, xOffset: 110, yOffset: -80, icon: DollarSvg, arrowBack: 0, arrowFront: 0 },
+            { id: 0, index: 0, xOffset: isDesktop ? 60 : -340, yOffset: -10, icon: HomeSvg, arrowBack: 0, arrowFront: 0 },
+            { id: 1, index: 35, xOffset: isDesktop ? 205 : -100, yOffset: isDesktop ? -60 : -20, icon: StarSvg, arrowBack: -6, arrowFront: 4 },
+            { id: 2, index: 80, xOffset: isDesktop ? 130 : -100, yOffset: isDesktop ? -210 : -20, icon: GrowthSvg, arrowBack: 0, arrowFront: 9 },
+            { id: 3, index: 125, xOffset: isDesktop ? -375 : -100, yOffset: isDesktop ? -50 : -20, icon: EmailSvg, arrowBack: 0, arrowFront: 7 },
+            { id: 4, index: 165, xOffset: isDesktop ? 200 : -100, yOffset: isDesktop ? 280 : -20, icon: SettingSvg, arrowBack: -5, arrowFront: 1 },
+            { id: 5, index: 198, xOffset: isDesktop ? 110 : -100, yOffset: isDesktop ? -80 : -20, icon: DollarSvg, arrowBack: 0, arrowFront: 0 },
         ];
 
         const finalIcons = iconConfig.map((config) => {
@@ -158,7 +148,7 @@ export default function WebDevProcess() {
             <div className="max-w-[1140px] mx-auto relative max-sm:h-[2000px]">
                 <div className="text-center">
                     <h2 className="text-4xl md:text-[64px] font-medium text-black leading-[60px]">
-                        Our Web <span className="text-[#E61F26]">Development</span>
+                        Our <span className="text-[#E61F26]">{title}</span>
                         <br />Process
                     </h2>
                 </div>
@@ -244,8 +234,8 @@ export default function WebDevProcess() {
                                 style={{
                                     left: item.x,
                                     top: item.y,
-                                    width: 60,
-                                    height: 60,
+                                    width: isDesktop ? 60 : 40,
+                                    height: isDesktop ? 60 : 40,
                                     transform: 'translate(-50%, -50%)'
                                 }}
                                 initial={{ scale: 0 }}
@@ -253,13 +243,13 @@ export default function WebDevProcess() {
                                 viewport={{ once: true }}
                                 transition={{ delay: item.delay, type: "spring", stiffness: 200 }}
                             >
-                                <img src={item.icon.src} className="w-8 h-8" alt="" />
+                                <img src={item.icon.src} className="w-8 h-8 max-sm:w-6 max-sm:h-6" alt="" />
                             </motion.div>
                         ))}
                     </div>
 
                     {/* Mobile Labels (Stacked) */}
-                    <div className="lg:hidden grid grid-cols-2 gap-4 relative z-30 pt-[800px] px-4 pb-10 space-y-8">
+                    <div className="lg:hidden grid grid-cols-1 relative z-30 pt-[800px] px-4 pb-10 space-y-4">
                         {steps.map(step => (
                             <div key={step.id} className="">
                                 <h3 className="bg-[#E61F26] text-white py-3 px-4 rounded-[30px] font-medium text-md shadow-lg mb-3 max-w-[320px] w-full text-center rounded-full">{step.title}</h3>

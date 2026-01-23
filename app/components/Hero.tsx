@@ -33,7 +33,7 @@ export default function Hero({ title, description, image, className }: { title: 
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.4 }}
-                            className="text-5xl md:text-7xl font-regular text-white mb-8 tracking-tight"
+                            className="text-4xl md:text-7xl font-regular text-white mb-8 tracking-tight"
                         >
                             {title}
                         </motion.h1>
