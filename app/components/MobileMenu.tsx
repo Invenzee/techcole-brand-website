@@ -67,7 +67,7 @@ export default function MobileMenu() {
                         initial="closed"
                         animate="open"
                         exit="closed"
-                        className="fixed inset-0 bg-black z-[100] flex flex-col p-8"
+                        className="fixed h-full inset-0 bg-black z-[100] flex flex-col p-8 overflow-y-auto overflow-x-hidden"
                     >
                         <div className="flex justify-between items-center mb-12">
                             <img src="/logo.png" className="h-8" alt="Logo" />
