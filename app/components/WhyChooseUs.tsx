@@ -1,10 +1,17 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
-const Card = ({ card }: { card: any }) => {
+const Card = ({ card, index }: { card: any, index: number }) => {
     const ref = useRef<HTMLDivElement>(null);
+    const [isDesktop, setIsDesktop] = useState(false);
+
+    useEffect(() => {
+        if (window.innerWidth >= 768) {
+            setIsDesktop(true);
+        }
+    }, []);
 
     // Mouse position values
     const x = useMotionValue(0);
@@ -56,7 +63,7 @@ const Card = ({ card }: { card: any }) => {
 
                 {/* Number */}
                 <div className="absolute top-6 right-6 text-gray-200 text-5xl font-regular font-outline-2 group-hover:text-[#E61F26]/10 transition-colors duration-300 z-0">
-                    {card.number}
+                    {isDesktop ? card.number : index + 1}
                 </div>
 
                 {/* Content */}
@@ -70,7 +77,7 @@ const Card = ({ card }: { card: any }) => {
                 <motion.div
                     variants={{
                         rest: { scale: 0, opacity: 0, z: 0 },
-                        hover: { scale: 1.2, opacity: 1, z: 100 } // Pop out 100px
+                        hover: { scale: isDesktop ? 1.2 : .95, opacity: 1, z: 100 }
                     }}
                     style={{
                         rotateX,
@@ -116,32 +123,36 @@ export default function WhyChooseUs({ title, cards }: { title: string, cards: an
         <section className="w-full bg-white py-24">
             <div className="max-w-[1140px] mx-auto px-4">
                 <div className="text-center mb-12">
-                    <h2 className="text-4xl md:text-[64px] font-medium text-black leading-[60px]">
+                    <h2 className="text-4xl md:text-[64px] font-medium text-black leading-[60px] max-sm:leading-[40px]">
                         Why Choose Us for <br />
                         <span className="text-[#E61F26]">{title}</span>
                     </h2>
                 </div>
 
+                <div className="max-sm:flex flex-col gap-8 hidden px-4">
+                    {cards.map((card, index) => <Card key={card.id} card={card} index={index} />)}
+                </div>
+
                 {/* Masonry Layout */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start max-sm:hidden">
                     {/* Column 1 */}
                     <div className="flex flex-col gap-8">
-                        {columns[1].map(card => <Card key={card.id} card={card} />)}
+                        {columns[1].map((card, index) => <Card key={card.id} card={card} index={index} />)}
                     </div>
 
                     {/* Column 2 */}
                     <div className="flex flex-col gap-8">
-                        {columns[2].map(card => <Card key={card.id} card={card} />)}
+                        {columns[2].map((card, index) => <Card key={card.id} card={card} index={index} />)}
                     </div>
 
                     {/* Column 3 */}
                     <div className="flex flex-col gap-8">
-                        {columns[3].map(card => <Card key={card.id} card={card} />)}
+                        {columns[3].map((card, index) => <Card key={card.id} card={card} index={index} />)}
                     </div>
 
                     {/* Column 4 */}
                     <div className="flex flex-col gap-8">
-                        {columns[4].map(card => <Card key={card.id} card={card} />)}
+                        {columns[4].map((card, index) => <Card key={card.id} card={card} index={index} />)}
                     </div>
                 </div>
             </div>

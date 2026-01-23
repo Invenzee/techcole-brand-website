@@ -28,14 +28,6 @@ interface Step {
 }
 
 export default function WebDevProcess({ steps, title }: { steps: Step[]; title: string }) {
-    const [isDesktop, setIsDesktop] = React.useState(true);
-
-    React.useEffect(() => {
-        const handleResize = () => setIsDesktop(window.innerWidth > 768);
-        handleResize();
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
 
     // --- Geometric Configuration ---
     const width = 950;
@@ -45,7 +37,7 @@ export default function WebDevProcess({ steps, title }: { steps: Step[]; title: 
 
     // Spiral parameters (Archimedean: r = a + b * theta)
     const numTurns = -1.7;
-    const maxRadius = isDesktop ? 300 : 220;
+    const maxRadius = 300;
     const pointsCount = 200;
     const animDuration = 4; // Total time for path draw
 
@@ -73,12 +65,12 @@ export default function WebDevProcess({ steps, title }: { steps: Step[]; title: 
         // arrowBack: relative index for arrow before icon (e.g. -7)
         // arrowFront: relative index for arrow after icon (e.g. 1)
         const iconConfig = [
-            { id: 0, index: 0, xOffset: isDesktop ? 60 : -340, yOffset: -10, icon: HomeSvg, arrowBack: 0, arrowFront: 0 },
-            { id: 1, index: 35, xOffset: isDesktop ? 205 : -100, yOffset: isDesktop ? -60 : -20, icon: StarSvg, arrowBack: -6, arrowFront: 4 },
-            { id: 2, index: 80, xOffset: isDesktop ? 130 : -100, yOffset: isDesktop ? -210 : -20, icon: GrowthSvg, arrowBack: 0, arrowFront: 9 },
-            { id: 3, index: 125, xOffset: isDesktop ? -375 : -100, yOffset: isDesktop ? -50 : -20, icon: EmailSvg, arrowBack: 0, arrowFront: 7 },
-            { id: 4, index: 165, xOffset: isDesktop ? 200 : -100, yOffset: isDesktop ? 280 : -20, icon: SettingSvg, arrowBack: -5, arrowFront: 1 },
-            { id: 5, index: 198, xOffset: isDesktop ? 110 : -100, yOffset: isDesktop ? -80 : -20, icon: DollarSvg, arrowBack: 0, arrowFront: 0 },
+            { id: 0, index: 0, xOffset: 60, yOffset: -10, icon: HomeSvg, arrowBack: 0, arrowFront: 0 },
+            { id: 1, index: 35, xOffset: 205, yOffset: -60, icon: StarSvg, arrowBack: -6, arrowFront: 4 },
+            { id: 2, index: 80, xOffset: 130, yOffset: -210, icon: GrowthSvg, arrowBack: 0, arrowFront: 9 },
+            { id: 3, index: 125, xOffset: -375, yOffset: -50, icon: EmailSvg, arrowBack: 0, arrowFront: 7 },
+            { id: 4, index: 165, xOffset: 200, yOffset: 280, icon: SettingSvg, arrowBack: -5, arrowFront: 1 },
+            { id: 5, index: 198, xOffset: 110, yOffset: -80, icon: DollarSvg, arrowBack: 0, arrowFront: 0 },
         ];
 
         const finalIcons = iconConfig.map((config) => {
@@ -144,122 +136,132 @@ export default function WebDevProcess({ steps, title }: { steps: Step[]; title: 
     }, []);
 
     return (
-        <section className="w-full bg-white py-24 overflow-hidden relative">
-            <div className="max-w-[1140px] mx-auto relative max-sm:h-[2000px]">
+        <>
+            {/* Desktop */}
+            <section className="w-full bg-white py-24 overflow-hidden relative max-sm:hidden">
+                <div className="max-w-[1140px] mx-auto relative">
+                    <div className="text-center">
+                        <h2 className="text-4xl md:text-[64px] font-medium text-black leading-[60px]">
+                            Our <span className="text-[#E61F26]">{title}</span>
+                            <br />Process
+                        </h2>
+                    </div>
+
+                    <div className="relative w-full text-center mx-auto -mt-20 min-h-[800px] max-sm:min-h-[100px]">
+                        <div className="absolute left-[0%] top-[20%] text-right hidden lg:block">
+                            <LabelCard step={steps[0]} align="right" delay={(0 / 200) * 4} />
+                        </div>
+                        <div className="absolute left-[-2%] top-[45%] text-right hidden lg:block">
+                            <LabelCard step={steps[1]} align="right" delay={(35 / 200) * 4} />
+                        </div>
+                        <div className="absolute left-[0%] top-[70%] text-right hidden lg:block">
+                            <LabelCard step={steps[2]} align="right" delay={(80 / 200) * 4} />
+                        </div>
+
+                        <div className="absolute right-[0%] top-[20%] text-left hidden lg:block">
+                            <LabelCard step={steps[3]} align="left" delay={(125 / 200) * 4} />
+                        </div>
+                        <div className="absolute right-[-2%] top-[45%] text-left hidden lg:block">
+                            <LabelCard step={steps[4]} align="left" delay={(165 / 200) * 4} />
+                        </div>
+                        <div className="absolute right-[0%] top-[70%] text-left hidden lg:block">
+                            <LabelCard step={steps[5]} align="left" delay={(198 / 200) * 4} />
+                        </div>
+
+                        {/* Center SVG */}
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none max-sm:hidden">
+                            <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} className="overflow-visible">
+                                <defs>
+                                    <mask id="spiral-mask">
+                                        <motion.path
+                                            d={pathData}
+                                            fill="none"
+                                            stroke="white"
+                                            strokeWidth="5"
+                                            initial={{ pathLength: 0 }}
+                                            whileInView={{ pathLength: 1 }}
+                                            viewport={{ once: true }}
+                                            transition={{ duration: 4, ease: "linear" }}
+                                        />
+                                    </mask>
+                                </defs>
+
+                                {/* Infinite Marquee Dashed Path */}
+                                <motion.path
+                                    d={pathData}
+                                    fill="none"
+                                    stroke="#000000c4"
+                                    strokeWidth="2"
+                                    strokeDasharray="10 10"
+                                    mask="url(#spiral-mask)"
+                                    animate={{ strokeDashoffset: [0, -20] }}
+                                    transition={{
+                                        repeat: Infinity,
+                                        duration: 0.5,
+                                        ease: "linear",
+                                    }}
+                                />
+
+                                {/* Arrows - Appear with Path */}
+                                {arrowPoints.map((arrow: any, i: number) => (
+                                    <motion.g
+                                        key={`arrow-${i}`}
+                                        initial={{ opacity: 0, scale: 0 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: arrow.delay, duration: 0.3 }} // Synced with path
+                                    >
+                                        <polygon
+                                            points="0,0 -8,-5 -8,5"
+                                            fill="#E61F26"
+                                            transform={`translate(${arrow.x}, ${arrow.y}) rotate(${arrow.rotation}) scale(2)`}
+                                        />
+                                    </motion.g>
+                                ))}
+                            </svg>
+
+                            {/* Icons - Appear with Path */}
+                            {iconsOnPath.map((item, i) => (
+                                <motion.div
+                                    key={`icon-${i}`}
+                                    className="absolute flex items-center justify-center bg-[#E61F26] text-white rounded-full !z-20"
+                                    style={{
+                                        left: item.x,
+                                        top: item.y,
+                                        width: 60,
+                                        height: 60,
+                                        transform: 'translate(-50%, -50%)'
+                                    }}
+                                    initial={{ scale: 0 }}
+                                    whileInView={{ scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: item.delay, type: "spring", stiffness: 200 }}
+                                >
+                                    <img src={item.icon.src} className="w-8 h-8 max-sm:w-6 max-sm:h-6" alt="" />
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="max-sm:block hidden px-4 py-8">
                 <div className="text-center">
-                    <h2 className="text-4xl md:text-[64px] font-medium text-black leading-[60px]">
+                    <h2 className="text-4xl md:text-[64px] font-medium text-black leading-[60px] max-sm:leading-[40px]">
                         Our <span className="text-[#E61F26]">{title}</span>
                         <br />Process
                     </h2>
                 </div>
-
-                <div className="relative w-full text-center mx-auto -mt-20" style={{ height }}>
-                    <div className="absolute left-[0%] top-[20%] text-right hidden lg:block">
-                        <LabelCard step={steps[0]} align="right" delay={(0 / 200) * 4} />
-                    </div>
-                    <div className="absolute left-[-2%] top-[45%] text-right hidden lg:block">
-                        <LabelCard step={steps[1]} align="right" delay={(35 / 200) * 4} />
-                    </div>
-                    <div className="absolute left-[0%] top-[70%] text-right hidden lg:block">
-                        <LabelCard step={steps[2]} align="right" delay={(80 / 200) * 4} />
-                    </div>
-
-                    <div className="absolute right-[0%] top-[20%] text-left hidden lg:block">
-                        <LabelCard step={steps[3]} align="left" delay={(125 / 200) * 4} />
-                    </div>
-                    <div className="absolute right-[-2%] top-[45%] text-left hidden lg:block">
-                        <LabelCard step={steps[4]} align="left" delay={(165 / 200) * 4} />
-                    </div>
-                    <div className="absolute right-[0%] top-[70%] text-left hidden lg:block">
-                        <LabelCard step={steps[5]} align="left" delay={(198 / 200) * 4} />
-                    </div>
-
-                    {/* Center SVG */}
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} className="overflow-visible">
-                            <defs>
-                                <mask id="spiral-mask">
-                                    <motion.path
-                                        d={pathData}
-                                        fill="none"
-                                        stroke="white"
-                                        strokeWidth="5"
-                                        initial={{ pathLength: 0 }}
-                                        whileInView={{ pathLength: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 4, ease: "linear" }}
-                                    />
-                                </mask>
-                            </defs>
-
-                            {/* Infinite Marquee Dashed Path */}
-                            <motion.path
-                                d={pathData}
-                                fill="none"
-                                stroke="#000000c4"
-                                strokeWidth="2"
-                                strokeDasharray="10 10"
-                                mask="url(#spiral-mask)"
-                                animate={{ strokeDashoffset: [0, -20] }}
-                                transition={{
-                                    repeat: Infinity,
-                                    duration: 0.5,
-                                    ease: "linear",
-                                }}
-                            />
-
-                            {/* Arrows - Appear with Path */}
-                            {arrowPoints.map((arrow: any, i: number) => (
-                                <motion.g
-                                    key={`arrow-${i}`}
-                                    initial={{ opacity: 0, scale: 0 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: arrow.delay, duration: 0.3 }} // Synced with path
-                                >
-                                    <polygon
-                                        points="0,0 -8,-5 -8,5"
-                                        fill="#E61F26"
-                                        transform={`translate(${arrow.x}, ${arrow.y}) rotate(${arrow.rotation}) scale(2)`}
-                                    />
-                                </motion.g>
-                            ))}
-                        </svg>
-
-                        {/* Icons - Appear with Path */}
-                        {iconsOnPath.map((item, i) => (
-                            <motion.div
-                                key={`icon-${i}`}
-                                className="absolute flex items-center justify-center bg-[#E61F26] text-white rounded-full !z-20"
-                                style={{
-                                    left: item.x,
-                                    top: item.y,
-                                    width: isDesktop ? 60 : 40,
-                                    height: isDesktop ? 60 : 40,
-                                    transform: 'translate(-50%, -50%)'
-                                }}
-                                initial={{ scale: 0 }}
-                                whileInView={{ scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: item.delay, type: "spring", stiffness: 200 }}
-                            >
-                                <img src={item.icon.src} className="w-8 h-8 max-sm:w-6 max-sm:h-6" alt="" />
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    {/* Mobile Labels (Stacked) */}
-                    <div className="lg:hidden grid grid-cols-1 relative z-30 pt-[800px] px-4 pb-10 space-y-4">
-                        {steps.map(step => (
-                            <div key={step.id} className="">
-                                <h3 className="bg-[#E61F26] text-white py-3 px-4 rounded-[30px] font-medium text-md shadow-lg mb-3 w-full text-center rounded-full">{step.title}</h3>
-                                <p className="text-gray-600 px-12">{step.description}</p>
-                            </div>
-                        ))}
-                    </div>
+                <div className="grid grid-cols-1 relative z-30 px-4 pb-10 space-y-4 mt-4">
+                    {steps.map(step => (
+                        <div key={step.id} className="text-center">
+                            <h3 className="bg-[#E61F26] text-white py-3 rounded-[30px] font-medium text-md shadow-lg mb-3 w-full text-center rounded-full">{step.title}</h3>
+                            <p className="text-gray-600 px-12">{step.description}</p>
+                        </div>
+                    ))}
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
 }
 

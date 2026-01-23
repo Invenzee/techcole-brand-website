@@ -39,7 +39,7 @@ const cards = [
         title: "Experienced Web Developers",
         image: "/services/p-1.png",
         column: 1,
-        className: "h-[240px]",
+        className: "h-[240px] max-sm:h-[300px]",
     },
     {
         id: 4,
@@ -47,7 +47,7 @@ const cards = [
         title: "SEO-Optimized Development",
         image: "/services/p-4.png",
         column: 1,
-        className: "h-[350px]",
+        className: "h-[350px] max-sm:h-[300px]",
     },
     {
         id: 2,
@@ -55,7 +55,7 @@ const cards = [
         title: "Mobile-First & Responsive Design",
         image: "/services/p-2.png",
         column: 2,
-        className: "h-[350px] mt-20",
+        className: "h-[350px] mt-20 max-sm:h-[300px] max-sm:mt-0",
     },
     {
         id: 5,
@@ -63,7 +63,7 @@ const cards = [
         title: "Ongoing Support",
         image: "/services/p-5.png",
         column: 3,
-        className: "h-[240px] mt-8",
+        className: "h-[240px] mt-8 max-sm:h-[300px] max-sm:mt-0",
     },
     {
         id: 3,
@@ -71,7 +71,7 @@ const cards = [
         title: "Fast Loading & Secure Websites",
         image: "/services/p-3.png",
         column: 4,
-        className: "h-[240px]",
+        className: "h-[240px] max-sm:h-[300px]",
     },
     {
         id: 7,
@@ -79,7 +79,7 @@ const cards = [
         title: "Branding",
         image: "/services/p-6.png",
         column: 3,
-        className: "h-[240px]",
+        className: "h-[240px] max-sm:h-[300px]",
     },
     {
         id: 6,
@@ -87,7 +87,7 @@ const cards = [
         title: "Agile & Transparent Workflow",
         image: "/services/p-7.png",
         column: 4,
-        className: "h-[350px]",
+        className: "h-[350px] max-sm:h-[300px]",
     },
 ];
 
