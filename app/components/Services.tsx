@@ -7,12 +7,12 @@ import starImg from '@/public/vector.png'
 const services = [
     {
         title: "Website Development",
-        description: "Our Hardware Solution service provides top-notch hardware tailored to your business needs. We offer installation and support for a wide range of devices.",
+        description: "We build secure, scalable, and high-performance websites tailored to your business goals. From custom design to full-stack development, we ensure seamless functionality and long-term reliability.",
         icon: <Code strokeWidth={1} className="w-8 h-8 text-white relative z-10" />,
     },
     {
         title: "Logo Design",
-        description: "Our Software Solution service offers custom, high-quality software to meet your business needs, enhancing efficiency and driving growth.",
+        description: "Our creative team designs memorable logos that represent your brand identity and leave a lasting impression.",
         icon: <PenTool strokeWidth={1} className="w-8 h-8 text-white relative z-10" />,
     },
     {
@@ -32,7 +32,7 @@ const services = [
     },
     {
         title: "Branding",
-        description: "Creating unique brand identities that resonate with your audience and stand out in the competitive market.",
+        description: "We create distinctive brand identities that connect with your audience, communicate your values, and set you apart in competitive markets.",
         icon: <BarChart3 strokeWidth={1} className="w-8 h-8 text-white relative z-10" />,
     }
 ];

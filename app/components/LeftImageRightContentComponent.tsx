@@ -46,7 +46,7 @@ export default function LeftImageRightContentComponent({ subtitle, title, descri
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.7, delay: 0.4 }}
-                            className="text-4xl md:text-[64px] font-semibold leading-[.9] mb-2 tracking-tight"
+                            className="text-4xl md:text-[50px] font-semibold leading-[.9] mb-2 tracking-tight"
                         >
                             {title}
                         </motion.h2>

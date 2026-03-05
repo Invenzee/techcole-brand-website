@@ -36,7 +36,7 @@ export default function Growth() {
                         </h2>
 
                         <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
-                            <span className="font-semibold text-primary">TechCole</span> is here to help you reach your goal. Contact us today for a personalized consultation and let's discuss how we can elevate your brand and drive measurable success.
+                            <span className="font-semibold text-primary">TechCole</span> TechCole is here to help you achieve your goals. Contact us today for a personalized consultation and discover how we can elevate your brand, improve performance, and drive measurable success.
                         </p>
                     </motion.div>
 

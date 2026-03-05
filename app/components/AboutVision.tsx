@@ -6,15 +6,15 @@ export default function AboutVision() {
     const cards = [
         {
             title: "Vision",
-            text: "Techcole believes in the power of collaboration and strives to create an environment of shared success. Our experienced team of professionals is dedicated to delving into the complexities of business challenges and finding creative solutions.Techcole believes in the power of collaboration and strives to create an environment of shared success. Our experienced team of professionals is dedicated to delving into the complexities of business challenges and finding creative solutions."
+            text: "To become a global leader in digital transformation by empowering businesses with technology that inspires growth, innovation, and long-term impact."
         },
         {
             title: "Mission",
-            text: "Techcole believes in the power of collaboration and strives to create an environment of shared success. Our experienced team of professionals is dedicated to delving into the complexities of business challenges and finding creative solutions.Techcole believes in the power of collaboration and strives to create an environment of shared success. Our experienced team of professionals is dedicated to delving into the complexities of business challenges and finding creative solutions."
+            text: "To deliver scalable, high-performance digital solutions through collaboration, strategy, and cutting-edge technology — ensuring every client achieves measurable success."
         },
         {
             title: "Why Us",
-            text: "Techcole believes in the power of collaboration and strives to create an environment of shared success. Our experienced team of professionals is dedicated to delving into the complexities of business challenges and finding creative solutions.Techcole believes in the power of collaboration and strives to create an environment of shared success. Our experienced team of professionals is dedicated to delving into the complexities of business challenges and finding creative solutions."
+            text: "Techcole takes a strategy-first approach, focusing on real business goals rather than just design. We create custom digital solutions tailored to your needs with clear, transparent communication. Our development is performance-based to ensure scalable and reliable results. Every project is built as a long-term partnership, not a one-size-fits-all solution."
         }
     ];
 

@@ -11,27 +11,27 @@ const stats = [
         id: 1,
         number: "24+",
         icon: arrowUpImg,
-        text: "years of active, market-driven experience under our belt."
+        text: "Years of hands-on industry experience delivering results."
     },
     {
         id: 2,
         number: "250+",
         icon: arrowUpImg,
-        text: "years of active, market-driven experience under our belt."
+        text: "Successful projects completed across diverse industries."
     },
     {
         id: 3,
         label: "Team",
         number: "224+",
         icon: arrowUpImg,
-        text: "years of active, market-driven experience under our belt."
+        text: "Skilled designers, developers, and strategists."
     },
     {
         id: 4,
         label: "Projects",
         number: "350+",
         icon: arrowUpImg,
-        text: "years of active, market-driven experience under our belt."
+        text: "Web, mobile, and marketing solutions delivered worldwide."
     }
 ];
 
@@ -89,7 +89,8 @@ export default function About() {
                             <span className="text-primary">creative</span>
                         </h3>
                         <p className="text-black leading-relaxed mb-8 text-base md:text-lg">
-                            Techcole believes in the power of collaboration and strives to create an environment of shared success. Our experienced team of professionals is dedicated to delving into the complexities of business challenges and finding creative solutions.
+                            TechCole is a leading IT team delivering powerful digital experiences for modern businesses.
+                            We believe in the power of collaboration and strategic thinking. Our experienced professionals dive deep into your business challenges to craft innovative, scalable, and high-performing solutions that drive real growth.
                         </p>
                         <div>
                             <Button link="/about" text="Learn More" className="!bg-primary text-white !px-12" transitionClassName="!via-white/30" />

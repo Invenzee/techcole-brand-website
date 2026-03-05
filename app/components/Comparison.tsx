@@ -92,9 +92,9 @@ export default function Comparison() {
                                     <div className="absolute left-1 top-[-12px] bottom-[-12px] w-6 border border-white/20 rounded-full z-0" />
 
                                     <div className="flex flex-col gap-6 relative z-10">
-                                        <MythItem text="We can make your website bug-free in one go." />
-                                        <MythItem text="Website gets indexed on its own." />
-                                        <MythItem text="We get you insane traffic the moment your website is ready." />
+                                        <MythItem text="We can make your website completely bug-free instantly." />
+                                        <MythItem text="Your website will automatically rank on Google." />
+                                        <MythItem text="Massive traffic will come immediately after launch." />
                                     </div>
                                 </div>
                             </motion.div>
@@ -123,9 +123,9 @@ export default function Comparison() {
                                     <div className="absolute left-1 top-[-12px] bottom-[-12px] w-6 border border-white/40 rounded-full z-0" />
 
                                     <div className="flex flex-col gap-6 relative z-10">
-                                        <FactItem text="We ensure rigorous testing and provide continuous support aimed at minimizing bugs." />
-                                        <FactItem text="We implement comprehensive SEO strategies to Ensure proper and faster indexing." />
-                                        <FactItem text="We build scalable, organic growth networks to drive sustainable traffic." />
+                                        <FactItem text="We conduct rigorous testing and provide continuous support to minimize issues." />
+                                        <FactItem text="We implement comprehensive SEO strategies for faster, proper indexing." />
+                                        <FactItem text="We build scalable, sustainable marketing systems to generate long-term organic growth." />
                                     </div>
                                 </div>
                             </motion.div>

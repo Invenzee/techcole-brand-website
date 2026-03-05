@@ -42,7 +42,7 @@ export default function Hero({ title, description, image, className }: { title: 
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.6 }}
-                            className="text-sm md:text-base font-medium text-white/90 leading-relaxed uppercase tracking-wider"
+                            className="text-sm md:text-base font-light text-white/90 tracking-wider"
                         >
                             {description}
                         </motion.p>

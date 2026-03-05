@@ -4,29 +4,8 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const ProcessSection = () => {
-    const steps = [
-        {
-            title: "Discovery & Analysis:",
-            description:
-                "Techcole believes in the power of collaboration and strives to create an environment of shared success. Our experienced team of professionals is dedicated to delving into the complexities of business challenges and finding creative solutions.",
-        },
-        {
-            title: "Strategy Development:",
-            description:
-                "Techcole believes in the power of collaboration and strives to create an environment of shared success. Our experienced team of professionals is dedicated to delving into the complexities of business challenges and finding creative solutions.",
-        },
-        {
-            title: "Implementation & Optimization:",
-            description:
-                "Techcole believes in the power of collaboration and strives to create an environment of shared success. Our experienced team of professionals is dedicated to delving into the complexities of business challenges and finding creative solutions.",
-        },
-        {
-            title: "Monitoring & Reporting:",
-            description:
-                "Techcole believes in the power of collaboration and strives to create an environment of shared success. Our experienced team of professionals is dedicated to delving into the complexities of business challenges and finding creative solutions.",
-        },
-    ];
+const ProcessSection = ({ steps }: { steps: any[] }) => {
+
 
     return (
         <section className="w-full bg-[#D12027] text-white py-16 md:py-24 overflow-hidden">
@@ -44,7 +23,7 @@ const ProcessSection = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
                     {/* Left Column: Text Steps */}
                     <div className="space-y-8 md:space-y-10">
-                        {steps.map((step, index) => (
+                        {steps.map((step: any, index: number) => (
                             <motion.div
                                 key={index}
                                 initial={{ opacity: 0, x: -50 }}

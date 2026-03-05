@@ -34,8 +34,8 @@ export default function Portfolio() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="max-w-md"
                 >
-                    <p className="text-gray-600 font-medium text-base md:text-lg leading-relaxed">
-                        Over 100+ Clients Trust Us Because We Deliver What We Promise!
+                    <p className="text-gray-600 font-medium text-base md:text-md leading-relaxed">
+                        Explore some of our recent projects showcasing innovation, creativity, and measurable impact. From corporate websites to eCommerce platforms and marketing campaigns, we deliver excellence across industries.
                     </p>
                 </motion.div>
             </div>

@@ -26,7 +26,7 @@ const cards = [
     {
         id: 1,
         number: "01",
-        title: "Experienced Branding Lead",
+        title: "Strategic Brand Identity Design",
         image: "/services/p-1.png",
         column: 1,
         className: "h-[240px]",
@@ -34,7 +34,7 @@ const cards = [
     {
         id: 4,
         number: "05",
-        title: "SEO-Optimized Development",
+        title: "Memorable Logos That Convert",
         image: "/services/p-4.png",
         column: 1,
         className: "h-[350px]",
@@ -42,7 +42,7 @@ const cards = [
     {
         id: 2,
         number: "02",
-        title: "Mobile-First & Responsive Design",
+        title: "Custom Designed Brand Marks",
         image: "/services/p-2.png",
         column: 2,
         className: "h-[350px] mt-20",
@@ -50,7 +50,7 @@ const cards = [
     {
         id: 5,
         number: "03",
-        title: "Ongoing Support",
+        title: "Versatile Logos For Growth",
         image: "/services/p-5.png",
         column: 3,
         className: "h-[240px] mt-8",
@@ -58,7 +58,7 @@ const cards = [
     {
         id: 3,
         number: "04",
-        title: "Fast Loading & Secure Websites",
+        title: "Research Driven Design Process",
         image: "/services/p-3.png",
         column: 4,
         className: "h-[240px]",
@@ -66,7 +66,7 @@ const cards = [
     {
         id: 7,
         number: "06",
-        title: "Branding",
+        title: "Timeless And Scalable Logos",
         image: "/services/p-6.png",
         column: 3,
         className: "h-[240px]",
@@ -74,23 +74,55 @@ const cards = [
     {
         id: 6,
         number: "07",
-        title: "Agile & Transparent Workflow",
+        title: "Collaborative Creative Design Approach",
         image: "/services/p-7.png",
         column: 4,
         className: "h-[350px]",
     },
 ];
 
+const faqData = [
+    {
+        id: 1,
+        question: "What Services Does Your Agency Offer?",
+        answer: "Techcole provides custom logo design services for startups, growing businesses, and established brands. Our process focuses on creating unique, professional logos that reflect your brand identity and work seamlessly across digital and print platforms.",
+    },
+    {
+        id: 2,
+        question: "How Do You Ensure The Quality Of Your Work?",
+        answer: "We start by understanding your brand, audience, and industry. Our designers create original concepts and refine them through structured revisions, ensuring the final logo is polished, versatile, and aligned with your business goals.",
+    },
+    {
+        id: 3,
+        question: "How Do You Handle Project Revisions Or Changes?",
+        answer: "Every package includes multiple revision rounds so you can refine the design. We adjust elements like colors, typography, and layout based on your feedback until the logo matches your vision.",
+    },
+    {
+        id: 4,
+        question: "What If I'm Not Satisfied With The Final Result?",
+        answer: "Our collaborative process allows feedback throughout the project, ensuring the final design meets your expectations. We work closely with you during revisions to reach a result you are happy with.",
+    },
+    {
+        id: 5,
+        question: "Do You Provide Post-Launch Support?",
+        answer: "Yes. We deliver your logo in all essential formats for web, social media, and print. If you need additional branding assets or adjustments later, our team can assist.",
+    },
+    {
+        id: 6,
+        question: "What Is Your Typical Project Timeline?",
+        answer: "Most logo design projects are completed within 5–10 business days, depending on the package and revision process. We begin with concept creation and refine the design based on your feedback.",
+    },
+];
 
 export default function page() {
     return (
         <main className="w-full bg-white">
-            <Hero title="Logo Design" description="PROFESSIONAL AND CUSTOMER-ORIENTED APPROACH TO BUSINESS, STARTING FROM FIRST CONTACT UNTIL PROJECT COMPLETION" image="/about/hero-top-bg.png" className="h-[330px]" />
-            <LeftImageRightContentComponent subtitle="Who We Are" title="Passionate and creative" description="Techcole believes in the power of collaboration and strives to create an environment of shared success. Our experienced team of professionals is dedicated to delving into the complexities of business challenges and finding creative solutions.Techcole believes in the power of collaboration and strives to create an environment of shared success. Our experienced team of professionals is dedicated to delving into the complexities of business challenges and finding creative solutions." image="/about/hero-top-bg.png" />
+            <Hero title="Logo Design" description="We study your brand, design initial logo concepts, and refine the chosen direction through feedback. The final delivery includes a complete logo package ready for both digital and print use." image="/about/hero-top-bg.png" className="h-[330px]" />
+            <LeftImageRightContentComponent subtitle="Who We Are" title="Where strategy meets design" description="At Techcole, we believe a logo is more than just a graphic, it’s the visual foundation of your brand. Our design team works closely with businesses to understand their story, values, and audience before crafting a logo that truly represents them. Whether you’re launching a new brand or refreshing an existing identity, our goal is to design a logo that makes a strong and lasting impression." image="/about/hero-top-bg.png" />
             <ServicePortfolio portfolioItems={portfolioItems} />
             <WhyChooseUs title="Logo Design" cards={cards} />
             <PricingSection />
-            <FAQSection />
+            <FAQSection faqData={faqData} />
         </main>
     )
 }

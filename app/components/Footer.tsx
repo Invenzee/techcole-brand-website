@@ -95,7 +95,7 @@ export default function Footer() {
                             <Image src={footerlogo} className="cursor-pointer" alt="Techcole Read Logo" onClick={() => router.push("/")} />
                         </div>
                         <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-                            We host the full capacity of potential for your start-up, business.
+                            We unlock the full digital potential of your startup or growing business.
                         </p>
                     </motion.div>
 

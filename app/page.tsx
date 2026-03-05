@@ -55,9 +55,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 1.4, ease: "easeOut" }}
               className="text-[18px] leading-[26px] font-regular text-white max-w-[750px] mt-16 text-center"
             >
-              We’re a full-stack digital product agency specializing in design, strategy,
-              and development for web and mobile applications. Startups, nonprofits, and
-              enterprises count on us to launch and revamp their digital products.
+              We are a full-stack digital product agency specializing in expert design, development, and marketing for web and mobile applications. Startups, nonprofits, and enterprises trust us to launch, scale, and optimize their digital presence with measurable results.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}

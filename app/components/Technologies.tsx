@@ -154,7 +154,7 @@ export default function Technologies() {
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="text-white/90 text-sm md:text-base max-w-[600px] mb-8 md:mb-10 leading-relaxed px-4"
                 >
-                    We Are the Scalable Design Solutions That Will Give Your Business An Edge In This Ever-Changing Digital Landscape.
+                    We deliver scalable digital solutions using modern, industry-leading technologies to give your business a competitive edge in today’s fast-moving digital landscape.
                 </motion.p>
 
                 <div

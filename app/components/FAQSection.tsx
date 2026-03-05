@@ -12,41 +12,6 @@ interface FAQItem {
     answer: string;
 }
 
-// --- Data ---
-
-const faqData: FAQItem[] = [
-    {
-        id: 1,
-        question: "What Services Does Your Agency Offer?",
-        answer: "Our agency provides a range of services to meet your business needs, including custom software solutions, graphic design, web development, and digital marketing. We specialize in creating high-quality, user-friendly, and visually appealing products that enhance efficiency and drive growth.",
-    },
-    {
-        id: 2,
-        question: "How Do You Ensure The Quality Of Your Work?",
-        answer: "We employ a rigorous quality assurance process that involves multiple stages of testing, code reviews, and user feedback loops. Our team adheres to industry best practices and uses the latest tools to ensure that every deliverable meets the highest standards of performance, security, and usability.",
-    },
-    {
-        id: 3,
-        question: "How Do You Handle Project Revisions Or Changes?",
-        answer: "We understand that requirements can evolve. We use an agile methodology that allows for flexibility and iterative improvements. We maintain open communication channels and provide regular updates, ensuring that any feedback or changes are incorporated seamlessly into the project workflow without disrupting the timeline significantly.",
-    },
-    {
-        id: 4,
-        question: "What If I'm Not Satisfied With The Final Result?",
-        answer: "Client satisfaction is our top priority. We offer a satisfaction guarantee and will work closely with you to address any concerns. Our transparent workflow ensures you are involved at every step, minimizing surprises. If the final output doesn't meet the agreed-upon specifications, we will make the necessary revisions to ensure it aligns with your vision.",
-    },
-    {
-        id: 5,
-        question: "Do You Provide Post-Launch Support?",
-        answer: "Yes, absolutely. We believe our partnership extends beyond the launch. We offer various support and maintenance packages to keep your website or application running smoothly, secure, and up-to-date with the latest technologies and trends.",
-    },
-    {
-        id: 6,
-        question: "What Is Your Typical Project Timeline?",
-        answer: "Project timelines vary depending on the scope and complexity of the work. A standard informational website might take 4-6 weeks, while a complex web application could take 3-6 months. During the initial consultation, we provide a detailed roadmap and timeline tailored to your specific project requirements.",
-    },
-];
-
 // --- Sub-Components ---
 
 const AccordionItem = ({
@@ -154,7 +119,7 @@ const AccordionItem = ({
 
 // --- Main Component ---
 
-export default function FAQSection() {
+export default function FAQSection({ faqData }: { faqData: FAQItem[] }) {
     const [openId, setOpenId] = useState<number | null>(1); // Default first one open
 
     const handleToggle = (id: number) => {
