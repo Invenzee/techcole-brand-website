@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import Button from "../global/Button";
 import gsap from "gsap";
 
 export default function ContactDetailsForm() {
@@ -14,6 +13,8 @@ export default function ContactDetailsForm() {
         projectType: "",
         message: ""
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<{ type: "success" | "error"; message: string } | null>(null);
 
     const pathRef = useRef<SVGPathElement>(null);
 
@@ -40,9 +41,45 @@ export default function ContactDetailsForm() {
         });
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Form submitted:", formData);
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    formSource: "Contact Page"
+                }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setSubmitStatus({ type: "success", message: "Thank you! Your message has been sent successfully." });
+                // Reset form
+                setFormData({
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    phone: "",
+                    budget: "",
+                    projectType: "",
+                    message: ""
+                });
+            } else {
+                setSubmitStatus({ type: "error", message: data.message || "Something went wrong. Please try again." });
+            }
+        } catch (error) {
+            setSubmitStatus({ type: "error", message: "Failed to send message. Please try again later." });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -245,14 +282,25 @@ export default function ContactDetailsForm() {
                             />
                         </div>
 
+                        {/* Submit Status Message */}
+                        {submitStatus && (
+                            <div className={`p-4 rounded-lg ${submitStatus.type === "success" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}>
+                                {submitStatus.message}
+                            </div>
+                        )}
+
                         {/* Submit Button */}
                         <div className="pt-4">
-                            <Button
-                                link="#"
-                                text="Submit"
-                                className="!px-8 !bg-primary text-white !py-3"
-                                transitionClassName="!via-white/30"
-                            />
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="relative overflow-hidden px-8 py-3 bg-primary text-white rounded-lg font-medium transition-all duration-300 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                <span className="relative z-10">
+                                    {isSubmitting ? "Sending..." : "Submit"}
+                                </span>
+                                <span className="absolute inset-0 bg-white/30 translate-y-full transition-transform duration-300 hover:translate-y-0"></span>
+                            </button>
                         </div>
                     </motion.form>
                 </div>

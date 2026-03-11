@@ -25,12 +25,45 @@ export default function Footer() {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e: FormEvent) => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<{ type: "success" | "error"; message: string } | null>(null);
+
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        const subject = encodeURIComponent("Contact from Footer");
-        const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}`);
-        // Simulate email sending or open mail client
-        window.location.href = `mailto:support@techcole.com?subject=${subject}&body=${body}`;
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    firstName: formData.name,
+                    lastName: "",
+                    email: formData.email,
+                    phone: formData.phone,
+                    budget: "",
+                    projectType: "Footer Contact Form",
+                    message: `Contact request from footer form. Name: ${formData.name}, Email: ${formData.email}, Phone: ${formData.phone}`,
+                    formSource: "Footer - Quick Contact"
+                }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setSubmitStatus({ type: "success", message: "Thank you! We will contact you soon." });
+                setFormData({ name: "", email: "", phone: "" });
+            } else {
+                setSubmitStatus({ type: "error", message: data.message || "Something went wrong. Please try again." });
+            }
+        } catch (error) {
+            setSubmitStatus({ type: "error", message: "Failed to send. Please try again later." });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
