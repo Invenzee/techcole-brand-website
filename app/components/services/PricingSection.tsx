@@ -14,55 +14,13 @@ interface PricingPlan {
     features: Feature[];
     isHighlighted: boolean;
     badge?: string;
+    // New fields for app development pricing
+    tier?: string;
+    subtitle?: string;
+    description?: string;
+    originalPrice?: number;
+    deliveryTime?: string;
 }
-
-const pricingPlans: PricingPlan[] = [
-    {
-        id: 'basic',
-        title: 'Basic Website Package',
-        price: 399,
-        isHighlighted: false,
-        features: [
-            { text: 'Hover Effects' },
-            { text: '2 Banner Designs' },
-            { text: 'Sliding Banner' },
-            { text: '2 Stock Photos (You can provide us more)' },
-            { text: 'Contact/Inquiry Form' },
-            { text: '6 Revisions' },
-            { text: 'Complete W3C Certified HTML' },
-        ],
-    },
-    {
-        id: 'ecommerce',
-        title: 'Ecommerce Website Package',
-        price: 569,
-        isHighlighted: true,
-        badge: 'MOST POPULAR',
-        features: [
-            { text: 'E-Commerce Website Design and Development' },
-            { text: 'High-end Theme-Based Design' },
-            { text: 'Sliding Banner' },
-            { text: '5 Stock Photos' },
-            { text: '10 Revisions' },
-            { text: 'More Features' },
-        ],
-    },
-    {
-        id: 'professional',
-        title: 'Professional Website Package',
-        price: 849,
-        isHighlighted: false,
-        features: [
-            { text: 'Up to 10 Pages Website Design' },
-            { text: '3 Stock Photos' },
-            { text: '3 Banner Designs' },
-            { text: 'Sliding Banner' },
-            { text: 'Hover Effects' },
-            { text: 'Content Management System (WordPress)' },
-            { text: 'Complete Deployment' },
-        ],
-    },
-];
 
 const PricingCard: React.FC<{ plan: PricingPlan; index: number }> = ({ plan, index }) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -79,17 +37,44 @@ const PricingCard: React.FC<{ plan: PricingPlan; index: number }> = ({ plan, ind
                 : 'bg-white text-gray-800'
                 }`}
         >
+            {plan.badge && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 text-sm font-semibold uppercase">
+                    {plan.badge}
+                </div>
+            )}
+
             <div className="text-left mb-6">
+                {plan.tier && (
+                    <p className={`text-sm font-semibold uppercase mb-1 ${plan.isHighlighted ? 'text-white/80' : 'text-red-600'}`}>
+                        {plan.tier}
+                    </p>
+                )}
                 <h3
-                    className={`font-medium text-xl uppercase  ${plan.isHighlighted ? 'text-white' : 'text-red-600'
+                    className={`font-medium text-xl ${plan.isHighlighted ? 'text-white' : 'text-gray-900'
                         }`}
                 >
                     {plan.title}
                 </h3>
-                <div className="flex items-center justify-start">
-                    <span className={`text-6xl font-bold tracking-tighter ${plan.isHighlighted ? 'text-white' : 'text-gray-900'}`}>
-                        $ {plan.price}
-                    </span>
+                {plan.description && (
+                    <p className={`text-sm mt-2 leading-relaxed ${plan.isHighlighted ? 'text-white/80' : 'text-gray-600'}`}>
+                        {plan.description}
+                    </p>
+                )}
+                
+                <div className="mt-4">
+                    {plan.originalPrice && (
+                        <span className={`text-2xl line-through ${plan.isHighlighted ? 'text-white/60' : 'text-gray-400'}`}>
+                            ${plan.originalPrice.toLocaleString()}
+                        </span>
+                    )}
+                    <div className="flex items-baseline gap-1">
+                        <span className={`text-5xl font-bold tracking-tighter ${plan.isHighlighted ? 'text-white' : 'text-gray-900'}`}>
+                            ${plan.price.toLocaleString()}
+                        </span>
+                    </div>
+                    <p className={`text-xs mt-1 ${plan.isHighlighted ? 'text-white/80' : 'text-gray-500'}`}>
+                        One-time · No hidden fees
+                    </p>
                 </div>
             </div>
 
@@ -112,7 +97,7 @@ const PricingCard: React.FC<{ plan: PricingPlan; index: number }> = ({ plan, ind
                             />
                         </div>
                         <p
-                            className={`text-md leading-relaxed ${plan.isHighlighted ? 'text-white' : 'text-gray-700'
+                            className={`text-sm leading-relaxed ${plan.isHighlighted ? 'text-white' : 'text-gray-700'
                                 }`}
                         >
                             {feature.text}
@@ -121,12 +106,18 @@ const PricingCard: React.FC<{ plan: PricingPlan; index: number }> = ({ plan, ind
                 ))}
             </div>
 
-            <Button link="/about" text="Live Chat" icon={MessageCircle} className={`${!plan.isHighlighted ? "!bg-primary text-white" : ""} `} transitionClassName="!via-white/30" />
+            {plan.deliveryTime && (
+                <p className={`text-sm font-semibold mb-4 ${plan.isHighlighted ? 'text-white' : 'text-gray-900'}`}>
+                    {plan.deliveryTime}
+                </p>
+            )}
+
+            <Button link="/contact" text={plan.isHighlighted ? "Get Started Now" : "Get Started"} icon={MessageCircle} className={`${!plan.isHighlighted ? "!bg-primary text-white" : ""} `} transitionClassName="!via-white/30" />
         </motion.div>
     );
 };
 
-export default function PricingSection() {
+export default function PricingSection({ pricingPlans = [] }: { pricingPlans?: PricingPlan[] }) {
     return (
         <div className="min-h-screen bg-[url('/services/p-bg.png')] bg-contain bg-center bg-no-repeat py-20 px-4">
             <div className="max-w-7xl mx-auto max-sm:px-4">

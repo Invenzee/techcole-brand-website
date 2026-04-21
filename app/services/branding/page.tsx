@@ -119,6 +119,71 @@ const faqData = [
     },
 ];
 
+const pricingPlans = [
+    {
+        id: 'starter',
+        title: 'Basic Branding',
+        tier: 'STARTER',
+        description: 'Perfect for startups and small businesses ready to establish their identity.',
+        originalPrice: 299,
+        price: 149,
+        isHighlighted: false,
+        features: [
+            { text: 'Logo Design (3 concepts)' },
+            { text: 'Business Card Design' },
+            { text: 'Brand Color Palette' },
+            { text: 'Typography Selection' },
+            { text: 'Letterhead Design' },
+            { text: '3 Revisions' },
+            { text: 'All Source Files (AI, PNG, SVG)' },
+        ],
+        deliveryTime: '5-Day Delivery',
+    },
+    {
+        id: 'professional',
+        title: 'Brand Identity',
+        tier: 'PROFESSIONAL',
+        badge: 'MOST POPULAR',
+        description: 'Complete brand identity system for growing US businesses ready to dominate their market.',
+        originalPrice: 799,
+        price: 399,
+        isHighlighted: true,
+        features: [
+            { text: 'Logo Design (5 concepts)' },
+            { text: 'Full Brand Style Guide (PDF)' },
+            { text: 'Social Media Kit (FB, IG, LinkedIn, X)' },
+            { text: 'Business Stationery Set' },
+            { text: 'Brand Patterns & Textures' },
+            { text: 'Email Signature Design' },
+            { text: 'Packaging Design (1 product)' },
+            { text: 'Unlimited Revisions' },
+            { text: 'All Source Files' },
+        ],
+        deliveryTime: '7-Day Delivery',
+    },
+    {
+        id: 'enterprise',
+        title: 'Brand Strategy',
+        tier: 'ENTERPRISE',
+        description: 'Full-scale branding for established US businesses scaling to new markets.',
+        originalPrice: 1999,
+        price: 999,
+        isHighlighted: false,
+        features: [
+            { text: 'Everything in Brand Identity' },
+            { text: 'Brand Strategy & Positioning' },
+            { text: 'Competitor Analysis Report' },
+            { text: 'Brand Voice & Messaging Guide' },
+            { text: 'Website UI Design (up to 5 pages)' },
+            { text: 'Marketing Collateral (brochure, flyer)' },
+            { text: 'Product Packaging (up to 3 items)' },
+            { text: 'Dedicated Brand Manager' },
+            { text: '6-Month Priority Support' },
+        ],
+        deliveryTime: '10-Day Delivery',
+    },
+];
+
 export default function page() {
     return (
         <main className="w-full bg-white">
@@ -127,7 +192,7 @@ export default function page() {
             <WebDevProcess title="Branding" steps={steps} />
             <ServicePortfolio portfolioItems={portfolioItems} />
             <WhyChooseUs title="Branding" cards={cards} />
-            <PricingSection />
+            <PricingSection pricingPlans={pricingPlans} />
             <FAQSection faqData={faqData} />
         </main>
     )

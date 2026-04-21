@@ -27,6 +27,80 @@ const steps = [
     { id: 6, title: "Maintenance & Enhancements", description: "We provide updates, monitoring, and improvements to keep your app secure and optimized." },
 ];
 
+const pricingPlans = [
+    {
+        id: 'starter',
+        title: 'Basic App',
+        tier: 'STARTER',
+        description: 'Perfect for startups and small US businesses launching their first mobile app idea.',
+        originalPrice: 1999,
+        price: 899,
+        isHighlighted: false,
+        features: [
+            { text: 'Android OR iOS App' },
+            { text: 'Up to 5 Screens' },
+            { text: 'Basic UI / UX Design' },
+            { text: 'User Login & Registration' },
+            { text: 'Push Notifications' },
+            { text: 'API Integration (1 service)' },
+            { text: 'Google Play OR App Store Submission' },
+            { text: '3 Revisions' },
+            { text: '1 Month Free Support' },
+        ],
+        deliveryTime: '21-Day Delivery',
+    },
+    {
+        id: 'professional',
+        title: 'Business App',
+        tier: 'PROFESSIONAL',
+        badge: 'MOST POPULAR',
+        description: 'Full-featured cross-platform app for growing US businesses ready to engage customers at scale.',
+        originalPrice: 4999,
+        price: 2499,
+        isHighlighted: true,
+        features: [
+            { text: 'Android AND iOS App (Cross-Platform)' },
+            { text: 'Up to 15 Screens' },
+            { text: 'Custom UI / UX Design' },
+            { text: 'User Login, Profiles & Roles' },
+            { text: 'Push Notifications & In-App Alerts' },
+            { text: 'Payment Gateway (Stripe / PayPal)' },
+            { text: 'API Integration (up to 3 services)' },
+            { text: 'Admin Dashboard (Web Panel)' },
+            { text: 'Real-Time Chat Feature' },
+            { text: 'Google Play + App Store Submission' },
+            { text: 'Unlimited Revisions' },
+            { text: '3 Months Free Support' },
+        ],
+        deliveryTime: '30-Day Delivery',
+    },
+    {
+        id: 'enterprise',
+        title: 'Advanced App',
+        tier: 'ENTERPRISE',
+        description: 'Scalable, feature-rich app solution for established US companies with complex requirements.',
+        originalPrice: 9999,
+        price: 4999,
+        isHighlighted: false,
+        features: [
+            { text: 'Everything in Business App' },
+            { text: 'Up to 30+ Screens' },
+            { text: 'AI / ML Feature Integration' },
+            { text: 'E-Commerce & In-App Purchases' },
+            { text: 'Geolocation & Maps Integration' },
+            { text: 'Social Media Login (Google, Apple, FB)' },
+            { text: 'Advanced Analytics Dashboard' },
+            { text: 'Multi-Language Support' },
+            { text: 'Unlimited API Integrations' },
+            { text: 'Dedicated Project Manager' },
+            { text: 'NDA & Source Code Ownership' },
+            { text: '6 Months Free Support' },
+        ],
+        deliveryTime: '45-Day Delivery',
+    },
+];
+
+
 const cards = [
     {
         id: 1,
@@ -127,7 +201,7 @@ export default function page() {
             <WebDevProcess title="App Development" steps={steps} />
             <ServicePortfolio portfolioItems={portfolioItems} />
             <WhyChooseUs title="App Development" cards={cards} />
-            <PricingSection />
+            <PricingSection pricingPlans={pricingPlans} />
             <FAQSection faqData={faqData}  />
         </main>
     )

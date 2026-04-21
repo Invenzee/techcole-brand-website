@@ -114,6 +114,73 @@ const faqData = [
     },
 ];
 
+const pricingPlans = [
+    {
+        id: 'starter',
+        title: 'Basic Logo',
+        tier: 'STARTER',
+        description: 'Great for startups and solo businesses needing a clean, professional logo fast.',
+        originalPrice: 199,
+        price: 79,
+        isHighlighted: false,
+        features: [
+            { text: '2 Logo Concepts' },
+            { text: '1 Logo Style (Wordmark or Icon)' },
+            { text: '3 Revisions' },
+            { text: 'JPG & PNG Files' },
+            { text: 'Transparent Background' },
+            { text: 'Black & White Version' },
+            { text: '100% Ownership Rights' },
+        ],
+        deliveryTime: '3-Day Delivery',
+    },
+    {
+        id: 'professional',
+        title: 'Premium Logo',
+        tier: 'PROFESSIONAL',
+        badge: 'MOST POPULAR',
+        description: 'The complete logo package for growing US businesses that want to stand out.',
+        originalPrice: 499,
+        price: 199,
+        isHighlighted: true,
+        features: [
+            { text: '5 Logo Concepts' },
+            { text: 'All Logo Styles (Wordmark, Icon, Combo)' },
+            { text: 'Unlimited Revisions' },
+            { text: 'AI, EPS, SVG, PNG, JPG Files' },
+            { text: 'Transparent & White Background' },
+            { text: 'Color + Black & White Versions' },
+            { text: 'Brand Color Palette Included' },
+            { text: 'Font Recommendation Guide' },
+            { text: 'Social Media Logo Sizes' },
+            { text: '100% Ownership Rights' },
+        ],
+        deliveryTime: '5-Day Delivery',
+    },
+    {
+        id: 'enterprise',
+        title: 'Brand Logo Suite',
+        tier: 'ENTERPRISE',
+        description: 'Full logo system for established US companies scaling their brand presence.',
+        originalPrice: 999,
+        price: 449,
+        isHighlighted: false,
+        features: [
+            { text: 'Everything in Premium Logo' },
+            { text: 'Logo Variations (Horizontal, Stacked, Icon-only)' },
+            { text: 'Favicon Design' },
+            { text: 'Watermark Version' },
+            { text: 'Full Brand Style Guide (PDF)' },
+            { text: 'Business Card Design Included' },
+            { text: 'Letterhead Design Included' },
+            { text: 'Email Signature Design' },
+            { text: 'Dedicated Designer Assigned' },
+            { text: '100% Ownership Rights' },
+        ],
+        deliveryTime: '7-Day Delivery',
+    },
+];
+
 export default function page() {
     return (
         <main className="w-full bg-white">
@@ -121,7 +188,7 @@ export default function page() {
             <LeftImageRightContentComponent subtitle="Who We Are" title="Where strategy meets design" description="At Techcole, we believe a logo is more than just a graphic, it’s the visual foundation of your brand. Our design team works closely with businesses to understand their story, values, and audience before crafting a logo that truly represents them. Whether you’re launching a new brand or refreshing an existing identity, our goal is to design a logo that makes a strong and lasting impression." image="/about/hero-top-bg.png" />
             <ServicePortfolio portfolioItems={portfolioItems} />
             <WhyChooseUs title="Logo Design" cards={cards} />
-            <PricingSection />
+            <PricingSection pricingPlans={pricingPlans} />
             <FAQSection faqData={faqData} />
         </main>
     )

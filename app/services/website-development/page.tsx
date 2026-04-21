@@ -124,6 +124,78 @@ const faqData = [
     },
 ];
 
+const pricingPlans = [
+    {
+        id: 'starter',
+        title: 'Basic Website',
+        tier: 'STARTER',
+        description: 'Ideal for startups and local US businesses needing a clean, professional online presence.',
+        originalPrice: 699,
+        price: 299,
+        isHighlighted: false,
+        features: [
+            { text: 'Up to 5 Pages' },
+            { text: 'WordPress / HTML Development' },
+            { text: 'Mobile Responsive Design' },
+            { text: 'Contact & Inquiry Form' },
+            { text: 'Basic On-Page SEO Setup' },
+            { text: 'Google Maps Integration' },
+            { text: 'Social Media Links' },
+            { text: '3 Revisions' },
+            { text: '1 Month Free Support' },
+        ],
+        deliveryTime: '7-Day Delivery',
+    },
+    {
+        id: 'professional',
+        title: 'Business Website',
+        tier: 'PROFESSIONAL',
+        badge: 'MOST POPULAR',
+        description: 'The complete website solution for growing US businesses ready to generate real leads online.',
+        originalPrice: 1499,
+        price: 699,
+        isHighlighted: true,
+        features: [
+            { text: 'Up to 10 Pages' },
+            { text: 'Custom WordPress Theme' },
+            { text: 'Mobile & Tablet Responsive' },
+            { text: 'Speed & Performance Optimized' },
+            { text: 'Full On-Page SEO Setup' },
+            { text: 'Blog / News Section' },
+            { text: 'Lead Capture Forms' },
+            { text: 'Live Chat Integration' },
+            { text: 'Google Analytics Setup' },
+            { text: 'SSL Certificate Configured' },
+            { text: 'Unlimited Revisions' },
+            { text: '3 Months Free Support' },
+        ],
+        deliveryTime: '14-Day Delivery',
+    },
+    {
+        id: 'enterprise',
+        title: 'E-Commerce Website',
+        tier: 'ENTERPRISE',
+        description: 'Full-scale online store for US businesses ready to sell products and scale revenue.',
+        originalPrice: 2999,
+        price: 1299,
+        isHighlighted: false,
+        features: [
+            { text: 'Everything in Business Website' },
+            { text: 'WooCommerce / Shopify Store' },
+            { text: 'Up to 50 Products Setup' },
+            { text: 'Payment Gateway Integration (Stripe / PayPal)' },
+            { text: 'Shopping Cart & Checkout' },
+            { text: 'Inventory Management System' },
+            { text: 'Coupon & Discount System' },
+            { text: 'Order Tracking Page' },
+            { text: 'Product Filter & Search' },
+            { text: 'Dedicated Project Manager' },
+            { text: '6 Months Free Support' },
+        ],
+        deliveryTime: '21-Day Delivery',
+    },
+];
+
 
 export default function page() {
     return (
@@ -134,7 +206,7 @@ export default function page() {
             <WebDevProcess title="Website Development" steps={steps} />
             <ServicePortfolio portfolioItems={portfolioItems} />
             <WhyChooseUs title="Website Development" cards={cards} />
-            <PricingSection />
+            <PricingSection pricingPlans={pricingPlans} />
             <FAQSection faqData={faqData} />
         </main>
     )
