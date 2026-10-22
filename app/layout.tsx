@@ -131,6 +131,17 @@ export default function RootLayout({
           {children}
           <Footer />
         </SmoothScroll>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "window.ClassicChat=window.ClassicChat||function(){(ClassicChat.q=ClassicChat.q||[]).push(arguments)};",
+          }}
+        />
+        <script
+          src="http://localhost:4000/widget.js"
+          data-key="wk_4c05757c523bb0abcac1388870e082bdccd5"
+          async
+        />
       </body>
     </html>
   );
